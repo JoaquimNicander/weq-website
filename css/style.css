@@ -792,6 +792,111 @@ footer {
   letter-spacing: 2px;
 }
 
+/* ── MEDIA SECTION ── */
+.media-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-bottom: 32px;
+}
+
+.media-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(168deg, #2A1006, #0D0804);
+  border: 1px solid rgba(61,26,8,0.9);
+  padding: 28px 28px;
+  text-decoration: none;
+  color: var(--white);
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.media-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(232,82,10,0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+
+.media-card:hover {
+  border-color: var(--o2);
+  background: linear-gradient(168deg, #3A1A08, #1A0D06);
+  transform: translateY(-3px);
+}
+
+.media-card-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(232,82,10,0.12);
+  border: 1px solid rgba(232,82,10,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.media-card-body {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.media-card-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.media-card-desc {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+}
+
+.media-card-arrow {
+  font-size: 20px;
+  color: rgba(232,82,10,0.5);
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.media-card:hover .media-card-arrow {
+  color: var(--o2);
+  transform: translateX(4px);
+}
+
+.media-note {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: rgba(13,8,4,0.45);
+  text-align: center;
+}
+
+.media-note a {
+  color: var(--o3);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.media-note a:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .media-grid { grid-template-columns: 1fr; }
+}
+
 /* ── ANIMATIONS ── */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(24px); }

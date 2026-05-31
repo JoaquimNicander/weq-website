@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEQ — Brand Book 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;800;900&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --o1: #FF8C42;
+  --o2: #E8520A;
+  --o3: #C43E00;
+  --o4: #7A2400;
+  --black: #0D0804;
+  --surface: #160A04;
+  --card: #1E0E06;
+  --border: #3D1A08;
+  --muted: rgba(255,248,243,0.38);
+  --white: #FFF8F3;
+  --cream: #F5EDE3;
+  --cream2: #EDD8C4;
+}
+
+body { background:#fff; color:var(--black); font-family:'Outfit',sans-serif; }
+
+/* ── PAGE SYSTEM ── */
+.page {
+  width: 1200px;
+  min-height: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--black);
+}
+
+/* ── CHEVRON MACRO ── */
+.chev { display:inline-block; }
+
+/* ══════════════════════════
+   PAGE 1 — COVER
+══════════════════════════ */
+.cover {
+  background: linear-gradient(168deg, #FF8030 0%, #E8520A 28%, #B83A00 60%, #5A1800 100%);
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 80px;
+  min-height: 900px;
+}
+.cover::before {
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,0.07) 1px,transparent 1px),
+    linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
+  background-size:24px 24px,24px 24px,96px 96px,96px 96px;
+  pointer-events:none;
+}
+.cover::after {
+  content:'';
+  position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:800px;height:700px;
+  background:radial-gradient(ellipse,rgba(255,160,80,0.2) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cover>*{position:relative;z-index:1;}
+
+.cover-top { display:flex; justify-content:space-between; align-items:flex-start; }
+.cover-label {
+  font-family:'Space Mono',monospace;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+}
+.cover-center {
+  display:flex;flex-direction:column;align-items:center;gap:24px;
+  flex:1;justify-content:center;padding:80px 0;
+}
+.cover-wordmark {
+  font-family:'Outfit',sans-serif;
+  font-size:140px;font-weight:800;
+  letter-spacing:-6px;color:#fff;line-height:1;
+  text-shadow:0 8px 64px rgba(0,0,0,0.35);
+  text-align:center;
+}
+.cover-payoff {
+  font-family:'Space Mono',monospace;
+  font-size:13px;letter-spacing:7px;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);text-align:center;
+}
+.cover-bottom { display:flex; justify-content:space-between; align-items:flex-end; }
+.cover-year {
+  font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:3px;color:rgba(255,255,255,0.35);
+}
+
+/* ══════════════════════════
+   SECTION DIVIDERS
+══════════════════════════ */
+.chapter-header {
+  background:var(--black);
+  padding:48px 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.chapter-header::before {
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(232,82,10,0.1) 1px,transparent 1px);
+  background-size:20px 20px;pointer-events:none;
+}
+.chapter-header>*{position:relative;z-index:1;}
+.chapter-num {
+  font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:4px;color:rgba(232,82,10,0.6);text-transform:uppercase;
+}
+.chapter-title {
+  font-family:'Outfit',sans-serif;
+  font-size:32px;font-weight:800;color:#fff;letter-spacing:-0.5px;
+}
+.chapter-big {
+  font-family:'Outfit',sans-serif;
+  font-size:80px;font-weight:800;
+  color:rgba(232,82,10,0.1);letter-spacing:-3px;line-height:1;
+}
+
+/* ══════════════════════════
+   CONTENT PAGES
+══════════════════════════ */
+.content-page {
+  padding:72px 80px;
+  background:var(--cream);
+  position:relative;overflow:hidden;
+}
+.content-page::before {
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(180,80,20,0.06) 1px,transparent 1px);
+  background-size:20px 20px;pointer-events:none;
+}
+.content-page>*{position:relative;z-index:1;}
+
+.content-page-dark {
+  padding:72px 80px;
+  background:linear-gradient(168deg,#2A1006 0%,#0D0804 100%);
+  position:relative;overflow:hidden;
+}
+.content-page-dark::before {
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(232,82,10,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(232,82,10,0.04) 1px,transparent 1px);
+  background-size:32px 32px;pointer-events:none;
+}
+.content-page-dark>*{position:relative;z-index:1;}
+
+.sec-label {
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--o3);margin-bottom:36px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:rgba(0,0,0,0.12);max-width:160px;}
+.sec-label-light {
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(232,82,10,0.6);margin-bottom:36px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-label-light::after{content:'';flex:1;height:1px;background:var(--border);max-width:160px;}
+
+/* ══════════════════════════
+   VISION PAGE
+══════════════════════════ */
+.vision-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;
+}
+.vision-card {
+  padding:40px;
+  background:linear-gradient(168deg,#2A1006,#0D0804);
+  position:relative;overflow:hidden;
+}
+.vision-card::before {
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(232,82,10,0.1) 1px,transparent 1px);
+  background-size:18px 18px;pointer-events:none;
+}
+.vision-card>*{position:relative;z-index:1;}
+.vision-card-light {
+  padding:40px;
+  background:linear-gradient(168deg,#fff,#F0DDD0);
+  border:1px solid rgba(0,0,0,0.07);
+}
+.vc-num {
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:3px;color:rgba(232,82,10,0.5);
+  text-transform:uppercase;margin-bottom:12px;
+}
+.vc-title {
+  font-family:'Outfit',sans-serif;
+  font-size:20px;font-weight:800;color:#fff;margin-bottom:10px;
+}
+.vc-title-dark { color:var(--black); }
+.vc-body { font-size:13px;color:var(--muted);line-height:1.7; }
+.vc-body-dark { font-size:13px;color:rgba(13,8,4,0.55);line-height:1.7; }
+
+/* ══════════════════════════
+   LOGO PAGE
+══════════════════════════ */
+.logo-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;
+}
+.logo-panel {
+  padding:56px 48px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:260px;position:relative;overflow:hidden;
+}
+.lp-orange {
+  background:linear-gradient(168deg,#FF8030 0%,#E8520A 35%,#9B2F00 100%);
+}
+.lp-orange::before {
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,0,0,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.06) 1px,transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.lp-black {
+  background:linear-gradient(168deg,#2A1006,#0D0804);
+}
+.lp-black::before {
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(232,82,10,0.1) 1px,transparent 1px);
+  background-size:20px 20px;pointer-events:none;
+}
+.lp-cream {
+  background:linear-gradient(168deg,#fff,#EDD8C4);
+}
+.lp-cream::before {
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(180,80,20,0.08) 1px,transparent 1px);
+  background-size:20px 20px;pointer-events:none;
+}
+.lp-dark {
+  background:linear-gradient(168deg,#3D1A08,#1A0804);
+}
+.lp-dark::before {
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(232,82,10,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(232,82,10,0.05) 1px,transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.logo-panel>*{position:relative;z-index:1;}
+.lp-lockup{display:flex;align-items:center;gap:14px;}
+.lp-wm{font-family:'Outfit',sans-serif;font-weight:800;letter-spacing:-1px;line-height:1;}
+.lp-wm-l{color:#fff;}
+.lp-wm-d{color:var(--black);}
+.lp-payoff{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;margin-top:4px;}
+.lp-note{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;}
+.lp-note-l{color:rgba(255,255,255,0.35);}
+.lp-note-d{color:rgba(13,8,4,0.35);}
+.lp-note-m{color:var(--muted);}
+
+/* ══════════════════════════
+   SYMBOL / VECTOR PAGE
+══════════════════════════ */
+.symbol-showcase {
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;
+}
+.symbol-left {
+  background:linear-gradient(168deg,#2A1006,#0D0804);
+  border:1px solid var(--border);
+  padding:64px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:32px;position:relative;overflow:hidden;
+}
+.symbol-left::before {
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(232,82,10,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(232,82,10,0.05) 1px,transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.symbol-left>*{position:relative;z-index:1;}
+.symbol-right { display:flex;flex-direction:column;gap:20px; }
+.sym-prop {
+  background:white;border:1px solid rgba(0,0,0,0.08);
+  padding:16px 20px;
+}
+.sym-prop-label {
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--o3);margin-bottom:4px;
+}
+.sym-prop-val {
+  font-family:'Outfit',sans-serif;
+  font-size:14px;font-weight:600;color:var(--black);
+}
+.sym-prop-sub { font-size:11px;color:rgba(13,8,4,0.45);margin-top:2px; }
+
+/* ══════════════════════════
+   COLORS PAGE
+══════════════════════════ */
+.color-row {
+  display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px;
+}
+.color-row-2 {
+  display:grid;grid-template-columns:repeat(4,1fr);gap:3px;
+}
+.swatch { overflow:hidden; }
+.swatch-top { height:120px;position:relative; }
+.swatch-bot {
+  padding:14px 16px;
+  background:white;
+  border:1px solid rgba(0,0,0,0.06);border-top:none;
+}
+.sw-name{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--black);margin-bottom:2px;}
+.sw-hex{font-family:'Space Mono',monospace;font-size:10px;color:#9A7060;}
+.sw-role{font-size:10px;color:#9A7060;margin-top:2px;line-height:1.4;}
+
+/* ══════════════════════════
+   TYPOGRAPHY PAGE
+══════════════════════════ */
+.type-row {
+  display:grid;grid-template-columns:180px 1fr;gap:40px;
+  align-items:start;padding:32px 0;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+}
+.type-meta .lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--o3);display:block;margin-bottom:5px;}
+.type-meta .nm{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:var(--black);display:block;margin-bottom:5px;}
+.type-meta .us{font-size:11px;color:rgba(13,8,4,0.45);line-height:1.5;}
+.t-d{font-family:'Outfit',sans-serif;font-size:52px;font-weight:800;line-height:0.95;letter-spacing:-2px;color:var(--black);}
+.t-d span{color:var(--o2);}
+.t-h{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;line-height:1.2;color:var(--black);}
+.t-b{font-size:15px;font-weight:300;line-height:1.75;color:rgba(13,8,4,0.55);max-width:480px;}
+.t-m{font-family:'Space Mono',monospace;font-size:11px;color:var(--o3);letter-spacing:1px;line-height:2;}
+
+/* ══════════════════════════
+   PATTERNS PAGE
+══════════════════════════ */
+.pattern-grid {
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;
+}
+.pat-card {
+  height:200px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:20px;position:relative;overflow:hidden;
+}
+.pat-label {
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  position:relative;z-index:1;
+}
+
+/* ══════════════════════════
+   SIZES PAGE
+══════════════════════════ */
+.sizes-row {
+  display:flex;align-items:flex-end;gap:48px;flex-wrap:wrap;
+  padding:32px 0;
+}
+.sz-item{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.sz-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(13,8,4,0.4);}
+
+/* ══════════════════════════
+   TONE PAGE
+══════════════════════════ */
+.tone-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.tone-card{
+  padding:36px;
+  background:linear-gradient(168deg,#2A1006,#0D0804);
+  position:relative;overflow:hidden;
+}
+.tone-card::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(232,82,10,0.08) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;}
+.tone-card>*{position:relative;z-index:1;}
+.tone-card-light{padding:36px;background:white;border:1px solid rgba(0,0,0,0.07);}
+.tc-title{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.tc-title-l{color:#fff;}
+.tc-title-d{color:var(--black);}
+.tc-dot{width:6px;height:6px;border-radius:50%;background:var(--o2);flex-shrink:0;}
+.tc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.tc-list li{font-size:12px;line-height:1.5;padding-left:14px;position:relative;}
+.tc-list li::before{content:'—';position:absolute;left:0;font-size:10px;top:1px;}
+.tc-list-l li{color:var(--muted);}
+.tc-list-l li::before{color:var(--o3);}
+.tc-list-d li{color:rgba(13,8,4,0.55);}
+.tc-list-d li::before{color:var(--o3);}
+
+/* ══════════════════════════
+   DONTS PAGE
+══════════════════════════ */
+.donts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.dont-card{
+  background:var(--card);border:1px solid var(--border);
+  padding:28px 20px;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  position:relative;
+}
+.dont-x{
+  position:absolute;top:10px;right:10px;
+  width:18px;height:18px;border-radius:50%;
+  background:rgba(255,60,60,0.15);border:1px solid rgba(255,60,60,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:rgba(255,80,80,0.8);font-weight:700;
+}
+.dont-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,80,80,0.7);text-align:center;}
+
+/* ══════════════════════════
+   MOCKUP PAGE
+══════════════════════════ */
+.mockup-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3px;}
+.mock-card{display:flex;flex-direction:column;justify-content:space-between;padding:32px;min-height:260px;position:relative;overflow:hidden;}
+.mock-card>*{position:relative;z-index:1;}
+.mc-h{background:linear-gradient(168deg,#FF8030 0%,#D04800 35%,#7A2000 80%,#3D0E00 100%);}
+.mc-h::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+.mc-d{background:linear-gradient(168deg,#2A1006,#0D0804);}
+.mc-d::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(232,82,10,0.1) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;}
+.mc-c{background:linear-gradient(168deg,#fff,#EDD8C4);}
+.mc-c::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(180,80,20,0.09) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;}
+
+/* ══════════════════════════
+   BACK COVER
+══════════════════════════ */
+.back-cover {
+  background:var(--black);
+  padding:80px;min-height:500px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.back-cover::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(232,82,10,0.08) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;}
+.back-cover::after{content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,82,10,0.1) 0%,transparent 65%);pointer-events:none;}
+.back-cover>*{position:relative;z-index:1;}
+</style>
+</head>
+<body>
+<style>
+.site-backnav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(13,8,4,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,82,10,0.2);display:flex;align-items:center;justify-content:space-between;padding:12px 40px;font-family:sans-serif}
+.site-backnav .backnav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.site-backnav .backnav-wordmark{font-weight:800;font-size:18px;color:#FFF8F3;letter-spacing:-0.5px}
+.site-backnav .backnav-back{font-size:12px;letter-spacing:1px;color:rgba(232,82,10,0.8);text-decoration:none;transition:color .2s}
+.site-backnav .backnav-back:hover{color:#E8520A}
+body{padding-top:52px!important}
+</style>
+<div class="site-backnav">
+  <a class="backnav-logo" href="/">
+    <svg width="26" height="18" viewBox="0 0 100 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="6,8 34,34 6,60" stroke="#7A2400" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="30,8 58,34 30,60" stroke="#C43E00" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="54,8 82,34 54,60" stroke="#E8520A" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="70,8 98,34 70,60" stroke="#FF8C42" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+    </svg>
+    <span class="backnav-wordmark">WEQ</span>
+  </a>
+  <a class="backnav-back" href="/">← Tillbaka till webbplatsen</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-label">Brand Book — Konfidentiellt</div>
+    <div class="cover-label">Version 1.0 — 2026</div>
+  </div>
+  <div class="cover-center">
+    <svg width="120" height="82" viewBox="0 0 100 68" fill="none">
+      <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.45)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="54,8 82,34 54,60"  stroke="rgba(255,255,255,0.75)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.45)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+    </svg>
+    <div class="cover-wordmark">WEQ</div>
+    <div class="cover-payoff">Datadriven video</div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-year">© WEQ 2026</div>
+    <div class="cover-label">Brand Identity System</div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 1 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 01</div><div class="chapter-title">Vision & Värderingar</div></div>
+  <div class="chapter-big">01</div>
+</div>
+
+<div class="page content-page-dark">
+  <div class="sec-label-light">Varumärkesvision</div>
+  <div class="vision-grid">
+    <div class="vision-card">
+      <div class="vc-num">Vision</div>
+      <div class="vc-title">Varje kund förtjänar ett personligt budskap</div>
+      <div class="vc-body">WEQ existerar för att göra personaliserad video tillgänglig i verklig skala. Vi tror att rätt budskap, till rätt person, vid rätt tidpunkt — alltid slår generisk kommunikation.</div>
+    </div>
+    <div class="vision-card-light">
+      <div class="vc-num" style="color:var(--o3)">Mission</div>
+      <div class="vc-title-dark" style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;margin-bottom:10px">Automatisera det personliga</div>
+      <div class="vc-body-dark">Vi bygger teknologi som låter företag skapa miljontals unika videoupplevelser — utan manuellt arbete. Data driver varje frame.</div>
+    </div>
+    <div class="vision-card-light">
+      <div class="vc-num" style="color:var(--o3)">Position</div>
+      <div class="vc-title-dark" style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;margin-bottom:10px">Datadriven video — i skala</div>
+      <div class="vc-body-dark">WEQ är produkten för företag som förstår att data + video är framtidens kundkommunikation. Vi är verktyget som gör det möjligt.</div>
+    </div>
+    <div class="vision-card">
+      <div class="vc-num">Värderingar</div>
+      <div class="vc-title">Precision. Skala. Framtid.</div>
+      <div class="vc-body">Varje beslut är datadrivet. Varje produkt är byggd för att växa. Vi bygger det som kommer härnäst — inte det som redan finns.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 2 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 02</div><div class="chapter-title">Logotyp & Symbol</div></div>
+  <div class="chapter-big">02</div>
+</div>
+
+<!-- Logo variants -->
+<div class="page content-page">
+  <div class="sec-label">Logotyp-varianter</div>
+  <div class="logo-grid">
+    <div class="logo-panel lp-orange">
+      <div class="lp-lockup">
+        <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.5)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.5)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <div><div class="lp-wm lp-wm-l" style="font-size:34px">WEQ</div><div class="lp-payoff" style="color:rgba(255,255,255,0.4)">Datadriven video</div></div>
+      </div>
+      <div class="lp-note lp-note-l">Primär — Orange gradient</div>
+    </div>
+    <div class="logo-panel lp-black">
+      <div class="lp-lockup">
+        <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(122,36,0,0.7)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="var(--o3)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)"           stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+        </svg>
+        <div><div class="lp-wm lp-wm-l" style="font-size:34px">WEQ</div><div class="lp-payoff" style="color:rgba(255,248,243,0.3)">Datadriven video</div></div>
+      </div>
+      <div class="lp-note lp-note-m">Sekundär — Mörk bakgrund</div>
+    </div>
+    <div class="logo-panel lp-cream">
+      <div class="lp-lockup">
+        <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(122,36,0,0.25)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(196,62,0,0.5)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)"           stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.7"/>
+        </svg>
+        <div><div class="lp-wm lp-wm-d" style="font-size:34px">WEQ</div><div class="lp-payoff" style="color:rgba(13,8,4,0.3)">Datadriven video</div></div>
+      </div>
+      <div class="lp-note lp-note-d">Print — Ljus bakgrund</div>
+    </div>
+    <div class="logo-panel lp-dark">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+        <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(122,36,0,0.7)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="var(--o3)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)"           stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+        </svg>
+        <div style="text-align:center"><div class="lp-wm lp-wm-l" style="font-size:34px">WEQ</div><div class="lp-payoff" style="color:rgba(255,248,243,0.3)">Datadriven video</div></div>
+      </div>
+      <div class="lp-note lp-note-m">Stacked — Symbol ovanför</div>
+    </div>
+  </div>
+</div>
+
+<!-- Symbol specs -->
+<div class="page content-page">
+  <div class="sec-label">Symbol — Vektorspecifikation</div>
+  <div class="symbol-showcase">
+    <div class="symbol-left">
+      <svg width="160" height="110" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <!-- Grid guides overlay -->
+      <div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(232,82,10,0.4);letter-spacing:2px;text-align:center">
+        KINETIC CHEVRON MARK<br/>
+        <span style="color:rgba(255,255,255,0.2)">4 lager — graderad orange</span>
+      </div>
+    </div>
+    <div class="symbol-right">
+      <div class="sym-prop">
+        <div class="sym-prop-label">Symboltyp</div>
+        <div class="sym-prop-val">Kinetic Chevron</div>
+        <div class="sym-prop-sub">4 överlappande chevrons i graderad orange</div>
+      </div>
+      <div class="sym-prop">
+        <div class="sym-prop-label">Geometri</div>
+        <div class="sym-prop-val">stroke-linecap: square</div>
+        <div class="sym-prop-sub">Skarpa kanter — ingen avrundning</div>
+      </div>
+      <div class="sym-prop">
+        <div class="sym-prop-label">Gradering</div>
+        <div class="sym-prop-val">#7A2400 → #FF8C42</div>
+        <div class="sym-prop-sub">Mörkast bak, ljusast fram — vänster till höger</div>
+      </div>
+      <div class="sym-prop">
+        <div class="sym-prop-label">Lagerstruktur</div>
+        <div class="sym-prop-val">L1: 20% / L2: 60% / L3: 100% / L4: 60%</div>
+        <div class="sym-prop-sub">Opacitet per lager — skapar djup</div>
+      </div>
+      <div class="sym-prop">
+        <div class="sym-prop-label">Minsta storlek</div>
+        <div class="sym-prop-val">20px bredd</div>
+        <div class="sym-prop-sub">Under 20px — använd förenklad 3-lager version</div>
+      </div>
+      <div class="sym-prop">
+        <div class="sym-prop-label">Filformat</div>
+        <div class="sym-prop-val">SVG (primärt) / PNG @2x, @3x</div>
+        <div class="sym-prop-sub">Aldrig JPG — transparent bakgrund krävs</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sizes -->
+<div class="page content-page">
+  <div class="sec-label">Symbol — Skalbarhet</div>
+  <div class="sizes-row">
+    <div class="sz-item">
+      <svg width="160" height="110" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="sz-label">160px</div>
+    </div>
+    <div class="sz-item">
+      <svg width="96" height="66" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="sz-label">96px</div>
+    </div>
+    <div class="sz-item">
+      <svg width="64" height="44" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="sz-label">64px</div>
+    </div>
+    <div class="sz-item">
+      <svg width="40" height="27" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="sz-label">40px</div>
+    </div>
+    <div class="sz-item">
+      <svg width="24" height="16" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="sz-label">24px</div>
+    </div>
+    <div class="sz-item" style="margin-left:32px">
+      <div style="background:linear-gradient(145deg,#FF8030,#C43E00);width:96px;height:96px;border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(232,82,10,0.3)">
+        <svg width="56" height="38" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.25)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.6)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                   stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.55)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <div class="sz-label">App-ikon</div>
+    </div>
+    <div class="sz-item">
+      <div style="background:var(--o2);width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="12" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.35)" stroke-width="14" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="34,8 62,34 34,60"  stroke="rgba(255,255,255,0.65)" stroke-width="14" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="62,8 90,34 62,60"  stroke="#fff"                   stroke-width="14" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <div class="sz-label">Favicon</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 3 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 03</div><div class="chapter-title">Färgpalett</div></div>
+  <div class="chapter-big">03</div>
+</div>
+
+<div class="page content-page">
+  <div class="sec-label">Primärfärger</div>
+  <div class="color-row">
+    <div class="swatch">
+      <div class="swatch-top" style="background:linear-gradient(135deg,#FF8C42,#E8520A,#C43E00)"></div>
+      <div class="swatch-bot"><div class="sw-name">Signal Orange</div><div class="sw-hex">#E8520A</div><div class="sw-role">Primär accent — CTA, symbol, active states</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:linear-gradient(135deg,#FF8030,#E8520A)"></div>
+      <div class="swatch-bot"><div class="sw-name">Hot Orange</div><div class="sw-hex">#FF7A2A</div><div class="sw-role">Gradient-ljus, highlight, hover</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:linear-gradient(135deg,#E8520A,#7A2400)"></div>
+      <div class="swatch-bot"><div class="sw-name">Burn Orange</div><div class="sw-hex">#C43E00</div><div class="sw-role">Gradient-mörk, skuggor, djup</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#7A2400"></div>
+      <div class="swatch-bot"><div class="sw-name">Deep Ember</div><div class="sw-hex">#7A2400</div><div class="sw-role">Djupaste lager i gradient</div></div>
+    </div>
+  </div>
+  <div class="sec-label" style="margin-top:32px">Neutraler & bakgrunder</div>
+  <div class="color-row-2">
+    <div class="swatch">
+      <div class="swatch-top" style="background:linear-gradient(168deg,#2A1006,#0D0804)"></div>
+      <div class="swatch-bot"><div class="sw-name">Void Black</div><div class="sw-hex">#0D0804</div><div class="sw-role">Primär mörk bakgrund</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:linear-gradient(168deg,#fff,#F0DDD0)"></div>
+      <div class="swatch-bot"><div class="sw-name">Warm Cream</div><div class="sw-hex">#F5EDE3</div><div class="sw-role">Ljus bakgrund, print</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#FFF8F3"></div>
+      <div class="swatch-bot"><div class="sw-name">Off White</div><div class="sw-hex">#FFF8F3</div><div class="sw-role">Text på mörkt, kortbakgrund</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#3D1A08"></div>
+      <div class="swatch-bot"><div class="sw-name">Border</div><div class="sw-hex">#3D1A08</div><div class="sw-role">Kanter och dividers på mörkt</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 4 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 04</div><div class="chapter-title">Typografi</div></div>
+  <div class="chapter-big">04</div>
+</div>
+
+<div class="page content-page">
+  <div class="sec-label">Typsnittssystem</div>
+  <div class="type-row">
+    <div class="type-meta">
+      <span class="lbl">Display / Logotyp</span>
+      <span class="nm">Outfit ExtraBold 800</span>
+      <span class="us">Alla rubriker, hero-text, logotyp-wordmark. Aldrig under 700 i vikt.</span>
+    </div>
+    <div class="t-d">Varje kund.<br><span>Personlig.</span></div>
+  </div>
+  <div class="type-row">
+    <div class="type-meta">
+      <span class="lbl">Rubrik</span>
+      <span class="nm">Outfit Bold 700</span>
+      <span class="us">Sektionsrubriker, kortrubriker, navigering.</span>
+    </div>
+    <div class="t-h">Automatiserade videokampanjer<br>med rätt data och rätt timing.</div>
+  </div>
+  <div class="type-row">
+    <div class="type-meta">
+      <span class="lbl">Brödtext</span>
+      <span class="nm">Outfit Light 300</span>
+      <span class="us">Löptext, beskrivningar, UI-copy. Kontrasten mot ExtraBold är intentionell.</span>
+    </div>
+    <div class="t-b">WEQ skapar automatiserade videokampanjer som pratar direkt till varje mottagare — med rätt data, rätt budskap, rätt tidpunkt. Personalisering i verklig skala, utan manuellt arbete.</div>
+  </div>
+  <div class="type-row" style="border:none">
+    <div class="type-meta">
+      <span class="lbl">Mono / Data</span>
+      <span class="nm">Space Mono 400/700</span>
+      <span class="us">Taggar, metadata, tekniska värden, etiketter och kodnära text.</span>
+    </div>
+    <div class="t-m">
+      KAMPANJER_LEVERERADE: 1,240,000<br>
+      CTR_ÖKNING: +340% VS GENERISK<br>
+      STATUS: ██████████ LIVE<br>
+      DATADRIVEN_VIDEO / WEQ.SE
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 5 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 05</div><div class="chapter-title">Mönster & Effekter</div></div>
+  <div class="chapter-big">05</div>
+</div>
+
+<div class="page content-page">
+  <div class="sec-label">Bakgrundsmönster — Hi-Tech System</div>
+  <div class="pattern-grid">
+    <!-- Grid on orange -->
+    <div class="pat-card" style="background:linear-gradient(168deg,#FF8030,#C43E00)">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.07) 1px,transparent 1px),linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);background-size:24px 24px,24px 24px,96px 96px,96px 96px;"></div>
+      <div class="pat-label" style="color:rgba(255,255,255,0.5)">Grid — Orange ytor<br><span style="color:rgba(255,255,255,0.3);font-size:8px">24px + 96px / opacity 7% + 4%</span></div>
+    </div>
+    <!-- Dots on dark -->
+    <div class="pat-card" style="background:linear-gradient(168deg,#2A1006,#0D0804)">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(232,82,10,0.12) 1px,transparent 1px);background-size:20px 20px;"></div>
+      <div class="pat-label" style="color:rgba(232,82,10,0.5)">Dots — Mörka ytor<br><span style="color:rgba(255,255,255,0.2);font-size:8px">20px / orange dots 12%</span></div>
+    </div>
+    <!-- Dots on cream -->
+    <div class="pat-card" style="background:linear-gradient(168deg,#fff,#EDD8C4)">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(180,80,20,0.09) 1px,transparent 1px);background-size:20px 20px;"></div>
+      <div class="pat-label" style="color:rgba(180,80,20,0.4)">Dots — Ljusa ytor<br><span style="color:rgba(13,8,4,0.25);font-size:8px">20px / sienna dots 9%</span></div>
+    </div>
+  </div>
+  <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="background:white;border:1px solid rgba(0,0,0,0.08);padding:20px 24px">
+      <div class="sym-prop-label">Gradient — Orange</div>
+      <div class="sym-prop-val" style="font-size:12px">168deg — #FF8030 → #E8520A → #9B2F00</div>
+      <div class="sym-prop-sub">Ljus uppifrån, mörk nedtill. Aldrig platt orange.</div>
+    </div>
+    <div style="background:white;border:1px solid rgba(0,0,0,0.08);padding:20px 24px">
+      <div class="sym-prop-label">Glow — Radial</div>
+      <div class="sym-prop-val" style="font-size:12px">radial-gradient — rgba(255,160,80, 0.20)</div>
+      <div class="sym-prop-sub">Subtil ljuskälla centrerad uppifrån på hero-sektioner.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 6 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 06</div><div class="chapter-title">Ton & Budskap</div></div>
+  <div class="chapter-big">06</div>
+</div>
+
+<div class="page content-page-dark">
+  <div class="sec-label-light">Varumärkesröst</div>
+  <div class="tone-grid">
+    <div class="tone-card">
+      <div class="tc-title tc-title-l"><span class="tc-dot"></span>WEQ låter som</div>
+      <ul class="tc-list tc-list-l">
+        <li>Precist och faktabaserat — siffror framför adjektiv</li>
+        <li>Direkt och kortfattat — ingen onödig utfyllnad</li>
+        <li>Tekniskt kunnigt utan att vara exkluderande</li>
+        <li>Självsäkert — vi vet att det funkar</li>
+        <li>Framtidsorienterat — alltid ett steg framåt</li>
+      </ul>
+    </div>
+    <div class="tone-card-light">
+      <div class="tc-title tc-title-d"><span class="tc-dot" style="background:rgba(0,0,0,0.2)"></span>WEQ låter INTE som</div>
+      <ul class="tc-list tc-list-d">
+        <li>Fluffigt marknadsföringsspråk utan substans</li>
+        <li>Överdrivna superlativ utan bevis</li>
+        <li>Formellt eller stelt korporatspråk</li>
+        <li>Varmt och omhändertagande — det är CXD</li>
+        <li>Förklarande som om kunden inte förstår</li>
+      </ul>
+    </div>
+    <div class="tone-card-light">
+      <div class="tc-title tc-title-d"><span class="tc-dot"></span>Nyckelmeningar</div>
+      <ul class="tc-list tc-list-d">
+        <li>"Varje kund. Personlig. På riktigt."</li>
+        <li>"Rätt data. Rätt budskap. Rätt tidpunkt."</li>
+        <li>"Personifierad video i skala."</li>
+        <li>"Video som vet vem den pratar med."</li>
+        <li>"Datadriven video." — payoff</li>
+      </ul>
+    </div>
+    <div class="tone-card">
+      <div class="tc-title tc-title-l"><span class="tc-dot"></span>Varumärkesvärden</div>
+      <ul class="tc-list tc-list-l">
+        <li>Precision — varje detalj är genomtänkt</li>
+        <li>Skalbarhet — bygg en gång, leverera miljoner gånger</li>
+        <li>Datadrivet — beslut baseras på fakta</li>
+        <li>Framtid — vi bygger det som kommer härnäst</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 7 ══ -->
+<div class="page chapter-header">
+  <div><div class="chapter-num">Kapitel 07</div><div class="chapter-title">Appliceringar & Do's/Don'ts</div></div>
+  <div class="chapter-big">07</div>
+</div>
+
+<div class="page content-page" style="padding:0">
+  <div style="padding:64px 80px 40px"><div class="sec-label">Appliceringar</div></div>
+  <div class="mockup-grid">
+    <div class="mock-card mc-h">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="28" height="19" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.5)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.5)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#fff;letter-spacing:-0.5px">WEQ</span>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px">Webbplats / Hero</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:38px;color:#fff;line-height:0.95;letter-spacing:-1.5px">Varje kund.<br><span style="color:rgba(255,255,255,0.35)">Personlig.</span></div>
+      </div>
+    </div>
+    <div class="mock-card mc-d" style="align-items:center;justify-content:center;gap:20px">
+      <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3)">App / iOS</div>
+      <div style="background:linear-gradient(145deg,#FF8030,#C43E00);width:80px;height:80px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(232,82,10,0.35)">
+        <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.25)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.6)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                   stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.55)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:rgba(255,255,255,0.3)">WEQ</div>
+    </div>
+    <div class="mock-card mc-c" style="justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <svg width="24" height="16" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(122,36,0,0.25)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(196,62,0,0.5)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)"           stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.7"/>
+        </svg>
+        <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:16px;color:var(--black);letter-spacing:-0.5px">WEQ</span>
+      </div>
+      <div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;color:var(--black);margin-bottom:2px">Förnamn Efternamn</div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;color:rgba(13,8,4,0.35);text-transform:uppercase">Head of Growth</div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--o3);margin-top:4px">weq.se</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page content-page-dark">
+  <div class="sec-label-light">Do's &amp; Don'ts</div>
+  <div class="donts-grid">
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none" style="filter:grayscale(1);opacity:0.4">
+        <polyline points="6,8  34,34  6,60"  stroke="#888" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="#888" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="#888" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#888">WEQ</div>
+      <div class="dont-label">Ändra ej färger</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none" style="transform:rotate(90deg)">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#fff">WEQ</div>
+      <div class="dont-label">Rotera ej</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none" style="transform:scaleX(0.55)">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#fff">WEQ</div>
+      <div class="dont-label">Förvräng ej</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#fff">WEQ</div>
+      <div class="dont-label">Behåll gradering</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BACK COVER ══ -->
+<div class="page back-cover">
+  <div style="display:flex;align-items:center;gap:16px">
+    <svg width="48" height="33" viewBox="0 0 100 68" fill="none">
+      <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+    </svg>
+    <div>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:28px;color:#fff;letter-spacing:-1px">WEQ</div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:3px">Datadriven video</div>
+    </div>
+  </div>
+  <div style="text-align:center">
+    <div style="font-family:'Outfit',sans-serif;font-size:13px;color:rgba(255,255,255,0.2);line-height:1.8">
+      Typsnitt: Outfit + Space Mono (Google Fonts — gratis licens)<br>
+      Vektorfiler: SVG inkluderade i logosystemet<br>
+      Frågor: kontakta varumärkesansvarig
+    </div>
+  </div>
+  <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.2);text-transform:uppercase">
+    Brand Book v1.0 — WEQ 2026 — Konfidentiellt
+  </div>
+</div>
+
+</body>
+</html>

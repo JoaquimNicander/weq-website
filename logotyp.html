@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEQ — Logo System</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;800;900&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --o1: #FF8C42;
+  --o2: #E8520A;
+  --o3: #C43E00;
+  --o4: #7A2400;
+  --black: #0D0804;
+  --surface: #160A04;
+  --card: #1E0E06;
+  --border: #3D1A08;
+  --muted: rgba(255,248,243,0.38);
+  --white: #FFF8F3;
+  --cream: #F5EDE3;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── GLOBAL GRID TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(232,82,10,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,82,10,0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none; z-index: 0;
+}
+* { position: relative; z-index: 1; }
+
+/* ════════════════════════════════
+   CHEVRON SVG COMPONENT
+   Used inline via CSS background
+════════════════════════════════ */
+
+/* ── HERO PANEL ── */
+.hero {
+  background: linear-gradient(168deg, #FF8030 0%, #E8520A 28%, #B83A00 60%, #6B1E00 100%);
+  min-height: 500px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 40px;
+  align-items: center;
+  padding: 80px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.07) 1px, transparent 1px),
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 96px 96px, 96px 96px;
+  pointer-events: none; z-index: 0;
+}
+.hero::after {
+  content: '';
+  position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 600px;
+  background: radial-gradient(ellipse, rgba(255,160,80,0.22) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+.hero-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.hero-logo-full {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 20px;
+}
+.hero-wordmark {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px; font-weight: 800;
+  letter-spacing: -2px; color: #fff;
+  line-height: 1;
+  text-shadow: 0 8px 48px rgba(0,0,0,0.4);
+}
+.hero-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── SECTION ── */
+.sec {
+  padding: 64px 72px;
+  border-bottom: 1px solid var(--border);
+}
+.sec-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(232,82,10,0.55); margin-bottom: 40px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-label::after { content: ''; flex:1; height:1px; background: var(--border); max-width: 160px; }
+
+/* ── LOGO VARIANTS GRID ── */
+.variants-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+.var-panel {
+  padding: 56px 52px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+/* Panel backgrounds */
+.vp-orange {
+  background: linear-gradient(168deg, #FF8030 0%, #E8520A 30%, #9B2F00 100%);
+}
+.vp-orange::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 24px 24px; pointer-events: none; z-index: 0;
+}
+
+.vp-black {
+  background: linear-gradient(168deg, #2A1006 0%, #0D0804 100%);
+}
+.vp-black::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(232,82,10,0.1) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none; z-index: 0;
+}
+
+.vp-cream {
+  background: linear-gradient(168deg, #FFF2E8 0%, #F0DDD0 100%);
+}
+.vp-cream::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(180,80,20,0.09) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none; z-index: 0;
+}
+
+.vp-dark {
+  background: linear-gradient(168deg, #3D1A08 0%, #1A0804 100%);
+}
+.vp-dark::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(232,82,10,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,82,10,0.05) 1px, transparent 1px);
+  background-size: 24px 24px; pointer-events: none; z-index: 0;
+}
+
+.var-panel > * { position: relative; z-index: 1; }
+
+.lockup-horizontal {
+  display: flex; align-items: center; gap: 18px;
+}
+.lockup-stacked {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+}
+
+.wm { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+.wm-light { color: #fff; }
+.wm-dark  { color: var(--black); }
+
+.panel-note {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+}
+.pn-light { color: rgba(255,255,255,0.35); }
+.pn-dark  { color: rgba(13,8,4,0.35); }
+.pn-muted { color: var(--muted); }
+
+/* ── ICON SIZES ── */
+.sizes-row {
+  display: flex; align-items: flex-end; gap: 40px;
+  flex-wrap: wrap;
+}
+.size-item {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.size-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; color: var(--muted);
+}
+
+/* ── CLEAR SPACE ── */
+.clearspace-demo {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.cs-box {
+  border: 1px dashed rgba(232,82,10,0.3);
+  padding: 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.cs-arrows {
+  position: absolute;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; color: rgba(232,82,10,0.5);
+  letter-spacing: 1px;
+}
+
+/* ── DON'T DO ── */
+.donts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.dont-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  opacity: 0.7;
+}
+.dont-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,80,80,0.7); text-align: center;
+}
+.dont-x {
+  position: absolute; top: 10px; right: 10px;
+  width: 20px; height: 20px;
+  background: rgba(255,60,60,0.15);
+  border: 1px solid rgba(255,60,60,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: rgba(255,80,80,0.8);
+  font-weight: 700;
+}
+
+/* ── MOCKUP STRIP ── */
+.mockup-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3px;
+}
+.mock-card {
+  overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 32px;
+  min-height: 240px;
+}
+.mc-hero {
+  background: linear-gradient(168deg, #FF8030 0%, #D04800 35%, #7A2000 80%, #3D0E00 100%);
+}
+.mc-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 24px 24px; pointer-events: none; z-index: 0;
+}
+.mc-dark {
+  background: linear-gradient(168deg, #2A1006, #0D0804);
+}
+.mc-dark::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(232,82,10,0.1) 1px, transparent 1px);
+  background-size: 18px 18px; pointer-events: none; z-index: 0;
+}
+.mc-cream {
+  background: linear-gradient(168deg, #FFF2E8, #EDD8C4);
+}
+.mc-cream::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(180,80,20,0.09) 1px, transparent 1px);
+  background-size: 18px 18px; pointer-events: none; z-index: 0;
+}
+.mock-card > * { position: relative; z-index: 1; }
+
+.mc-headline {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800; line-height: 0.95; letter-spacing: -1.5px;
+}
+.mc-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 40px 72px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  background: linear-gradient(168deg, #1E0E06, #0D0804);
+}
+footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(232,82,10,0.08) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none; z-index: 0;
+}
+footer > * { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+<style>
+.site-backnav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(13,8,4,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,82,10,0.2);display:flex;align-items:center;justify-content:space-between;padding:12px 40px;font-family:sans-serif}
+.site-backnav .backnav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.site-backnav .backnav-wordmark{font-weight:800;font-size:18px;color:#FFF8F3;letter-spacing:-0.5px}
+.site-backnav .backnav-back{font-size:12px;letter-spacing:1px;color:rgba(232,82,10,0.8);text-decoration:none;transition:color .2s}
+.site-backnav .backnav-back:hover{color:#E8520A}
+body{padding-top:52px!important}
+</style>
+<div class="site-backnav">
+  <a class="backnav-logo" href="/">
+    <svg width="26" height="18" viewBox="0 0 100 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="6,8 34,34 6,60" stroke="#7A2400" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="30,8 58,34 30,60" stroke="#C43E00" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="54,8 82,34 54,60" stroke="#E8520A" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="70,8 98,34 70,60" stroke="#FF8C42" stroke-width="7" fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+    </svg>
+    <span class="backnav-wordmark">WEQ</span>
+  </a>
+  <a class="backnav-back" href="/">← Tillbaka till webbplatsen</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-eyebrow">WEQ — Brand Logo System 2026</div>
+  <div class="hero-logo-full" style="align-items:center">
+    <!-- MAIN CHEVRON — centered -->
+    <svg width="100" height="68" viewBox="0 0 100 68" fill="none">
+      <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+    </svg>
+    <!-- Text block — DATADRIVEN centered under WEQ -->
+    <div style="text-align:center">
+      <div class="hero-wordmark">WEQ</div>
+      <div class="hero-tagline" style="margin-top:2px;letter-spacing:6px;font-size:11px">Datadriven video</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOGO VARIANTS ══ -->
+<div class="sec">
+  <div class="sec-label">01 — Logotyp-varianter</div>
+  <div class="variants-grid">
+
+    <!-- Orange gradient -->
+    <div class="var-panel vp-orange">
+      <div class="lockup-horizontal">
+        <svg width="52" height="36" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.25)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.5)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="rgba(255,255,255,0.8)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.5)"  stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <div>
+          <div class="wm wm-light" style="font-size:38px">WEQ</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:5px">Datadriven video</div>
+        </div>
+      </div>
+      <div class="panel-note pn-light">Primär — Orange gradient</div>
+    </div>
+
+    <!-- Black -->
+    <div class="var-panel vp-black">
+      <div class="lockup-horizontal">
+        <svg width="52" height="36" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+        </svg>
+        <div>
+          <div class="wm wm-light" style="font-size:38px">WEQ</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,248,243,0.35);margin-top:5px">Datadriven video</div>
+        </div>
+      </div>
+      <div class="panel-note pn-muted">Sekundär — Svart</div>
+    </div>
+
+    <!-- Cream -->
+    <div class="var-panel vp-cream">
+      <div class="lockup-horizontal">
+        <svg width="52" height="36" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(122,36,0,0.3)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(196,62,0,0.6)"  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)"           stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)"           stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.7"/>
+        </svg>
+        <div>
+          <div class="wm wm-dark" style="font-size:38px">WEQ</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(13,8,4,0.35);margin-top:5px">Datadriven video</div>
+        </div>
+      </div>
+      <div class="panel-note pn-dark">Print — Ljus bakgrund</div>
+    </div>
+
+    <!-- Stacked on dark -->
+    <div class="var-panel vp-dark">
+      <div class="lockup-stacked">
+        <svg width="52" height="36" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+        </svg>
+        <div>
+          <div class="wm wm-light" style="font-size:38px">WEQ</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,248,243,0.35);margin-top:5px">Datadriven video</div>
+        </div>
+      </div>
+      <div class="panel-note pn-muted">Stacked — Symbol ovanför</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ SYMBOL SIZES ══ -->
+<div class="sec">
+  <div class="sec-label">02 — Skalbarhet</div>
+  <div class="sizes-row">
+    <!-- 128px -->
+    <div class="size-item">
+      <svg width="128" height="88" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <!-- 80px -->
+    <div class="size-item">
+      <svg width="80" height="55" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="size-label">80px</div>
+    </div>
+    <!-- 48px -->
+    <div class="size-item">
+      <svg width="48" height="33" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="size-label">48px</div>
+    </div>
+    <!-- 32px -->
+    <div class="size-item">
+      <svg width="32" height="22" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <!-- 20px -->
+    <div class="size-item">
+      <svg width="20" height="14" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      </svg>
+      <div class="size-label">20px</div>
+    </div>
+    <!-- App icon -->
+    <div class="size-item" style="margin-left:32px">
+      <div style="background:linear-gradient(145deg,#FF8030,#C43E00);width:80px;height:80px;border-radius:18px;display:flex;align-items:center;justify-content:center">
+        <svg width="48" height="33" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.6)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.6)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <div class="size-label">App-ikon</div>
+    </div>
+    <!-- Favicon -->
+    <div class="size-item">
+      <div style="background:var(--o2);width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center">
+        <svg width="20" height="14" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.4)" stroke-width="14" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="36,8 64,34 36,60"  stroke="rgba(255,255,255,0.7)" stroke-width="14" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="62,8 90,34 62,60"  stroke="#fff"                  stroke-width="14" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <div class="size-label">Favicon</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MOCKUP STRIP ══ -->
+<div class="sec" style="padding:0">
+  <div style="padding:64px 72px 40px">
+    <div class="sec-label">03 — Appliceringar</div>
+  </div>
+  <div class="mockup-strip">
+
+    <!-- Main hero mockup -->
+    <div class="mock-card mc-hero">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="32" height="22" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.25)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.55)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                   stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.55)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+        <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:22px;color:#fff;letter-spacing:-0.5px">WEQ</span>
+      </div>
+      <div>
+        <div class="mc-sub" style="color:rgba(255,255,255,0.4);margin-bottom:10px">Webbplats / Hero</div>
+        <div class="mc-headline" style="font-size:44px;color:#fff">Varje kund.<br><span style="color:rgba(255,255,255,0.4)">Personlig.</span></div>
+      </div>
+    </div>
+
+    <!-- App icon mockup -->
+    <div class="mock-card mc-dark" style="align-items:center;justify-content:center;gap:20px">
+      <div class="mc-sub" style="color:var(--muted)">App / iOS</div>
+      <div style="background:linear-gradient(145deg,#FF8030,#C43E00);width:96px;height:96px;border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 48px rgba(232,82,10,0.35)">
+        <svg width="56" height="38" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(255,255,255,0.3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(255,255,255,0.6)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="#fff"                  stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="rgba(255,255,255,0.6)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:var(--muted)">WEQ</div>
+    </div>
+
+    <!-- Visitkort mockup -->
+    <div class="mock-card mc-cream" style="justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="28" height="19" viewBox="0 0 100 68" fill="none">
+          <polyline points="6,8  34,34  6,60"  stroke="rgba(122,36,0,0.3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="30,8 58,34 30,60"  stroke="rgba(196,62,0,0.6)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="54,8 82,34 54,60"  stroke="var(--o2)"          stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="70,8 98,34 70,60"  stroke="var(--o1)"          stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.7"/>
+        </svg>
+        <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--black);letter-spacing:-0.5px">WEQ</span>
+      </div>
+      <div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:var(--black);margin-bottom:3px">Förnamn Efternamn</div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;color:rgba(13,8,4,0.4);text-transform:uppercase">Head of Growth</div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--o3);margin-top:6px">weq.se</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ DON'T DO ══ -->
+<div class="sec">
+  <div class="sec-label">04 — Gör inte så här</div>
+  <div class="donts-grid">
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none" style="filter:grayscale(1);opacity:0.5">
+        <polyline points="6,8  34,34  6,60"  stroke="#888" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="#888" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="#888" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#888">WEQ</div>
+      <div class="dont-label">Ändra ej färger</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none" style="transform:rotate(90deg)">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--white)">WEQ</div>
+      <div class="dont-label">Rotera ej symbolen</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none" style="transform:scaleX(0.6)">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--white)">WEQ</div>
+      <div class="dont-label">Förvräng ej proportioner</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-x">✕</div>
+      <svg width="44" height="30" viewBox="0 0 100 68" fill="none">
+        <polyline points="6,8  34,34  6,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="30,8 58,34 30,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+      <div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--white)">WEQ</div>
+      <div class="dont-label">Behåll gradering</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div style="display:flex;align-items:center;gap:14px">
+    <svg width="36" height="25" viewBox="0 0 100 68" fill="none">
+      <polyline points="6,8  34,34  6,60"  stroke="var(--o4)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="30,8 58,34 30,60"  stroke="var(--o3)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="54,8 82,34 54,60"  stroke="var(--o2)" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polyline points="70,8 98,34 70,60"  stroke="var(--o1)" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+    </svg>
+    <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:22px;color:var(--white);letter-spacing:-0.5px">WEQ</span>
+  </div>
+  <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-align:right;line-height:1.8">
+    Logo System v1.0 — 2026<br>
+    Konfidentiellt — internt dokument
+  </div>
+</footer>
+
+</body>
+</html>
