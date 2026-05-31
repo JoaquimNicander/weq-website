@@ -16,11 +16,21 @@
 <!-- ── NAV ── -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <svg width="32" height="22" viewBox="0 0 100 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <polyline points="6,8 34,34 6,60"  stroke="#7A2400" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-      <polyline points="30,8 58,34 30,60" stroke="#C43E00" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-      <polyline points="54,8 82,34 54,60" stroke="#E8520A" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-      <polyline points="70,8 98,34 70,60" stroke="#FF8C42" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="wMarkNav" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#7A2400"/>
+          <stop offset="0.5" stop-color="#E8520A"/>
+          <stop offset="1" stop-color="#FF8C42"/>
+        </linearGradient>
+        <mask id="wMaskNav">
+          <rect width="100" height="100" fill="black"/>
+          <rect x="18" y="18" width="46" height="46" fill="white"/>
+          <rect x="36" y="36" width="46" height="46" fill="white"/>
+          <path d="M41 37 L63 50 L41 63 Z" fill="black"/>
+        </mask>
+      </defs>
+      <rect width="100" height="100" fill="url(#wMarkNav)" mask="url(#wMaskNav)"/>
     </svg>
     <div class="nav-wordmark-wrap">
       <span class="nav-wordmark">WEQ</span>
@@ -80,19 +90,19 @@
     <div class="steps">
       <div class="step reveal" data-delay="0">
         <div class="step-num">Steg 01</div>
-        <div class="step-icon">⚡</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="12" r="2.2"/><line x1="8" y1="7" x2="16" y2="11"/><line x1="8" y1="17" x2="16" y2="13"/></svg></div>
         <h3>Koppla din data</h3>
         <p>CRM, e-handel eller SMS-system. WEQ integrerar med din befintliga stack och hämtar rätt data till varje mottagare.</p>
       </div>
       <div class="step reveal" data-delay="100">
         <div class="step-num">Steg 02</div>
-        <div class="step-icon">▶</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="5" width="18" height="14"/><polygon points="10,9 15.5,12 10,15" fill="currentColor" stroke="none"/></svg></div>
         <h3>Skapa din video</h3>
         <p>Vi producerar en videotemplate. WEQ renderar sedan en unik version till varje mottagare — automatiskt, i skala.</p>
       </div>
       <div class="step reveal" data-delay="200">
         <div class="step-num">Steg 03</div>
-        <div class="step-icon">◈</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><line x1="21" y1="3" x2="10" y2="14"/><polygon points="21,3 14.5,21 10,14 3,9.5" fill="none"/></svg></div>
         <h3>Skicka och mät</h3>
         <p>Kampanjen går ut via SMS, e-post eller push. Realtidsdata visar exakt vem som öppnat, klickat och konverterat.</p>
       </div>
@@ -145,27 +155,27 @@
     <p class="section-lead reveal" data-delay="160">Välj de moduler som passar din affär. Kombinera dem för maximal effekt.</p>
     <div class="modules-grid">
       <div class="module reveal" data-delay="0">
-        <div class="module-icon">🏆</div>
+        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="9" r="5"/><polyline points="9,13.5 7.5,21 12,18.5 16.5,21 15,13.5"/></svg></div>
         <h3>Loyalty</h3>
         <p>Belöna dina bästa kunder med personliga videomeddelanden baserade på köpbeteende och poäng.</p>
       </div>
       <div class="module reveal" data-delay="60">
-        <div class="module-icon">🎯</div>
+        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
         <h3>LeadBoost</h3>
         <p>Konvertera leads snabbare med automatiserade, skräddarsydda videopresentationer.</p>
       </div>
       <div class="module reveal" data-delay="120">
-        <div class="module-icon">👋</div>
+        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="9" cy="8" r="3"/><polyline points="3.5,20 3.5,18 6.5,15 11.5,15 14.5,18 14.5,20"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></svg></div>
         <h3>Welcome</h3>
         <p>Ge nya kunder ett minnesvärt första intryck med ett personligt välkomstmeddelande.</p>
       </div>
       <div class="module reveal" data-delay="180">
-        <div class="module-icon">📈</div>
+        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="15,7 21,7 21,13"/></svg></div>
         <h3>Upsell</h3>
         <p>Visa rätt produkt till rätt kund — baserat på vad de faktiskt köpt eller tittat på.</p>
       </div>
       <div class="module reveal" data-delay="240">
-        <div class="module-icon">💬</div>
+        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 4 H20 V16 H11 L6 20 V16 H4 Z"/></svg></div>
         <h3>Feedback</h3>
         <p>Samla in ärlig återkoppling med personliga videoförfrågningar som faktiskt får svar.</p>
       </div>
@@ -241,11 +251,21 @@
   <div class="footer-bg-dots"></div>
   <div class="footer-inner">
     <a class="footer-logo" href="#">
-      <svg width="28" height="19" viewBox="0 0 100 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <polyline points="6,8 34,34 6,60"  stroke="#7A2400" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-        <polyline points="30,8 58,34 30,60" stroke="#C43E00" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-        <polyline points="54,8 82,34 54,60" stroke="#E8520A" stroke-width="11" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-        <polyline points="70,8 98,34 70,60" stroke="#FF8C42" stroke-width="7"  fill="none" stroke-linecap="square" stroke-linejoin="miter" opacity="0.6"/>
+      <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="wMarkFoot" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#7A2400"/>
+            <stop offset="0.5" stop-color="#E8520A"/>
+            <stop offset="1" stop-color="#FF8C42"/>
+          </linearGradient>
+          <mask id="wMaskFoot">
+            <rect width="100" height="100" fill="black"/>
+            <rect x="18" y="18" width="46" height="46" fill="white"/>
+            <rect x="36" y="36" width="46" height="46" fill="white"/>
+            <path d="M41 37 L63 50 L41 63 Z" fill="black"/>
+          </mask>
+        </defs>
+        <rect width="100" height="100" fill="url(#wMarkFoot)" mask="url(#wMaskFoot)"/>
       </svg>
       <div>
         <div class="footer-wordmark">WEQ</div>
