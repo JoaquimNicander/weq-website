@@ -10,6 +10,112 @@
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://datadrivenvideo.se">
   <link rel="stylesheet" href="css/style.css">
+  <!-- ── WEQ: 3D-telefon i hero (inbyggd komponent) ── -->
+  <style id="weq-hero-phone">
+    .hero { justify-content: center; gap: clamp(24px, 5vw, 88px); }
+    .hero-content { flex: 0 1 700px; }
+    .hero-visual {
+      position: relative; z-index: 1; flex: 0 0 auto;
+      display: flex; justify-content: center; align-items: center;
+      perspective: 1500px;
+      opacity: 0; animation: fade-up 0.8s 0.6s forwards;
+    }
+    .weq-phone {
+      position: relative; width: 360px; height: 732px;
+      transform-style: preserve-3d;
+      animation: weq-float 6s ease-in-out infinite;
+    }
+    @keyframes weq-float {
+      0%,100% { transform: rotateY(-20deg) rotateX(6deg) translateY(0); }
+      50%     { transform: rotateY(-17deg) rotateX(5deg) translateY(-14px); }
+    }
+    .weq-phone-body {
+      position: absolute; inset: 0; border-radius: 62px;
+      background: #080606; border: 2px solid #2a1c15;
+      box-shadow: 0 50px 100px rgba(60,15,0,0.5);
+    }
+    .weq-phone-edge {
+      position: absolute; left: -10px; top: 58px; width: 10px; height: 618px;
+      background: #140c07; border-radius: 9px 0 0 9px; transform: translateZ(-10px);
+    }
+    .weq-phone-screen {
+      position: absolute; inset: 13px; border-radius: 50px;
+      overflow: hidden; background: #000;
+      font-family: 'Outfit', -apple-system, sans-serif;
+    }
+    /* screen layers */
+    .weq-scr { position: absolute; inset: 0; transition: opacity 0.6s ease; }
+    .weq-scr.weq-hidden { opacity: 0; pointer-events: none; }
+    #weqHome { z-index: 3; }
+    #weqLock { z-index: 4; }
+    #weqEnd  { z-index: 5; }
+    /* shared wallpaper + status */
+    .weq-wall {
+      position: absolute; inset: 0;
+      background: #0D0804 url('assets/weq-wallpaper.jpg') center/cover no-repeat;
+    }
+    .weq-stat-r { position: absolute; top: 20px; right: 24px; display: flex; align-items: center; gap: 7px; z-index: 6; }
+    .weq-stat-r svg { display: block; }
+    .weq-stat-time { position: absolute; top: 19px; left: 26px; font-size: 15px; font-weight: 600; color: #fff; z-index: 6; }
+    .weq-ind { position: absolute; bottom: 13px; left: 50%; transform: translateX(-50%); width: 130px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.85); }
+    .weq-ind-dark { background: rgba(0,0,0,0.4); }
+    /* lockscreen */
+    .weq-lock-center { position: absolute; top: 13%; left: 0; right: 0; text-align: center; color: #fff; text-shadow: 0 1px 16px rgba(0,0,0,0.18); }
+    .weq-lock-date { font-size: 20px; font-weight: 400; margin-top: 14px; letter-spacing: 0.3px; }
+    .weq-lock-time { font-size: 92px; font-weight: 200; line-height: 1.02; letter-spacing: -1px; margin-top: 2px; }
+    /* homescreen */
+    .weq-grid { position: absolute; top: 66px; left: 22px; right: 22px; display: grid; grid-template-columns: repeat(4,1fr); gap: 20px 18px; }
+    .weq-grid > span { aspect-ratio: 1; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+    .weq-dock { position: absolute; left: 16px; right: 16px; bottom: 16px; height: 90px; border-radius: 30px;
+      background: rgba(255,255,255,0.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-around; padding: 0 10px; }
+    .weq-dock-ic { position: relative; width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; }
+    .weq-badge { position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; border-radius: 12px;
+      background: #ff3b30; border: 2px solid rgba(255,255,255,0.6); color: #fff; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; padding: 0 5px; opacity: 0; transform: scale(0); }
+    .weq-badge.weq-pop { opacity: 1; transform: scale(1); transition: opacity 0.3s, transform 0.45s cubic-bezier(.2,1.4,.4,1); }
+    .weq-banner { position: absolute; top: 46px; left: 10px; right: 10px; z-index: 8;
+      display: flex; gap: 9px; align-items: flex-start;
+      background: rgba(28,18,12,0.66); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-radius: 18px; padding: 10px 12px;
+      opacity: 0; transform: translateY(-96px); transition: opacity 0.5s, transform 0.55s cubic-bezier(.2,.9,.3,1); }
+    .weq-banner.weq-show { opacity: 1; transform: translateY(0); }
+    .weq-banner-ic { width: 34px; height: 34px; border-radius: 9px; flex: 0 0 auto;
+      background: linear-gradient(160deg,#5be36b,#1faa3a); display: flex; align-items: center; justify-content: center; }
+    .weq-banner-txt { flex: 1; min-width: 0; }
+    .weq-banner-top { display: flex; justify-content: space-between; font-size: 11px; color: #fff; font-weight: 600; margin-bottom: 2px; }
+    .weq-banner-top span:last-child { color: #cbb9aa; font-weight: 400; }
+    .weq-banner-msg { font-size: 11px; color: #f2e9e2; line-height: 1.32; }
+    /* messages */
+    #weqMsg { background: #fff; display: flex; flex-direction: column; z-index: 5; }
+    .weq-msg-head { padding: 42px 12px 12px; text-align: center; background: #f7f7fa; border-bottom: 0.5px solid #e3e3e8; }
+    .weq-msg-av { width: 52px; height: 52px; border-radius: 50%; background: #E8520A; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #1a0a02; font-weight: 800; font-size: 18px; }
+    .weq-msg-name { font-size: 14px; color: #111; margin-top: 6px; font-weight: 500; }
+    .weq-msg-body { flex: 1; padding: 18px 16px; }
+    .weq-msg-stamp { text-align: center; font-size: 11px; color: #8a8a90; margin-bottom: 16px; }
+    .weq-bubble { max-width: 82%; background: #e9e9eb; color: #111; border-radius: 18px; padding: 10px 14px; font-size: 14px; line-height: 1.42; margin-bottom: 9px; }
+    .weq-bubble a { color: #0a7cff; text-decoration: underline; word-break: break-all; border-radius: 4px; padding: 1px 2px; }
+    .weq-link.weq-pulse { animation: weq-linkpulse 0.7s ease; }
+    @keyframes weq-linkpulse { 0%,100% { background: transparent; } 40% { background: rgba(10,124,255,0.18); } }
+    .weq-msg-input { padding: 10px 14px 18px; border-top: 0.5px solid #e3e3e8; }
+    .weq-msg-input > div { height: 34px; border: 1px solid #d7d7dc; border-radius: 18px; }
+    .weq-msg .weq-stat-time, .weq-msg .weq-stat-r svg rect, .weq-msg .weq-stat-r svg circle { color: #111; }
+    /* notch on top of everything */
+    .weq-phone-notch { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 115px; height: 34px; background: #000; border-radius: 0 0 21px 21px; z-index: 7; }
+    @media (max-width: 1040px) {
+      .hero { flex-direction: column; gap: 40px; }
+      .hero-content { flex: 1 1 auto; max-width: 760px; }
+      .weq-phone { width: 270px; height: 549px; }
+      .weq-phone-edge { height: 464px; top: 44px; }
+      .weq-lock-time { font-size: 68px; }
+      .weq-lock-date { font-size: 16px; }
+      .weq-grid { top: 52px; gap: 14px 12px; }
+      .weq-dock { height: 70px; border-radius: 24px; }
+      .weq-dock-ic { width: 46px; height: 46px; border-radius: 12px; }
+      .weq-dock-ic svg { width: 22px; height: 22px; }
+      .weq-bubble { font-size: 12px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -76,6 +182,78 @@
       <div class="hero-stat">
         <span class="hero-stat-val" data-target="80" data-suffix="%" data-prefix="+">0%</span>
         <span class="hero-stat-lbl">Ökning i CTR<br>vs. generiskt</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3D-telefon: iOS-sekvens (låsskärm → hemskärm → notis → meddelande) ── -->
+  <div class="hero-visual">
+    <div class="weq-phone">
+      <div class="weq-phone-body"></div>
+      <div class="weq-phone-edge"></div>
+      <div class="weq-phone-screen">
+
+        <!-- HEMSKÄRM -->
+        <div class="weq-scr weq-hidden" id="weqHome">
+          <div class="weq-wall"></div>
+          <div class="weq-stat-time" id="weqHomeTime">09:41</div>
+          <div class="weq-stat-r">
+            <svg width="18" height="13" viewBox="0 0 18 13" fill="#fff"><rect x="0" y="9" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></svg>
+            <svg width="26" height="14" viewBox="0 0 26 14" fill="none"><rect x="1" y="1" width="21" height="12" rx="3" stroke="#fff" stroke-width="1.5"/><rect x="3" y="3" width="17" height="8" rx="1.5" fill="#fff"/><rect x="23" y="4.5" width="2" height="5" rx="1" fill="#fff"/></svg>
+          </div>
+          <div class="weq-grid" id="weqGrid"></div>
+          <div class="weq-banner" id="weqBanner">
+            <div class="weq-banner-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4.2-2.3c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></div>
+            <div class="weq-banner-txt">
+              <div class="weq-banner-top"><span>WEQ.SE</span><span>nu</span></div>
+              <div class="weq-banner-msg">Hejsan Charlie! 🎉 Idag fyller du år — stort grattis! Tryck för din hälsning.</div>
+            </div>
+          </div>
+          <div class="weq-dock">
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#5be36b,#1faa3a)"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a14 14 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.24 1z"/></svg></div>
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#37b6ff,#1573e6)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><polygon points="15.5,8.5 11,11 8.5,15.5 13,13" fill="#fff" stroke="none"/></svg></div>
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#5be36b,#1faa3a)"><svg width="29" height="29" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4.2-2.3c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg><div class="weq-badge" id="weqBadge">1</div></div>
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#fb5c74,#e0314f)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M9 17V5l10-2v12" stroke="#fff" stroke-width="2" fill="none"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="15" r="2.4"/></svg></div>
+          </div>
+          <div class="weq-ind"></div>
+        </div>
+
+        <!-- LÅSSKÄRM -->
+        <div class="weq-scr" id="weqLock">
+          <div class="weq-wall"></div>
+          <div class="weq-stat-r">
+            <svg width="18" height="13" viewBox="0 0 18 13" fill="#fff"><rect x="0" y="9" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></svg>
+            <svg width="26" height="14" viewBox="0 0 26 14" fill="none"><rect x="1" y="1" width="21" height="12" rx="3" stroke="#fff" stroke-width="1.5"/><rect x="3" y="3" width="17" height="8" rx="1.5" fill="#fff"/><rect x="23" y="4.5" width="2" height="5" rx="1" fill="#fff"/></svg>
+          </div>
+          <div class="weq-lock-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <div class="weq-lock-date" id="weqDate">—</div>
+            <div class="weq-lock-time" id="weqTime">—</div>
+          </div>
+          <div class="weq-ind"></div>
+        </div>
+
+        <!-- SMS / MEDDELANDE: läs själva texten -->
+        <div class="weq-scr weq-hidden" id="weqMsg">
+          <div class="weq-msg-head">
+            <div class="weq-msg-av">W</div>
+            <div class="weq-msg-name">WEQ.SE</div>
+          </div>
+          <div class="weq-msg-body">
+            <div class="weq-msg-stamp">Imeddelande · idag <span id="weqMsgTime">09:41</span></div>
+            <div class="weq-bubble">Hejsan Charlie! 🎉 Idag fyller du år — stort grattis!</div>
+            <div class="weq-bubble">Tryck på länken för din personliga grattishälsning 👇<br><a class="weq-link" id="weqLink" href="#contact">weq.se/grattis/charlie</a></div>
+          </div>
+          <div class="weq-msg-input"><div></div></div>
+          <div class="weq-ind weq-ind-dark"></div>
+        </div>
+
+        <!-- SLUTBILD: personlig landningssida -->
+        <div class="weq-scr weq-hidden" id="weqEnd" style="z-index:6;background:#000">
+          <img src="assets/weq-slutbild.png" alt="Personlig grattishälsning från WEQ" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top">
+        </div>
+
+        <div class="weq-phone-notch"></div>
       </div>
     </div>
   </div>
@@ -291,6 +469,72 @@
   </div>
 </footer>
 
+<!-- ── WEQ: iOS-sekvens (låsskärm → hemskärm → notis → meddelande) ── -->
+<script>
+(function(){
+  function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+  function clock(){
+    var n=new Date();
+    var t=new Intl.DateTimeFormat('sv-SE',{hour:'2-digit',minute:'2-digit'}).format(n);
+    var d=cap(new Intl.DateTimeFormat('sv-SE',{weekday:'long',day:'numeric',month:'long'}).format(n));
+    [['weqTime',t],['weqDate',d],['weqHomeTime',t],['weqMsgTime',t]].forEach(function(p){
+      var e=document.getElementById(p[0]); if(e) e.textContent=p[1];
+    });
+  }
+  clock(); setInterval(clock,1000);
+
+  // app-ikoner (trovärdig hemskärm)
+  var apps=[
+    ['Mail','#37b6ff,#1573e6','<path d="M2 6h20v12H2z"/><path d="M2 6l10 7 10-7" fill="none" stroke="#1573e6" stroke-width="1.6"/>'],
+    ['Kalender','#ffffff,#f1f1f4','<rect x="3" y="4" width="18" height="17" rx="2" fill="#fff"/><rect x="3" y="4" width="18" height="5" rx="2" fill="#ff3b30"/><text x="12" y="18" font-size="9" fill="#ff3b30" text-anchor="middle" font-family="Outfit">12</text>'],
+    ['Foton','#ffd23d,#ffae00','<path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>'],
+    ['Kamera','#8a93a3,#535b69','<rect x="3" y="7" width="18" height="12" rx="3"/><circle cx="12" cy="13" r="3.4" fill="#535b69"/><rect x="8" y="5" width="6" height="3" rx="1"/>'],
+    ['Kartor','#6be3a1,#1faa6a','<path d="M9 3 3 5v16l6-2 6 2 6-2V3l-6 2-6-2z" fill="#fff"/><circle cx="12" cy="9" r="2.4" fill="#1faa6a"/>'],
+    ['Klocka','#1a1a1a,#000000','<circle cx="12" cy="12" r="9" fill="#fff"/><path d="M12 7v5l3 2" stroke="#000" stroke-width="1.6" fill="none"/>'],
+    ['Väder','#37b6ff,#1573e6','<circle cx="9" cy="10" r="3.4" fill="#ffd23d"/><path d="M8 16h8a3 3 0 0 0 0-6 4 4 0 0 0-7.5-1" fill="#fff"/>'],
+    ['Anteckn.','#ffe08a,#ffc83d','<rect x="5" y="3" width="14" height="18" rx="2" fill="#fff"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#caa400" stroke-width="1.4"/>'],
+    ['Påminn.','#ffffff,#f1f1f4','<circle cx="8" cy="8" r="2" fill="#ff3b30"/><circle cx="8" cy="14" r="2" fill="#37b6ff"/><path d="M12 8h7M12 14h7" stroke="#888" stroke-width="1.6"/>'],
+    ['Aktier','#1a1a1a,#000000','<path d="M3 17l5-5 4 3 7-8" stroke="#5be36b" stroke-width="2" fill="none"/>'],
+    ['Nyheter','#fb5c74,#e0314f','<rect x="4" y="4" width="16" height="16" rx="2" fill="#fff"/><path d="M7 8h10M7 12h10M7 16h6" stroke="#e0314f" stroke-width="1.6"/>'],
+    ['Inställn.','#b0b6c2,#6b7280','<circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="8.5" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="2 3"/>'],
+    ['App Store','#37b6ff,#1573e6','<text x="12" y="17" font-size="14" fill="#fff" text-anchor="middle" font-family="Outfit" font-weight="800">A</text>'],
+    ['Hälsa','#ffffff,#f1f1f4','<path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z" fill="#ff3b30"/>'],
+    ['Plånbok','#1a1a1a,#000000','<rect x="4" y="7" width="16" height="11" rx="2" fill="#fff"/><rect x="4" y="9" width="16" height="3" fill="#ffd23d"/>'],
+    ['FaceTime','#5be36b,#1faa3a','<rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 11l6-3v8l-6-3z"/>']
+  ];
+  var grid=document.getElementById('weqGrid');
+  if(grid){ apps.forEach(function(a){
+    var w=document.createElement('div');
+    w.style.cssText='display:flex;flex-direction:column;align-items:center;gap:4px';
+    w.innerHTML='<div style="width:100%;aspect-ratio:1;border-radius:24%;background:linear-gradient(160deg,'+a[1]+');box-shadow:0 4px 9px rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center"><svg width="60%" height="60%" viewBox="0 0 24 24" fill="#fff">'+a[2]+'</svg></div><span style="font-size:9px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4);white-space:nowrap">'+a[0]+'</span>';
+    grid.appendChild(w);
+  }); }
+
+  // tidslinje
+  var lock=document.getElementById('weqLock'), home=document.getElementById('weqHome'),
+      badge=document.getElementById('weqBadge'), banner=document.getElementById('weqBanner'),
+      msg=document.getElementById('weqMsg'), link=document.getElementById('weqLink'),
+      end=document.getElementById('weqEnd');
+  function run(){
+    lock.classList.remove('weq-hidden');
+    home.classList.add('weq-hidden'); msg.classList.add('weq-hidden'); end.classList.add('weq-hidden');
+    if(badge) badge.classList.remove('weq-pop');
+    if(banner) banner.classList.remove('weq-show');
+    if(link) link.classList.remove('weq-pulse');
+    // 1) Låsskärm  →  2) Hemskärm
+    setTimeout(function(){ lock.classList.add('weq-hidden'); home.classList.remove('weq-hidden'); }, 2600);
+    // 3) Notis: badge + banner
+    setTimeout(function(){ if(badge) badge.classList.add('weq-pop'); if(banner) banner.classList.add('weq-show'); }, 3700);
+    // 4) Läs SMS:et
+    setTimeout(function(){ home.classList.add('weq-hidden'); msg.classList.remove('weq-hidden'); }, 5800);
+    setTimeout(function(){ if(link) link.classList.add('weq-pulse'); }, 7800);
+    // 5) Slutbild (uppladdad)
+    setTimeout(function(){ msg.classList.add('weq-hidden'); end.classList.remove('weq-hidden'); }, 8700);
+    setTimeout(run, 13500);
+  }
+  run();
+})();
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
