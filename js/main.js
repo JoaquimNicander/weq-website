@@ -51,7 +51,7 @@ const statsObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.hero-stat-val[data-target]').forEach(el => {
+document.querySelectorAll('.hero-stat-val[data-target], .case-result-val[data-target]').forEach(el => {
   const suffix = el.dataset.suffix || '';
   const prefix = el.dataset.prefix || '';
   el.textContent = prefix + '0' + suffix;
