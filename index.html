@@ -494,14 +494,18 @@
   run();
 
   // Telefonen glider in från höger vid laddning, ut/in vid scroll
-  var vis=document.querySelector('.hero-visual'), hero=document.querySelector('.hero');
+  // — ligger kvar så länge den syns i vyn, glider ut först när den nästan scrollat ur bild
+  var vis=document.querySelector('.hero-visual');
   function slide(){
-    if(!vis||!hero) return;
-    if(window.pageYOffset < hero.offsetHeight*0.45) vis.classList.add('weq-in');
+    if(!vis) return;
+    var r=vis.getBoundingClientRect();
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    if(r.top < vh*0.85 && r.bottom > vh*0.12) vis.classList.add('weq-in');
     else vis.classList.remove('weq-in');
   }
   setTimeout(slide, 300);
   window.addEventListener('scroll', slide, {passive:true});
+  window.addEventListener('resize', slide, {passive:true});
 })();
 </script>
 <script src="js/main.js"></script>
