@@ -497,6 +497,9 @@ body {
 .case-cta:hover { opacity: 0.7; }
 .case-card-empty .case-inner { display: flex; flex-direction: column; height: 100%; }
 .case-card-empty .case-result { margin-top: auto; }
+.case-result-duo { display: flex; gap: 32px; align-items: flex-start; }
+.case-result-duo > div { display: flex; flex-direction: column; gap: 5px; }
+.case-result-duo .case-result-val { font-size: 32px; }
 
 .case-card {
   background: linear-gradient(168deg, #2A1006, #0D0804);
