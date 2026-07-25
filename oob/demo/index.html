@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ÖoB kundundersökning — demo (WEQ)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oob: #009F4D;
+    --oob-dark: #2C622C;
+    --oob-light: #F6F6F6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Roboto', sans-serif; background: #E8E4DC;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 30px 16px;
+  }
+  .demo-note {
+    font-size: 13px; color: #6b6b6b; margin-bottom: 18px; text-align: center;
+    max-width: 420px; line-height: 1.5;
+  }
+  .demo-note strong { color: #333; }
+
+  /* Telefonram */
+  .phone {
+    width: 390px; max-width: 96vw; height: 800px; max-height: 88vh;
+    background: #0a0a0a; border-radius: 54px; padding: 12px;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.35);
+    position: relative;
+  }
+  .phone-screen {
+    width: 100%; height: 100%; border-radius: 42px; overflow: hidden;
+    background: #fff; position: relative;
+  }
+  .notch {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 16px; background: #0a0a0a; border-radius: 0 0 10px 10px; z-index: 50;
+  }
+  .statusbar {
+    position: absolute; top: 0; left: 0; right: 0; height: 44px; z-index: 40;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 26px 0; font-size: 14px; font-weight: 500; pointer-events: none;
+  }
+  .statusbar .sb-icons { display: flex; gap: 5px; align-items: center; }
+
+  /* Skärmar */
+  .scr { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .4s ease; overflow-y: auto; }
+  .scr.on { opacity: 1; pointer-events: auto; }
+
+  /* SMS-skärmen */
+  #scrSms { background: #fff; display: flex; flex-direction: column; }
+  .sms-head {
+    padding: 54px 14px 10px; text-align: center; background: #f7f7fa;
+    border-bottom: 0.5px solid #e3e3e8; flex: 0 0 auto;
+  }
+  .sms-av {
+    width: 50px; height: 50px; border-radius: 50%; background: var(--oob);
+    margin: 0 auto; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 900; font-size: 17px;
+  }
+  .sms-name { font-size: 13px; color: #111; margin-top: 5px; }
+  .sms-body { flex: 1; padding: 18px 14px; }
+  .sms-stamp { text-align: center; font-size: 11px; color: #8a8a90; margin-bottom: 14px; }
+  .sms-bubble {
+    max-width: 85%; background: #e9e9eb; color: #111; border-radius: 18px;
+    padding: 11px 14px; font-size: 14.5px; line-height: 1.45;
+  }
+  .sms-bubble a { color: #0a7cff; text-decoration: underline; word-break: break-all; }
+  .sms-input { padding: 10px 14px 22px; border-top: 0.5px solid #e3e3e8; }
+  .sms-input > div { height: 34px; border: 1px solid #d7d7dc; border-radius: 18px; }
+  .tap-hint {
+    text-align: center; font-size: 12px; color: #999; padding: 6px 0 2px;
+    animation: hintpulse 1.6s ease-in-out infinite;
+  }
+  @keyframes hintpulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+  /* ÖoB-sidor (video + enkät) */
+  .oobpage { background: var(--oob-light); display: flex; flex-direction: column; }
+  .oob-header {
+    background: var(--oob); padding: 52px 16px 12px; flex: 0 0 auto;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .oob-logo {
+    background: #fff; border-radius: 50%; width: 46px; height: 46px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .oob-logo b { color: var(--oob); font-weight: 900; font-size: 15px; line-height: 1; letter-spacing: -0.5px; }
+  .oob-logo span { color: var(--oob); font-size: 4.5px; font-weight: 700; letter-spacing: 0.4px; margin-top: 1px; }
+  .oob-header .head-txt { color: #fff; }
+  .oob-header .head-txt b { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; display: block; }
+  .oob-header .head-txt span { font-size: 11px; opacity: 0.9; }
+  .oob-content { flex: 1; padding: 18px 16px 24px; overflow-y: auto; }
+
+  .video-box {
+    background: #111; border-radius: 10px; aspect-ratio: 16/10; position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; cursor: pointer; overflow: hidden;
+  }
+  .video-box .play {
+    width: 62px; height: 62px; border-radius: 50%; background: rgba(255,255,255,0.15);
+    border: 2.5px solid #fff; display: flex; align-items: center; justify-content: center;
+    transition: transform .2s;
+  }
+  .video-box:hover .play { transform: scale(1.08); }
+  .video-box .play::after {
+    content: ''; margin-left: 5px;
+    border-left: 20px solid #fff; border-top: 12px solid transparent; border-bottom: 12px solid transparent;
+  }
+  .video-box p { color: #fff; font-size: 13px; opacity: .85; }
+  .video-progress { position: absolute; bottom: 0; left: 0; height: 4px; background: var(--oob); width: 0; transition: width 2.5s linear; }
+
+  .offer-card {
+    margin-top: 14px; background: #fff; border-radius: 10px; padding: 16px;
+    text-align: center; border: 1px solid #e5e5e5;
+  }
+  .offer-card .tag {
+    display: inline-block; background: #C8102E; color: #FFD100;
+    font-weight: 900; font-size: 20px; padding: 4px 14px; border-radius: 4px;
+    transform: rotate(-2deg); margin-bottom: 8px;
+  }
+  .offer-card p { font-size: 14px; color: #333; line-height: 1.5; }
+  .btn-oob {
+    display: block; width: 100%; margin-top: 14px; padding: 15px;
+    background: var(--oob); color: #fff; border: none; border-radius: 6px;
+    font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer;
+    transition: background .15s;
+  }
+  .btn-oob:hover { background: #008a42; }
+  .btn-oob.ghost {
+    background: #fff; color: var(--oob); border: 2px solid var(--oob);
+  }
+  .btn-oob.ghost:hover { background: #eefaf3; }
+
+  /* Enkät */
+  .q-progress-wrap { margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+  .q-count { font-size: 12px; color: #777; font-weight: 500; }
+  .q-track { height: 6px; background: #e2e2e2; border-radius: 3px; margin-bottom: 22px; overflow: hidden; }
+  .q-fill { height: 100%; background: var(--oob); border-radius: 3px; transition: width .4s ease; }
+  .q-title { font-size: 20px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 6px; }
+  .q-sub { font-size: 13px; color: #777; margin-bottom: 18px; }
+  .q-opts { display: flex; flex-direction: column; gap: 10px; }
+  .q-opt {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 15px 16px; font-size: 15px; font-weight: 500; color: #222;
+    cursor: pointer; transition: all .15s; text-align: left; font-family: 'Roboto', sans-serif;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .q-opt:hover { border-color: var(--oob); background: #f4fbf7; }
+  .q-opt.sel { border-color: var(--oob); background: #eefaf3; }
+  .q-opt .dot {
+    width: 20px; height: 20px; border-radius: 50%; border: 2px solid #cfcfcf; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center; transition: all .15s;
+  }
+  .q-opt.sel .dot { border-color: var(--oob); }
+  .q-opt.sel .dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--oob); }
+
+  /* Tack-skärmen */
+  .thanks { text-align: center; padding-top: 26px; }
+  .thanks .check {
+    width: 74px; height: 74px; border-radius: 50%; background: var(--oob);
+    margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+  }
+  .thanks .check svg { width: 38px; height: 38px; }
+  .thanks h2 { font-size: 24px; font-weight: 900; color: #1a1a1a; margin-bottom: 8px; }
+  .thanks p { font-size: 14px; color: #555; line-height: 1.55; max-width: 280px; margin: 0 auto; }
+  .code-box {
+    margin: 18px auto 4px; max-width: 260px; background: #fff;
+    border: 2px dashed var(--oob); border-radius: 10px; padding: 14px;
+  }
+  .code-box .lbl { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+  .code-box .code { font-size: 24px; font-weight: 900; color: var(--oob); letter-spacing: 2px; margin-top: 2px; }
+  .thanks .small { font-size: 11.5px; color: #999; margin-top: 14px; }
+
+  /* Reset-knapp under telefonen */
+  .restart {
+    margin-top: 18px; background: none; border: 1px solid #b6b0a4; color: #6b6b6b;
+    font-family: 'Roboto', sans-serif; font-size: 13px; padding: 9px 22px;
+    border-radius: 100px; cursor: pointer;
+  }
+  .restart:hover { background: #dedad2; }
+</style>
+</head>
+<body>
+
+<p class="demo-note"><strong>Demo:</strong> så här möter ÖoB:s kund undersökningen — SMS → personlig video → 3 frågor → belöning. Klicka dig igenom flödet i telefonen.</p>
+
+<div class="phone">
+  <div class="phone-screen">
+    <div class="notch"></div>
+    <div class="statusbar" id="statusbar">
+      <span id="sbTime">09:41</span>
+      <span class="sb-icons">
+        <svg width="17" height="12" viewBox="0 0 18 13" fill="currentColor"><rect x="0" y="9" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></svg>
+        <svg width="24" height="13" viewBox="0 0 26 14" fill="none"><rect x="1" y="1" width="21" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="17" height="8" rx="1.5" fill="currentColor"/><rect x="23" y="4.5" width="2" height="5" rx="1" fill="currentColor"/></svg>
+      </span>
+    </div>
+
+    <!-- 1. SMS -->
+    <div class="scr on" id="scrSms">
+      <div class="sms-head">
+        <div class="sms-av">ÖoB</div>
+        <div class="sms-name">ÖoB</div>
+      </div>
+      <div class="sms-body">
+        <div class="sms-stamp">Imeddelande · idag <span id="smsTime">09:41</span></div>
+        <div class="sms-bubble">Hej Anna! 👋 Vi har gjort en video — bara till dig. 45 sekunder, och en liten överraskning på slutet 🎁<br><br><a href="#" onclick="go('scrVideo');return false;">öob.se/video/anna</a></div>
+        <div class="tap-hint">👆 Tryck på länken</div>
+      </div>
+      <div class="sms-input"><div></div></div>
+    </div>
+
+    <!-- 2. Video + erbjudande -->
+    <div class="scr oobpage" id="scrVideo">
+      <div class="oob-header">
+        <div class="oob-logo"><b>ÖoB</b><span>GER DIG MER</span></div>
+        <div class="head-txt"><b>HEJ ANNA!</b><span>Din personliga video</span></div>
+      </div>
+      <div class="oob-content">
+        <div class="video-box" id="videoBox" onclick="playVideo()">
+          <div class="play" id="videoPlay"></div>
+          <p id="videoLabel">Din video från ÖoB · 45 sek</p>
+          <div class="video-progress" id="videoProg"></div>
+        </div>
+        <div class="offer-card">
+          <div class="tag">–20%</div>
+          <p><strong>Ditt erbjudande, Anna:</strong><br>20% på hela ditt nästa köp i varuhuset eller online.</p>
+        </div>
+        <button class="btn-oob" onclick="go('scrQ1')">Hämta min rabatt →</button>
+        <button class="btn-oob ghost" onclick="go('scrQ1')">Fortsätt</button>
+      </div>
+    </div>
+
+    <!-- 3. Fråga 1 -->
+    <div class="scr oobpage" id="scrQ1">
+      <div class="oob-header">
+        <div class="oob-logo"><b>ÖoB</b><span>GER DIG MER</span></div>
+        <div class="head-txt"><b>SNABB FRÅGA</b><span>Hjälp oss bli bättre — 3 frågor</span></div>
+      </div>
+      <div class="oob-content">
+        <div class="q-progress-wrap"><span class="q-count">Fråga 1 av 3</span><span class="q-count">⏱ ca 20 sek</span></div>
+        <div class="q-track"><div class="q-fill" style="width:33%"></div></div>
+        <div class="q-title">Visste du att ÖoB håller på att förnyas — nya butiker, ny look?</div>
+        <div class="q-sub">Din rabatt är redan säkrad — det här tar bara några sekunder.</div>
+        <div class="q-opts">
+          <button class="q-opt" onclick="pick(this,'scrQ2')"><span class="dot"></span>Ja, har sett det</button>
+          <button class="q-opt" onclick="pick(this,'scrQ2')"><span class="dot"></span>Har hört något på vägen</button>
+          <button class="q-opt" onclick="pick(this,'scrQ2')"><span class="dot"></span>Nej, ingen aning</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Fråga 2 -->
+    <div class="scr oobpage" id="scrQ2">
+      <div class="oob-header">
+        <div class="oob-logo"><b>ÖoB</b><span>GER DIG MER</span></div>
+        <div class="head-txt"><b>SNABB FRÅGA</b><span>Hjälp oss bli bättre — 3 frågor</span></div>
+      </div>
+      <div class="oob-content">
+        <div class="q-progress-wrap"><span class="q-count">Fråga 2 av 3</span></div>
+        <div class="q-track"><div class="q-fill" style="width:66%"></div></div>
+        <div class="q-title">Vad tycker du om nya ÖoB?</div>
+        <div class="q-sub">Som du såg i videon — nya butiker, ny look, samma priser.</div>
+        <div class="q-opts">
+          <button class="q-opt" onclick="pick(this,'scrQ3')"><span class="dot"></span>Klart bättre</button>
+          <button class="q-opt" onclick="pick(this,'scrQ3')"><span class="dot"></span>Ungefär som förut</button>
+          <button class="q-opt" onclick="pick(this,'scrQ3')"><span class="dot"></span>Gillade gamla ÖoB mer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Fråga 3 -->
+    <div class="scr oobpage" id="scrQ3">
+      <div class="oob-header">
+        <div class="oob-logo"><b>ÖoB</b><span>GER DIG MER</span></div>
+        <div class="head-txt"><b>SISTA FRÅGAN</b><span>Hjälp oss bli bättre — 3 frågor</span></div>
+      </div>
+      <div class="oob-content">
+        <div class="q-progress-wrap"><span class="q-count">Fråga 3 av 3</span></div>
+        <div class="q-track"><div class="q-fill" style="width:100%"></div></div>
+        <div class="q-title">Vad skulle få dig att handla oftare hos oss?</div>
+        <div class="q-sub">Välj det som stämmer bäst för dig.</div>
+        <div class="q-opts">
+          <button class="q-opt" onclick="pick(this,'scrThanks')"><span class="dot"></span>Lägre priser</button>
+          <button class="q-opt" onclick="pick(this,'scrThanks')"><span class="dot"></span>Bättre sortiment</button>
+          <button class="q-opt" onclick="pick(this,'scrThanks')"><span class="dot"></span>Fler erbjudanden som passar mig</button>
+          <button class="q-opt" onclick="pick(this,'scrThanks')"><span class="dot"></span>Trevligare butiksupplevelse</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Tack -->
+    <div class="scr oobpage" id="scrThanks">
+      <div class="oob-header">
+        <div class="oob-logo"><b>ÖoB</b><span>GER DIG MER</span></div>
+        <div class="head-txt"><b>TACK ANNA!</b><span>Du är guld värd</span></div>
+      </div>
+      <div class="oob-content thanks">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h2>Tack för hjälpen!</h2>
+        <p>Här är din rabattkod — den gäller i alla varuhus och online i 14 dagar.</p>
+        <div class="code-box">
+          <div class="lbl">Din personliga kod</div>
+          <div class="code">ANNA-20</div>
+        </div>
+        <button class="btn-oob" style="max-width:260px;margin:16px auto 0;" onclick="alert('I skarpt läge: vidare till öob.se med koden aktiverad 🛒')">Handla nu →</button>
+        <div class="small">Dina svar hjälper oss göra ÖoB bättre — på riktigt.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<button class="restart" onclick="restart()">↺ Börja om demon</button>
+
+<script>
+  function clock(){
+    var n = new Date();
+    var t = String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+    document.getElementById('sbTime').textContent = t;
+    document.getElementById('smsTime').textContent = t;
+  }
+  clock(); setInterval(clock, 1000);
+
+  var sb = document.getElementById('statusbar');
+  function go(id){
+    document.querySelectorAll('.scr').forEach(function(s){ s.classList.remove('on'); });
+    var el = document.getElementById(id);
+    el.classList.add('on');
+    el.scrollTop = 0;
+    sb.style.color = (id === 'scrSms') ? '#111' : '#fff';
+  }
+  sb.style.color = '#111';
+
+  function pick(btn, next){
+    btn.parentElement.querySelectorAll('.q-opt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.classList.add('sel');
+    setTimeout(function(){ go(next); }, 450);
+  }
+
+  function playVideo(){
+    var prog = document.getElementById('videoProg');
+    var lbl = document.getElementById('videoLabel');
+    var play = document.getElementById('videoPlay');
+    play.style.display = 'none';
+    lbl.textContent = 'Spelar din personliga video …';
+    prog.style.width = '100%';
+    setTimeout(function(){
+      lbl.textContent = 'Klart! Scrolla ner till ditt erbjudande 👇';
+      play.style.display = 'flex';
+    }, 2600);
+  }
+
+  function restart(){
+    document.querySelectorAll('.q-opt').forEach(function(b){ b.classList.remove('sel'); });
+    document.getElementById('videoProg').style.width = '0';
+    document.getElementById('videoLabel').textContent = 'Din video från ÖoB · 45 sek';
+    go('scrSms');
+  }
+</script>
+
+</body>
+</html>
