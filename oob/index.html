@@ -31,25 +31,29 @@
     .oob-nav a.oob-cta:hover { background: var(--o2); border-color: var(--o2); }
 
     .oob-hero {
-      min-height: 88vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: flex-start;
-      padding: 140px 40px 80px; max-width: 1100px; margin: 0 auto;
-      position: relative;
+      min-height: 92vh; display: flex; flex-direction: row;
+      justify-content: center; align-items: center;
+      gap: clamp(24px, 5vw, 88px);
+      padding: 140px 40px 80px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(168deg, #FF8030 0%, #E8520A 28%, #B83A00 60%, #5A1800 100%);
     }
+    .oob-hero-txt { flex: 0 1 640px; display: flex; flex-direction: column; align-items: flex-start; position: relative; z-index: 1; }
     .oob-hello {
-      font-family: 'Space Mono', monospace; font-size: 15px;
-      color: var(--oob-green); letter-spacing: 2px; text-transform: uppercase;
+      font-family: 'Space Mono', monospace; font-size: clamp(19px, 2.2vw, 26px); font-weight: 700;
+      color: #FFF8F3; letter-spacing: 2px; text-transform: uppercase;
       margin-bottom: 24px;
+      background: rgba(0,0,0,0.18); border-radius: 100px; padding: 12px 26px;
     }
     .oob-h1 {
       font-size: clamp(44px, 7vw, 84px); font-weight: 800;
       line-height: 1.02; letter-spacing: -3px; color: var(--white);
       margin-bottom: 28px;
     }
-    .oob-h1 em { font-style: normal; color: var(--o1); }
+    .oob-h1 em { font-style: normal; color: #2B0E00; }
     .oob-hero p.lead {
       font-size: clamp(17px, 2vw, 21px); line-height: 1.6;
-      color: var(--muted2); max-width: 640px; margin-bottom: 40px;
+      color: rgba(255,248,243,0.88); max-width: 640px; margin-bottom: 40px;
     }
 
     .oob-section { padding: 96px 40px; position: relative; }
@@ -87,19 +91,48 @@
     }
     .oob-video-ph p { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--muted); }
 
-    .oob-films-grid {
-      margin-top: 48px; display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    .oob-film-rows { margin-top: 64px; display: flex; flex-direction: column; gap: 64px; }
+    .oob-film-row {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: clamp(28px, 4vw, 56px); align-items: center;
+    }
+    .oob-film-txt .film-num {
+      font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 2px;
+      color: var(--oob-green); display: block; margin-bottom: 14px;
+    }
+    .oob-film-txt h3 {
+      font-size: clamp(24px, 2.8vw, 34px); font-weight: 800;
+      letter-spacing: -1px; color: var(--white); margin-bottom: 14px; line-height: 1.15;
+    }
+    .oob-film-txt p { font-size: 16px; line-height: 1.65; color: var(--muted2); }
+    .oob-film-txt .film-stat {
+      margin-top: 18px; font-family: 'Space Mono', monospace; font-size: 13px;
+      color: var(--o1);
     }
     .oob-film {
       border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
       background: var(--card); aspect-ratio: 16 / 9; position: relative;
       display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
     }
     .oob-film video { width: 100%; height: 100%; object-fit: cover; }
     .oob-film .film-label {
       font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted);
       text-align: center; padding: 20px;
+    }
+    .oob-film .ph-play {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px;
+      border: 2px solid rgba(0,166,80,0.6);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .oob-film .ph-play::after {
+      content: ''; display: block; margin-left: 5px;
+      border-left: 18px solid var(--oob-green);
+      border-top: 11px solid transparent; border-bottom: 11px solid transparent;
+    }
+    @media (max-width: 860px) {
+      .oob-film-row { grid-template-columns: 1fr; gap: 20px; }
+      .oob-film-rows { gap: 48px; }
     }
 
     /* Resultat-siffror */
@@ -156,11 +189,45 @@
     .oob-mod h4 { font-size: 17px; font-weight: 700; color: var(--o1); margin-bottom: 10px; }
     .oob-mod p { font-size: 14px; line-height: 1.55; color: var(--muted2); }
 
-    /* CTA */
+    /* ── Beige sektioner (som startsidans kundcase) ── */
+    .oob-section.cream { background: var(--cream); }
+    .oob-section.cream .oob-title { color: #1A0D06; }
+    .oob-section.cream .oob-eyebrow { color: var(--o2); }
+    .oob-section.cream .oob-lead,
+    .oob-section.cream .oob-film-txt p { color: rgba(26,13,6,0.68); }
+    .oob-section.cream .oob-film-txt h3 { color: #1A0D06; }
+    .oob-section.cream .film-stat { color: var(--o2); }
+    .oob-section.cream .oob-stat {
+      background: #fff; border-color: rgba(26,13,6,0.08);
+      box-shadow: 0 12px 34px rgba(26,13,6,0.07);
+    }
+    .oob-section.cream .oob-stat-val { color: var(--o2); }
+    .oob-section.cream .oob-stat.green .oob-stat-val { color: var(--oob-green); }
+    .oob-section.cream .oob-stat-lbl { color: rgba(26,13,6,0.6); }
+    .oob-section.cream .oob-step {
+      background: #fff; border-color: rgba(26,13,6,0.08);
+      box-shadow: 0 12px 34px rgba(26,13,6,0.06);
+    }
+    .oob-section.cream .oob-step h3 { color: #1A0D06; }
+    .oob-section.cream .oob-step p { color: rgba(26,13,6,0.68); }
+    .oob-section.cream .oob-step .num { color: var(--o2); }
+    .oob-section.cream .oob-mod {
+      background: #fff; border-color: rgba(26,13,6,0.08);
+      box-shadow: 0 12px 34px rgba(26,13,6,0.06);
+    }
+    .oob-section.cream .oob-mod h4 { color: var(--o2); }
+    .oob-section.cream .oob-mod p { color: rgba(26,13,6,0.68); }
+
+    /* CTA — orange final, som heron */
     .oob-final {
       text-align: center; padding: 120px 40px;
-      background: linear-gradient(180deg, transparent, rgba(232,82,10,0.08));
+      position: relative; overflow: hidden;
+      background: linear-gradient(168deg, #FF8030 0%, #E8520A 28%, #B83A00 60%, #5A1800 100%);
     }
+    .oob-final > * { position: relative; z-index: 1; }
+    .oob-final > .hero-grid, .oob-final > .hero-glow { z-index: 0; }
+    .oob-final .oob-eyebrow { color: rgba(255,248,243,0.9); }
+    .oob-final .oob-lead { color: rgba(255,248,243,0.88); }
     .oob-final .oob-title { margin-left: auto; margin-right: auto; }
     .oob-final .oob-lead { margin: 0 auto 44px; }
     .oob-final-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -173,6 +240,106 @@
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── 3D-telefon (ÖoB-variant av hero-telefonen) ── */
+    .hero-visual {
+      position: relative; z-index: 1; flex: 0 0 auto;
+      display: flex; justify-content: center; align-items: center;
+      perspective: 1500px;
+      opacity: 0; transform: translateX(140%);
+      transition: transform 0.9s cubic-bezier(.22,.61,.36,1), opacity 0.9s ease;
+    }
+    .hero-visual.weq-in { opacity: 1; transform: translateX(0); }
+    .weq-phone {
+      position: relative; width: 340px; height: 691px;
+      transform-style: preserve-3d;
+      animation: weq-float 6s ease-in-out infinite;
+    }
+    @keyframes weq-float {
+      0%,100% { transform: rotateY(-20deg) rotateX(6deg) translateY(0); }
+      50%     { transform: rotateY(-17deg) rotateX(5deg) translateY(-14px); }
+    }
+    .weq-phone-body {
+      position: absolute; inset: 0; border-radius: 60px;
+      background: #080606; border: 2px solid #2a1c15;
+      box-shadow: 0 50px 100px rgba(60,15,0,0.5);
+    }
+    .weq-phone-edge {
+      position: absolute; left: -10px; top: 55px; width: 10px; height: 583px;
+      background: #0a140c; border-radius: 9px 0 0 9px; transform: translateZ(-10px);
+    }
+    .weq-phone-screen {
+      position: absolute; inset: 13px; border-radius: 48px;
+      overflow: hidden; background: #000;
+      font-family: 'Outfit', -apple-system, sans-serif;
+    }
+    .weq-scr { position: absolute; inset: 0; transition: opacity 0.6s ease; }
+    .weq-scr.weq-hidden { opacity: 0; pointer-events: none; }
+    #weqHome { z-index: 3; }
+    #weqLock { z-index: 4; }
+    .weq-wall {
+      position: absolute; inset: 0;
+      background: #06110a url('../assets/weq-wallpaper.jpg') center/cover no-repeat;
+    }
+    .weq-wall::after { content: ''; position: absolute; inset: 0; background: rgba(0,80,40,0.28); }
+    .weq-stat-r { position: absolute; top: 20px; right: 24px; display: flex; align-items: center; gap: 7px; z-index: 6; }
+    .weq-stat-r svg { display: block; }
+    .weq-stat-time { position: absolute; top: 19px; left: 26px; font-size: 15px; font-weight: 600; color: #fff; z-index: 6; }
+    .weq-ind { position: absolute; bottom: 13px; left: 50%; transform: translateX(-50%); width: 124px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.85); z-index: 6; }
+    .weq-ind-dark { background: rgba(0,0,0,0.4); }
+    .weq-lock-center { position: absolute; top: 13%; left: 0; right: 0; text-align: center; color: #fff; text-shadow: 0 1px 16px rgba(0,0,0,0.3); z-index: 5; }
+    .weq-lock-date { font-size: 19px; font-weight: 400; margin-top: 14px; letter-spacing: 0.3px; }
+    .weq-lock-time { font-size: 86px; font-weight: 200; line-height: 1.02; letter-spacing: -1px; margin-top: 2px; }
+    .weq-grid { position: absolute; top: 62px; left: 22px; right: 22px; display: grid; grid-template-columns: repeat(4,1fr); gap: 18px 16px; z-index: 5; }
+    .weq-dock { position: absolute; left: 16px; right: 16px; bottom: 16px; height: 84px; border-radius: 28px;
+      background: rgba(255,255,255,0.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-around; padding: 0 10px; z-index: 5; }
+    .weq-dock-ic { position: relative; width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+    .weq-badge { position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; border-radius: 12px;
+      background: #ff3b30; border: 2px solid rgba(255,255,255,0.6); color: #fff; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; padding: 0 5px; opacity: 0; transform: scale(0); }
+    .weq-badge.weq-pop { opacity: 1; transform: scale(1); transition: opacity 0.3s, transform 0.45s cubic-bezier(.2,1.4,.4,1); }
+    .weq-banner { position: absolute; top: 46px; left: 10px; right: 10px; z-index: 8;
+      display: flex; gap: 9px; align-items: flex-start;
+      background: rgba(12,24,16,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-radius: 18px; padding: 10px 12px;
+      opacity: 0; transform: translateY(-96px); transition: opacity 0.5s, transform 0.55s cubic-bezier(.2,.9,.3,1); }
+    .weq-banner.weq-show { opacity: 1; transform: translateY(0); }
+    .weq-banner-ic { width: 34px; height: 34px; border-radius: 9px; flex: 0 0 auto;
+      background: linear-gradient(160deg,#00c964,#008a42); display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px; color: #fff; }
+    .weq-banner-txt { flex: 1; min-width: 0; }
+    .weq-banner-top { display: flex; justify-content: space-between; font-size: 11px; color: #fff; font-weight: 600; margin-bottom: 2px; }
+    .weq-banner-top span:last-child { color: #b9cbbe; font-weight: 400; }
+    .weq-banner-msg { font-size: 11px; color: #eaf3ec; line-height: 1.32; }
+    #weqMsg { background: #fff; display: flex; flex-direction: column; z-index: 5; }
+    .weq-msg-head { padding: 42px 12px 12px; text-align: center; background: #f7f7fa; border-bottom: 0.5px solid #e3e3e8; }
+    .weq-msg-av { width: 52px; height: 52px; border-radius: 50%; background: var(--oob-green); margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 18px; }
+    .weq-msg-name { font-size: 14px; color: #111; margin-top: 6px; font-weight: 500; }
+    .weq-msg-body { flex: 1; padding: 18px 16px; }
+    .weq-msg-stamp { text-align: center; font-size: 11px; color: #8a8a90; margin-bottom: 16px; }
+    .weq-bubble { max-width: 84%; background: #e9e9eb; color: #111; border-radius: 18px; padding: 10px 14px; font-size: 13.5px; line-height: 1.42; margin-bottom: 9px; }
+    .weq-bubble a { color: #0a7cff; text-decoration: underline; word-break: break-all; border-radius: 4px; padding: 1px 2px; }
+    .weq-link.weq-pulse { animation: weq-linkpulse 0.7s ease; }
+    @keyframes weq-linkpulse { 0%,100% { background: transparent; } 40% { background: rgba(10,124,255,0.18); } }
+    .weq-msg-input { padding: 10px 14px 18px; border-top: 0.5px solid #e3e3e8; }
+    .weq-msg-input > div { height: 34px; border: 1px solid #d7d7dc; border-radius: 18px; }
+    #weqEnd { z-index: 6; background: #000; }
+    .weq-phone-notch { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 110px; height: 16px; background: #000; border-radius: 0 0 11px 11px; z-index: 7; }
+
+    @media (max-width: 1040px) {
+      .oob-hero { flex-direction: column; gap: 48px; padding-bottom: 60px; }
+      .oob-hero-txt { flex: 1 1 auto; }
+      .weq-phone { width: 264px; height: 537px; }
+      .weq-phone-edge { height: 453px; top: 43px; }
+      .weq-lock-time { font-size: 64px; }
+      .weq-lock-date { font-size: 15px; }
+      .weq-grid { top: 50px; gap: 13px 11px; }
+      .weq-dock { height: 66px; border-radius: 22px; }
+      .weq-dock-ic { width: 44px; height: 44px; border-radius: 11px; }
+      .weq-dock-ic svg { width: 21px; height: 21px; }
+      .weq-bubble { font-size: 11.5px; }
+    }
 
     @media (max-width: 720px) {
       .oob-nav { padding: 14px 20px; }
@@ -196,14 +363,90 @@
 
 <!-- ── HERO ── -->
 <header class="oob-hero">
-  <span class="oob-hello reveal">Hej Charlotte 👋</span>
-  <h1 class="oob-h1 reveal">Det här är gjort<br><em>för dig.</em></h1>
-  <p class="lead reveal">Precis som varje video WEQ skickar är gjord för exakt en mottagare. Du tittar just nu på produkten — en upplevelse byggd för en enda person. Scrolla ner så visar jag vad ÖoB och WEQ redan har gjort tillsammans, och vad vi kan göra härnäst.</p>
-  <p class="lead reveal" style="font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);">/ Joaquim, WEQ</p>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="oob-hero-txt">
+    <span class="oob-hello reveal">Hej Charlotte</span>
+    <h1 class="oob-h1 reveal">Det här är gjort<br><em>för dig.</em></h1>
+    <p class="lead reveal">Precis som varje video WEQ skickar är gjord för exakt en mottagare. Du tittar just nu på produkten — en upplevelse byggd för en enda person. Telefonen här bredvid? Så ser det ut när ÖoB:s nästa kampanj landar hos en kund. Fast just den här landade hos dig.</p>
+    <p class="lead reveal" style="font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);">/ Joaquim, WEQ</p>
+  </div>
+
+  <!-- ── 3D-telefon: ÖoB-sekvens (låsskärm → hemskärm → notis → SMS → slutbild) ── -->
+  <div class="hero-visual">
+    <div class="weq-phone">
+      <div class="weq-phone-body"></div>
+      <div class="weq-phone-edge"></div>
+      <div class="weq-phone-screen">
+
+        <!-- HEMSKÄRM -->
+        <div class="weq-scr weq-hidden" id="weqHome">
+          <div class="weq-wall"></div>
+          <div class="weq-stat-time" id="weqHomeTime">09:41</div>
+          <div class="weq-stat-r">
+            <svg width="18" height="13" viewBox="0 0 18 13" fill="#fff"><rect x="0" y="9" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></svg>
+            <svg width="26" height="14" viewBox="0 0 26 14" fill="none"><rect x="1" y="1" width="21" height="12" rx="3" stroke="#fff" stroke-width="1.5"/><rect x="3" y="3" width="17" height="8" rx="1.5" fill="#fff"/><rect x="23" y="4.5" width="2" height="5" rx="1" fill="#fff"/></svg>
+          </div>
+          <div class="weq-grid" id="weqGrid"></div>
+          <div class="weq-banner" id="weqBanner">
+            <div class="weq-banner-ic">Ö</div>
+            <div class="weq-banner-txt">
+              <div class="weq-banner-top"><span>ÖoB</span><span>nu</span></div>
+              <div class="weq-banner-msg">Hej Charlotte! 👋 Vi har gjort en video — bara till dig. Tryck för att se den.</div>
+            </div>
+          </div>
+          <div class="weq-dock">
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#5be36b,#1faa3a)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a14 14 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.24 1z"/></svg></div>
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#37b6ff,#1573e6)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><polygon points="15.5,8.5 11,11 8.5,15.5 13,13" fill="#fff" stroke="none"/></svg></div>
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#5be36b,#1faa3a)"><svg width="27" height="27" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4.2-2.3c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg><div class="weq-badge" id="weqBadge">1</div></div>
+            <div class="weq-dock-ic" style="background:linear-gradient(160deg,#fb5c74,#e0314f)"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M9 17V5l10-2v12" stroke="#fff" stroke-width="2" fill="none"/><circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="15" r="2.4"/></svg></div>
+          </div>
+          <div class="weq-ind"></div>
+        </div>
+
+        <!-- LÅSSKÄRM -->
+        <div class="weq-scr" id="weqLock">
+          <div class="weq-wall"></div>
+          <div class="weq-stat-r">
+            <svg width="18" height="13" viewBox="0 0 18 13" fill="#fff"><rect x="0" y="9" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></svg>
+            <svg width="26" height="14" viewBox="0 0 26 14" fill="none"><rect x="1" y="1" width="21" height="12" rx="3" stroke="#fff" stroke-width="1.5"/><rect x="3" y="3" width="17" height="8" rx="1.5" fill="#fff"/><rect x="23" y="4.5" width="2" height="5" rx="1" fill="#fff"/></svg>
+          </div>
+          <div class="weq-lock-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <div class="weq-lock-date" id="weqDate">—</div>
+            <div class="weq-lock-time" id="weqTime">—</div>
+          </div>
+          <div class="weq-ind"></div>
+        </div>
+
+        <!-- SMS -->
+        <div class="weq-scr weq-hidden" id="weqMsg">
+          <div class="weq-msg-head">
+            <div class="weq-msg-av">Ö</div>
+            <div class="weq-msg-name">ÖoB</div>
+          </div>
+          <div class="weq-msg-body">
+            <div class="weq-msg-stamp">Imeddelande · idag <span id="weqMsgTime">09:41</span></div>
+            <div class="weq-bubble">Hej Charlotte! 👋 Tänk om varje ÖoB-kund fick ett sånt här meddelande — med sitt namn, sin historik och sitt erbjudande.<br><br>Din video väntar här 👇<br><a class="weq-link" id="weqLink" href="#kontakt">oob.se/video/charlotte</a></div>
+          </div>
+          <div class="weq-msg-input"><div></div></div>
+          <div class="weq-ind weq-ind-dark"></div>
+        </div>
+
+        <!-- SLUTBILD -->
+        <div class="weq-scr weq-hidden" id="weqEnd">
+          <img src="../assets/weq-slutbild.png" alt="Personlig video från ÖoB" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top">
+        </div>
+
+        <div class="weq-phone-notch"></div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <!-- ── VIDEOHÄLSNING ── -->
 <section class="oob-section">
+  <div class="section-bg-grid"></div>
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">01 — Från mig till dig</span>
     <h2 class="oob-title reveal">Två minuter,<br>istället för ett mejl.</h2>
@@ -219,7 +462,7 @@
 </section>
 
 <!-- ── VAD VI GJORT ── -->
-<section class="oob-section">
+<section class="oob-section cream">
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">02 — Vad vi redan gjort ihop</span>
     <h2 class="oob-title reveal">ÖoB har redan sett<br>det fungera.</h2>
@@ -231,18 +474,52 @@
       <div class="oob-stat green reveal"><span class="oob-stat-val" data-target="80" data-prefix="+" data-suffix="%">+80%</span><span class="oob-stat-lbl">Fler klick jämfört med generisk video</span></div>
     </div>
 
-    <div class="oob-films-grid">
-      <!-- När filmerna är klara: ersätt platshållarna med
+    <div class="oob-film-rows">
+      <!-- När filmerna är klara: ersätt platshållar-diven i varje .oob-film med
            <video controls preload="metadata"><source src="../assets/oob-film-1.mp4" type="video/mp4"></video> -->
-      <div class="oob-film reveal"><span class="film-label">Film: ”Vi saknar dig”<br>— kommer strax</span></div>
-      <div class="oob-film reveal"><span class="film-label">Film: ”Grattis på födelsedagen”<br>— kommer strax</span></div>
-      <div class="oob-film reveal"><span class="film-label">Film: ”Du är vår bästa kund”<br>— kommer strax</span></div>
+
+      <div class="oob-film-row reveal">
+        <div class="oob-film-txt">
+          <span class="film-num">FILM 01</span>
+          <h3>”Vi saknar dig”</h3>
+          <p>Kunder som inte handlat på över sex månader fick en personlig video — med sitt namn och ett erbjudande byggt på sin egen köphistorik. Sovande kunder som annars aldrig öppnar ett nyhetsbrev klickade sig tillbaka till butiken.</p>
+          <span class="film-stat">→ 32% klickfrekvens på videon</span>
+        </div>
+        <div class="oob-film">
+          <div class="film-label"><div class="ph-play"></div>Filmen läggs in här — kommer strax</div>
+        </div>
+      </div>
+
+      <div class="oob-film-row reveal">
+        <div class="oob-film-txt">
+          <span class="film-num">FILM 02</span>
+          <h3>”Grattis på födelsedagen”</h3>
+          <p>På födelsedagen landade en personlig gratulation i fickan — med namn och en present från ÖoB. Ett meddelande som känns, inte marknadsföring. Det är den här typen av ögonblick som bygger lojalitet på riktigt.</p>
+          <span class="film-stat">→ Personlig hälsning · automatiskt till varje kund</span>
+        </div>
+        <div class="oob-film">
+          <div class="film-label"><div class="ph-play"></div>Filmen läggs in här — kommer strax</div>
+        </div>
+      </div>
+
+      <div class="oob-film-row reveal">
+        <div class="oob-film-txt">
+          <span class="film-num">FILM 03</span>
+          <h3>”Du är vår bästa kund”</h3>
+          <p>De mest lojala kunderna fick ett tack — personligt, med belöning kopplad till vad de faktiskt handlat. Att bli sedd som stamkund är skillnaden mellan att stanna och att glida iväg till konkurrenten.</p>
+          <span class="film-stat">→ Belöning baserad på riktig köpdata</span>
+        </div>
+        <div class="oob-film">
+          <div class="film-label"><div class="ph-play"></div>Filmen läggs in här — kommer strax</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── PROBLEMET & SKIFTET ── -->
 <section class="oob-section">
+  <div class="section-bg-grid"></div>
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">03 — Varför det fungerar</span>
     <h2 class="oob-title reveal">Det mesta i CRM-flödet<br>ignoreras.</h2>
@@ -256,7 +533,7 @@
 </section>
 
 <!-- ── TRE STEG ── -->
-<section class="oob-section">
+<section class="oob-section cream">
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">04 — Så funkar det</span>
     <h2 class="oob-title reveal">Från er data till<br>kundens skärm. Tre steg.</h2>
@@ -282,6 +559,7 @@
 
 <!-- ── SIFFRORNA ── -->
 <section class="oob-section">
+  <div class="section-bg-grid"></div>
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">05 — Siffrorna</span>
     <h2 class="oob-title reveal">Personaliserad video nästan<br>dubblar klickfrekvensen.</h2>
@@ -300,7 +578,7 @@
 </section>
 
 <!-- ── MODULER ── -->
-<section class="oob-section">
+<section class="oob-section cream">
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">06 — Systemet</span>
     <h2 class="oob-title reveal">Fem moduler.<br>En personlig relation.</h2>
@@ -316,6 +594,8 @@
 
 <!-- ── CTA ── -->
 <section class="oob-final" id="kontakt">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
   <span class="oob-eyebrow reveal">07 — Nästa steg</span>
   <h2 class="oob-title reveal">Ska vi göra det<br>personligt igen?</h2>
   <p class="oob-lead reveal">Ni har redan datan, kunderna och resultaten från förra gången. Jag visar gärna vad nästa kampanj kan göra — 30 minuter räcker.</p>
@@ -363,6 +643,82 @@
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.oob-bar-fill').forEach(el => bars.observe(el));
+
+  // ── Telefonen ──
+  (function(){
+    // Klocka (svensk tid/datum)
+    function clock(){
+      var n = new Date();
+      var hm = String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+      var days = ['söndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+      var mons = ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+      var d = days[n.getDay()] + ' ' + n.getDate() + ' ' + mons[n.getMonth()];
+      [['weqTime',hm],['weqHomeTime',hm],['weqMsgTime',hm],['weqDate',d]].forEach(function(p){
+        var e = document.getElementById(p[0]); if (e) e.textContent = p[1];
+      });
+    }
+    clock(); setInterval(clock, 1000);
+
+    // App-ikoner (trovärdig hemskärm)
+    var apps = [
+      ['Mail','#37b6ff,#1573e6','<path d="M2 6h20v12H2z"/><path d="M2 6l10 7 10-7" fill="none" stroke="#1573e6" stroke-width="1.6"/>'],
+      ['Kalender','#ffffff,#f1f1f4','<rect x="3" y="4" width="18" height="17" rx="2" fill="#fff"/><rect x="3" y="4" width="18" height="5" rx="2" fill="#ff3b30"/><text x="12" y="18" font-size="9" fill="#ff3b30" text-anchor="middle" font-family="Outfit">25</text>'],
+      ['Foton','#ffd23d,#ffae00','<path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>'],
+      ['Kamera','#8a93a3,#535b69','<rect x="3" y="7" width="18" height="12" rx="3"/><circle cx="12" cy="13" r="3.4" fill="#535b69"/><rect x="8" y="5" width="6" height="3" rx="1"/>'],
+      ['Kartor','#6be3a1,#1faa6a','<path d="M9 3 3 5v16l6-2 6 2 6-2V3l-6 2-6-2z" fill="#fff"/><circle cx="12" cy="9" r="2.4" fill="#1faa6a"/>'],
+      ['Klocka','#1a1a1a,#000000','<circle cx="12" cy="12" r="9" fill="#fff"/><path d="M12 7v5l3 2" stroke="#000" stroke-width="1.6" fill="none"/>'],
+      ['Väder','#37b6ff,#1573e6','<circle cx="9" cy="10" r="3.4" fill="#ffd23d"/><path d="M8 16h8a3 3 0 0 0 0-6 4 4 0 0 0-7.5-1" fill="#fff"/>'],
+      ['Anteckn.','#ffe08a,#ffc83d','<rect x="5" y="3" width="14" height="18" rx="2" fill="#fff"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#caa400" stroke-width="1.4"/>'],
+      ['Påminn.','#ffffff,#f1f1f4','<circle cx="8" cy="8" r="2" fill="#ff3b30"/><circle cx="8" cy="14" r="2" fill="#37b6ff"/><path d="M12 8h7M12 14h7" stroke="#888" stroke-width="1.6"/>'],
+      ['Aktier','#1a1a1a,#000000','<path d="M3 17l5-5 4 3 7-8" stroke="#5be36b" stroke-width="2" fill="none"/>'],
+      ['Nyheter','#fb5c74,#e0314f','<rect x="4" y="4" width="16" height="16" rx="2" fill="#fff"/><path d="M7 8h10M7 12h10M7 16h6" stroke="#e0314f" stroke-width="1.6"/>'],
+      ['Inställn.','#b0b6c2,#6b7280','<circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="8.5" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="2 3"/>'],
+      ['App Store','#37b6ff,#1573e6','<text x="12" y="17" font-size="14" fill="#fff" text-anchor="middle" font-family="Outfit" font-weight="800">A</text>'],
+      ['Hälsa','#ffffff,#f1f1f4','<path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z" fill="#ff3b30"/>'],
+      ['Plånbok','#1a1a1a,#000000','<rect x="4" y="7" width="16" height="11" rx="2" fill="#fff"/><rect x="4" y="9" width="16" height="3" fill="#ffd23d"/>'],
+      ['FaceTime','#5be36b,#1faa3a','<rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 11l6-3v8l-6-3z"/>']
+    ];
+    var grid = document.getElementById('weqGrid');
+    if (grid) { apps.forEach(function(a){
+      var w = document.createElement('div');
+      w.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:4px';
+      w.innerHTML = '<div style="width:100%;aspect-ratio:1;border-radius:24%;background:linear-gradient(160deg,'+a[1]+');box-shadow:0 4px 9px rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center"><svg width="60%" height="60%" viewBox="0 0 24 24" fill="#fff">'+a[2]+'</svg></div><span style="font-size:9px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4);white-space:nowrap">'+a[0]+'</span>';
+      grid.appendChild(w);
+    }); }
+
+    // Tidslinje: låsskärm → hemskärm → notis → SMS → slutbild
+    var lock = document.getElementById('weqLock'), home = document.getElementById('weqHome'),
+        badge = document.getElementById('weqBadge'), banner = document.getElementById('weqBanner'),
+        msg = document.getElementById('weqMsg'), link = document.getElementById('weqLink'),
+        end = document.getElementById('weqEnd');
+    function run(){
+      lock.classList.remove('weq-hidden');
+      home.classList.add('weq-hidden'); msg.classList.add('weq-hidden'); end.classList.add('weq-hidden');
+      if (badge) badge.classList.remove('weq-pop');
+      if (banner) banner.classList.remove('weq-show');
+      if (link) link.classList.remove('weq-pulse');
+      setTimeout(function(){ lock.classList.add('weq-hidden'); home.classList.remove('weq-hidden'); }, 2600);
+      setTimeout(function(){ if (badge) badge.classList.add('weq-pop'); if (banner) banner.classList.add('weq-show'); }, 3700);
+      setTimeout(function(){ home.classList.add('weq-hidden'); msg.classList.remove('weq-hidden'); }, 5800);
+      setTimeout(function(){ if (link) link.classList.add('weq-pulse'); }, 7800);
+      setTimeout(function(){ msg.classList.add('weq-hidden'); end.classList.remove('weq-hidden'); }, 8700);
+      setTimeout(run, 13500);
+    }
+    run();
+
+    // Glider in från höger vid laddning, ut när den nästan scrollat ur bild
+    var vis = document.querySelector('.hero-visual');
+    function slide(){
+      if (!vis) return;
+      var r = vis.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.top < vh*0.85 && r.bottom > vh*0.12) vis.classList.add('weq-in');
+      else vis.classList.remove('weq-in');
+    }
+    setTimeout(slide, 300);
+    window.addEventListener('scroll', slide, {passive:true});
+    window.addEventListener('resize', slide, {passive:true});
+  })();
 </script>
 
 </body>
