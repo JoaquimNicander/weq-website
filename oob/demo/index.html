@@ -47,16 +47,17 @@
   }
   .statusbar .sb-icons { display: flex; gap: 5px; align-items: center; }
 
-  /* Skärmar — slide & fade mellan steg */
+  /* Skärmar — tydlig kort-swipe mellan steg */
   .scr {
     position: absolute; inset: 0; opacity: 0; pointer-events: none;
-    overflow-y: auto; transform: translateX(9%) scale(0.985);
-    transition: opacity .38s ease, transform .5s cubic-bezier(.22,1.1,.36,1);
+    overflow-y: auto; transform: translateX(88%) scale(0.94);
+    transition: opacity .42s ease, transform .62s cubic-bezier(.2,1.15,.3,1);
+    box-shadow: -20px 0 50px rgba(0,0,0,0.0);
   }
-  .scr.on { opacity: 1; pointer-events: auto; transform: translateX(0) scale(1); }
+  .scr.on { opacity: 1; pointer-events: auto; transform: translateX(0) scale(1); z-index: 10; }
   .scr.leaving {
-    opacity: 0; transform: translateX(-7%) scale(0.985);
-    transition: opacity .3s ease, transform .35s ease;
+    opacity: 0; transform: translateX(-45%) scale(0.9); z-index: 5;
+    transition: opacity .4s ease, transform .45s cubic-bezier(.5,0,.7,.4);
   }
 
   /* Innehållet landar ett element i taget */
@@ -259,6 +260,7 @@
 <div class="phone">
   <div class="phone-screen">
     <div class="notch"></div>
+    <canvas id="confetti" style="position:absolute;inset:0;width:100%;height:100%;z-index:60;pointer-events:none;"></canvas>
     <div class="statusbar" id="statusbar">
       <span id="sbTime">09:41</span>
       <span class="sb-icons">
@@ -378,8 +380,8 @@
       </div>
       <div class="oob-content thanks">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h2>Tack Anna!</h2>
-        <p>Dina svar hjälper oss göra nya ÖoB ännu bättre — på riktigt. Vi ses i varuhuset!</p>
+        <h2 id="thanksName">Tack Anna! 🎉</h2>
+        <p>Tack för att du tog dig tid att svara — det betyder mycket för oss. Dina svar hjälper oss göra nya ÖoB ännu bättre. Vi ses i varuhuset!</p>
         <button class="btn-oob" style="max-width:260px;margin:20px auto 0;" onclick="alert('I skarpt läge: vidare till öob.se 🛒')">Se vad som är nytt →</button>
         <div class="small">Nya butiker. Ny look. Samma räta priser.</div>
       </div>
@@ -414,10 +416,57 @@
   }
   sb.style.color = '#111';
 
+  var firstName = 'Anna';
+  document.getElementById('thanksName').textContent = 'Tack ' + firstName + '! 🎉';
+
   function pick(btn, next){
     btn.parentElement.querySelectorAll('.q-opt').forEach(function(b){ b.classList.remove('sel'); });
     btn.classList.add('sel');
-    setTimeout(function(){ go(next); }, 450);
+    setTimeout(function(){
+      go(next);
+      if (next === 'scrThanks') setTimeout(confetti, 350);
+    }, 450);
+  }
+
+  // Konfetti i ÖoB-färger
+  function confetti(){
+    var cv = document.getElementById('confetti');
+    var ctx = cv.getContext('2d');
+    var W = cv.width = cv.offsetWidth * 2, H = cv.height = cv.offsetHeight * 2;
+    var colors = ['#009F4D','#2C622C','#FFD100','#C8102E','#FFFFFF','#7ED9A7'];
+    var parts = [];
+    for (var i = 0; i < 140; i++) {
+      parts.push({
+        x: W/2 + (Math.random()-0.5)*W*0.25,
+        y: H*0.42,
+        vx: (Math.random()-0.5)*22,
+        vy: -(Math.random()*26 + 9),
+        w: Math.random()*12+7, h: Math.random()*7+5,
+        c: colors[Math.floor(Math.random()*colors.length)],
+        rot: Math.random()*Math.PI*2,
+        vr: (Math.random()-0.5)*0.35,
+        drag: 0.985 + Math.random()*0.01
+      });
+    }
+    var t0 = performance.now();
+    function frame(t){
+      var age = (t - t0)/1000;
+      ctx.clearRect(0,0,W,H);
+      parts.forEach(function(p){
+        p.vy += 0.55; p.vx *= p.drag; p.vy *= p.drag;
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = Math.max(0, 1 - age/2.6);
+        ctx.fillStyle = p.c;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      if (age < 2.8) requestAnimationFrame(frame);
+      else ctx.clearRect(0,0,W,H);
+    }
+    requestAnimationFrame(frame);
   }
 
   function playVideo(){
