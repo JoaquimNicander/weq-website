@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Till Charlotte — WEQ × ÖoB</title>
+  <meta property="og:title" content="Charlotte, det här är gjort för dig.">
+  <meta property="og:description" content="En personlig genomgång av vad WEQ och ÖoB kan göra tillsammans — igen.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    :root { --oob-green: #00A650; }
+
+    .oob-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(13,8,4,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,140,66,0.12);
+    }
+    .oob-nav-brand { display: flex; align-items: center; gap: 14px; }
+    .oob-nav-brand img { height: 36px; display: block; }
+    .oob-nav-x { font-family: 'Space Mono', monospace; color: var(--muted); font-size: 14px; }
+    .oob-nav-brand .oob-logo { height: 26px; }
+    .oob-nav a.oob-cta {
+      font-family: 'Space Mono', monospace; font-size: 13px;
+      color: var(--white); text-decoration: none;
+      border: 1px solid rgba(255,140,66,0.4); border-radius: 100px;
+      padding: 9px 20px; transition: all .25s ease;
+    }
+    .oob-nav a.oob-cta:hover { background: var(--o2); border-color: var(--o2); }
+
+    .oob-hero {
+      min-height: 88vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 140px 40px 80px; max-width: 1100px; margin: 0 auto;
+      position: relative;
+    }
+    .oob-hello {
+      font-family: 'Space Mono', monospace; font-size: 15px;
+      color: var(--oob-green); letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .oob-h1 {
+      font-size: clamp(44px, 7vw, 84px); font-weight: 800;
+      line-height: 1.02; letter-spacing: -3px; color: var(--white);
+      margin-bottom: 28px;
+    }
+    .oob-h1 em { font-style: normal; color: var(--o1); }
+    .oob-hero p.lead {
+      font-size: clamp(17px, 2vw, 21px); line-height: 1.6;
+      color: var(--muted2); max-width: 640px; margin-bottom: 40px;
+    }
+
+    .oob-section { padding: 96px 40px; position: relative; }
+    .oob-inner { max-width: 1100px; margin: 0 auto; }
+    .oob-eyebrow {
+      font-family: 'Space Mono', monospace; font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--o1); display: block; margin-bottom: 18px;
+    }
+    .oob-title {
+      font-size: clamp(32px, 4.5vw, 52px); font-weight: 800;
+      letter-spacing: -1.5px; line-height: 1.08; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .oob-lead { font-size: 18px; line-height: 1.65; color: var(--muted2); max-width: 620px; }
+
+    /* Video-kort */
+    .oob-video-card {
+      margin-top: 48px; border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--card);
+      aspect-ratio: 16 / 9; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .oob-video-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .oob-video-ph { text-align: center; padding: 40px; }
+    .oob-video-ph .ph-play {
+      width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 20px;
+      border: 2px solid rgba(255,140,66,0.5);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .oob-video-ph .ph-play::after {
+      content: ''; display: block; margin-left: 6px;
+      border-left: 22px solid var(--o1);
+      border-top: 14px solid transparent; border-bottom: 14px solid transparent;
+    }
+    .oob-video-ph p { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--muted); }
+
+    .oob-films-grid {
+      margin-top: 48px; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    }
+    .oob-film {
+      border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
+      background: var(--card); aspect-ratio: 16 / 9; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .oob-film video { width: 100%; height: 100%; object-fit: cover; }
+    .oob-film .film-label {
+      font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted);
+      text-align: center; padding: 20px;
+    }
+
+    /* Resultat-siffror */
+    .oob-stats {
+      margin-top: 56px; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;
+    }
+    .oob-stat {
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 36px 28px; background: rgba(30,14,6,0.6);
+    }
+    .oob-stat-val {
+      font-size: clamp(48px, 6vw, 72px); font-weight: 800;
+      letter-spacing: -2px; color: var(--o1); display: block; margin-bottom: 10px;
+    }
+    .oob-stat.green .oob-stat-val { color: var(--oob-green); }
+    .oob-stat-lbl { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted2); line-height: 1.5; }
+
+    /* Problem/skifte */
+    .oob-x-list { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; max-width: 560px; }
+    .oob-x-item {
+      display: flex; align-items: center; gap: 18px;
+      font-size: 19px; color: var(--muted2);
+      border-bottom: 1px solid rgba(255,140,66,0.1); padding-bottom: 18px;
+    }
+    .oob-x-item span.x { color: var(--o2); font-weight: 800; font-size: 22px; }
+    .oob-shift {
+      margin-top: 56px; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700;
+      letter-spacing: -1px; line-height: 1.25; color: var(--white); max-width: 760px;
+    }
+    .oob-shift em { font-style: normal; color: var(--o1); }
+
+    /* Steg */
+    .oob-steps { margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .oob-step { border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; background: var(--card); }
+    .oob-step .num { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--o1); display: block; margin-bottom: 16px; }
+    .oob-step h3 { font-size: 21px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .oob-step p { font-size: 15px; line-height: 1.6; color: var(--muted2); }
+
+    /* CTR-jämförelse */
+    .oob-bars { margin-top: 56px; max-width: 640px; display: flex; flex-direction: column; gap: 28px; }
+    .oob-bar-row .bar-top { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .oob-bar-row .bar-name { font-size: 15px; color: var(--muted2); }
+    .oob-bar-row .bar-val { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; color: var(--white); }
+    .oob-bar-track { height: 14px; border-radius: 100px; background: rgba(255,248,243,0.07); overflow: hidden; }
+    .oob-bar-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.2s cubic-bezier(.22,.61,.36,1); }
+    .oob-bar-fill.hot { background: linear-gradient(90deg, var(--o2), var(--o1)); }
+    .oob-bar-fill.cold { background: rgba(255,248,243,0.25); }
+    .oob-bar-note { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+
+    /* Moduler */
+    .oob-mods { margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+    .oob-mod { border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px; background: rgba(30,14,6,0.5); }
+    .oob-mod h4 { font-size: 17px; font-weight: 700; color: var(--o1); margin-bottom: 10px; }
+    .oob-mod p { font-size: 14px; line-height: 1.55; color: var(--muted2); }
+
+    /* CTA */
+    .oob-final {
+      text-align: center; padding: 120px 40px;
+      background: linear-gradient(180deg, transparent, rgba(232,82,10,0.08));
+    }
+    .oob-final .oob-title { margin-left: auto; margin-right: auto; }
+    .oob-final .oob-lead { margin: 0 auto 44px; }
+    .oob-final-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .oob-footer {
+      padding: 40px; text-align: center;
+      font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted);
+      border-top: 1px solid rgba(255,140,66,0.1);
+    }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .oob-nav { padding: 14px 20px; }
+      .oob-nav-x, .oob-nav .oob-logo { display: none; }
+      .oob-hero { padding: 120px 24px 60px; }
+      .oob-section { padding: 64px 24px; }
+      .oob-final { padding: 80px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="oob-nav">
+  <div class="oob-nav-brand">
+    <img src="../assets/weq-logo.png" alt="WEQ">
+    <span class="oob-nav-x">×</span>
+    <img class="oob-logo" src="../assets/oob-logo-white.svg" alt="ÖoB">
+  </div>
+  <a class="oob-cta" href="#kontakt">Hör av dig →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="oob-hero">
+  <span class="oob-hello reveal">Hej Charlotte 👋</span>
+  <h1 class="oob-h1 reveal">Det här är gjort<br><em>för dig.</em></h1>
+  <p class="lead reveal">Precis som varje video WEQ skickar är gjord för exakt en mottagare. Du tittar just nu på produkten — en upplevelse byggd för en enda person. Scrolla ner så visar jag vad ÖoB och WEQ redan har gjort tillsammans, och vad vi kan göra härnäst.</p>
+  <p class="lead reveal" style="font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);">/ Joaquim, WEQ</p>
+</header>
+
+<!-- ── VIDEOHÄLSNING ── -->
+<section class="oob-section">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">01 — Från mig till dig</span>
+    <h2 class="oob-title reveal">Två minuter,<br>istället för ett mejl.</h2>
+    <div class="oob-video-card reveal" id="greeting-slot">
+      <!-- När videohälsningen är klar: ersätt platshållaren med
+           <video controls poster="..."><source src="../assets/oob-halsning.mp4" type="video/mp4"></video> -->
+      <div class="oob-video-ph">
+        <div class="ph-play"></div>
+        <p>Joaquims hälsning — kommer strax</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VAD VI GJORT ── -->
+<section class="oob-section">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">02 — Vad vi redan gjort ihop</span>
+    <h2 class="oob-title reveal">ÖoB har redan sett<br>det fungera.</h2>
+    <p class="oob-lead reveal">”Vi saknar dig” till kunder som varit inaktiva i sex månader. ”Grattis på födelsedagen.” ”Du är vår bästa kund.” Varje film med mottagarens namn, köphistorik och ett erbjudande byggt för just dem — rakt i fickan via SMS.</p>
+
+    <div class="oob-stats">
+      <div class="oob-stat reveal"><span class="oob-stat-val" data-target="82" data-suffix="%">82%</span><span class="oob-stat-lbl">Öppningsfrekvens på SMS-utskick</span></div>
+      <div class="oob-stat reveal"><span class="oob-stat-val" data-target="32" data-suffix="%">32%</span><span class="oob-stat-lbl">Klickfrekvens (CTR) på videon</span></div>
+      <div class="oob-stat green reveal"><span class="oob-stat-val" data-target="80" data-prefix="+" data-suffix="%">+80%</span><span class="oob-stat-lbl">Fler klick jämfört med generisk video</span></div>
+    </div>
+
+    <div class="oob-films-grid">
+      <!-- När filmerna är klara: ersätt platshållarna med
+           <video controls preload="metadata"><source src="../assets/oob-film-1.mp4" type="video/mp4"></video> -->
+      <div class="oob-film reveal"><span class="film-label">Film: ”Vi saknar dig”<br>— kommer strax</span></div>
+      <div class="oob-film reveal"><span class="film-label">Film: ”Grattis på födelsedagen”<br>— kommer strax</span></div>
+      <div class="oob-film reveal"><span class="film-label">Film: ”Du är vår bästa kund”<br>— kommer strax</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEMET & SKIFTET ── -->
+<section class="oob-section">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">03 — Varför det fungerar</span>
+    <h2 class="oob-title reveal">Det mesta i CRM-flödet<br>ignoreras.</h2>
+    <div class="oob-x-list">
+      <div class="oob-x-item reveal"><span class="x">✕</span> Samma budskap till alla</div>
+      <div class="oob-x-item reveal"><span class="x">✕</span> Samma upplevelse varje gång</div>
+      <div class="oob-x-item reveal"><span class="x">✕</span> Samma resultat — era bästa kunder känner sig som ett nummer</div>
+    </div>
+    <p class="oob-shift reveal">Personaliserad video handlar inte om engagemang. <em>Det handlar om intäkter.</em> När kunder känner sig sedda stannar de kvar.</p>
+  </div>
+</section>
+
+<!-- ── TRE STEG ── -->
+<section class="oob-section">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">04 — Så funkar det</span>
+    <h2 class="oob-title reveal">Från er data till<br>kundens skärm. Tre steg.</h2>
+    <div class="oob-steps">
+      <div class="oob-step reveal">
+        <span class="num">STEG 01</span>
+        <h3>Koppla er data</h3>
+        <p>CRM, e-handel eller SMS-system. WEQ kopplas mot er befintliga stack och hämtar rätt data för varje mottagare.</p>
+      </div>
+      <div class="oob-step reveal">
+        <span class="num">STEG 02</span>
+        <h3>Rendera varje version</h3>
+        <p>En template. WEQ renderar en unik video till varje kund — automatiskt, i skala.</p>
+      </div>
+      <div class="oob-step reveal">
+        <span class="num">STEG 03</span>
+        <h3>Skicka &amp; mät</h3>
+        <p>Leverans via SMS, e-post eller push. Följ öppningar, klick och konvertering i realtid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SIFFRORNA ── -->
+<section class="oob-section">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">05 — Siffrorna</span>
+    <h2 class="oob-title reveal">Personaliserad video nästan<br>dubblar klickfrekvensen.</h2>
+    <div class="oob-bars">
+      <div class="oob-bar-row reveal">
+        <div class="bar-top"><span class="bar-name">Personaliserad video</span><span class="bar-val">29%</span></div>
+        <div class="oob-bar-track"><div class="oob-bar-fill hot" data-width="100"></div></div>
+      </div>
+      <div class="oob-bar-row reveal">
+        <div class="bar-top"><span class="bar-name">Generisk video</span><span class="bar-val">16%</span></div>
+        <div class="oob-bar-track"><div class="oob-bar-fill cold" data-width="55"></div></div>
+      </div>
+      <span class="oob-bar-note reveal">CTR · Personaliserad vs. generisk CRM-video</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODULER ── -->
+<section class="oob-section">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">06 — Systemet</span>
+    <h2 class="oob-title reveal">Fem moduler.<br>En personlig relation.</h2>
+    <div class="oob-mods">
+      <div class="oob-mod reveal"><h4>Loyalty</h4><p>Belöna era bästa kunder med video kopplad till beteende och poäng.</p></div>
+      <div class="oob-mod reveal"><h4>LeadBoost</h4><p>Konvertera leads snabbare med skräddarsydda, automatiserade videopitchar.</p></div>
+      <div class="oob-mod reveal"><h4>Welcome</h4><p>Ge nya kunder ett första intryck de kommer ihåg.</p></div>
+      <div class="oob-mod reveal"><h4>Upsell</h4><p>Visa rätt produkt för rätt kund — baserat på riktig data.</p></div>
+      <div class="oob-mod reveal"><h4>Feedback</h4><p>Be om input med personlig video som folk faktiskt svarar på.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="oob-final" id="kontakt">
+  <span class="oob-eyebrow reveal">07 — Nästa steg</span>
+  <h2 class="oob-title reveal">Ska vi göra det<br>personligt igen?</h2>
+  <p class="oob-lead reveal">Ni har redan datan, kunderna och resultaten från förra gången. Jag visar gärna vad nästa kampanj kan göra — 30 minuter räcker.</p>
+  <div class="oob-final-btns reveal">
+    <a class="btn-primary" href="mailto:joaquim@cxdesign.se?subject=WEQ%20%C3%97%20%C3%96oB%20%E2%80%94%20vi%20tar%20ett%20m%C3%B6te">Boka 30 min med mig</a>
+    <a class="btn-ghost" href="https://datadrivenvideo.se">Se hela WEQ →</a>
+  </div>
+</section>
+
+<footer class="oob-footer">
+  Byggd för Charlotte Ekerling · WEQ — datadrivenvideo.se · © 2026
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Räkna upp siffror
+  const counters = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.target;
+      const prefix = el.dataset.prefix || '', suffix = el.dataset.suffix || '';
+      const t0 = performance.now(), dur = 1400;
+      const tick = (t) => {
+        const p = Math.min((t - t0) / dur, 1);
+        el.textContent = prefix + Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      counters.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.oob-stat-val[data-target]').forEach(el => counters.observe(el));
+
+  // Staplar
+  const bars = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.width = e.target.dataset.width + '%';
+      bars.unobserve(e.target);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.oob-bar-fill').forEach(el => bars.observe(el));
+</script>
+
+</body>
+</html>
