@@ -47,9 +47,47 @@
   }
   .statusbar .sb-icons { display: flex; gap: 5px; align-items: center; }
 
-  /* Skärmar */
-  .scr { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .4s ease; overflow-y: auto; }
-  .scr.on { opacity: 1; pointer-events: auto; }
+  /* Skärmar — slide & fade mellan steg */
+  .scr {
+    position: absolute; inset: 0; opacity: 0; pointer-events: none;
+    overflow-y: auto; transform: translateX(9%) scale(0.985);
+    transition: opacity .38s ease, transform .5s cubic-bezier(.22,1.1,.36,1);
+  }
+  .scr.on { opacity: 1; pointer-events: auto; transform: translateX(0) scale(1); }
+  .scr.leaving {
+    opacity: 0; transform: translateX(-7%) scale(0.985);
+    transition: opacity .3s ease, transform .35s ease;
+  }
+
+  /* Innehållet landar ett element i taget */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .scr.on .q-video   { animation: rise .5s cubic-bezier(.22,1,.36,1) .08s both; }
+  .scr.on .q-title   { animation: rise .5s cubic-bezier(.22,1,.36,1) .18s both; }
+  .scr.on .q-sub     { animation: rise .5s cubic-bezier(.22,1,.36,1) .24s both; }
+  .scr.on .q-opt:nth-child(1) { animation: rise .45s cubic-bezier(.22,1,.36,1) .28s both; }
+  .scr.on .q-opt:nth-child(2) { animation: rise .45s cubic-bezier(.22,1,.36,1) .36s both; }
+  .scr.on .q-opt:nth-child(3) { animation: rise .45s cubic-bezier(.22,1,.36,1) .44s both; }
+  .scr.on .q-opt:nth-child(4) { animation: rise .45s cubic-bezier(.22,1,.36,1) .52s both; }
+  .scr.on .video-box   { animation: rise .5s cubic-bezier(.22,1,.36,1) .08s both; }
+  .scr.on .offer-card  { animation: rise .5s cubic-bezier(.22,1,.36,1) .2s both; }
+  .scr.on .btn-oob     { animation: rise .45s cubic-bezier(.22,1,.36,1) .32s both; }
+  .scr.on .thanks .check    { animation: pop .55s cubic-bezier(.2,1.4,.4,1) .1s both; }
+  .scr.on .thanks h2        { animation: rise .5s cubic-bezier(.22,1,.36,1) .22s both; }
+  .scr.on .thanks p         { animation: rise .5s cubic-bezier(.22,1,.36,1) .3s both; }
+  .scr.on .thanks .small    { animation: rise .5s cubic-bezier(.22,1,.36,1) .46s both; }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.4); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* Progressbaren fylls när skärmen visas */
+  .scr .q-fill { width: 0 !important; transition: width .7s cubic-bezier(.22,1,.36,1) .25s; }
+  .scr.on #f1 { width: 33% !important; }
+  .scr.on #f2 { width: 66% !important; }
+  .scr.on #f3 { width: 100% !important; }
 
   /* SMS-skärmen */
   #scrSms { background: #fff; display: flex; flex-direction: column; }
@@ -270,7 +308,7 @@
       </div>
       <div class="oob-content">
         <div class="q-progress-wrap"><span class="q-count">Fråga 1 av 3</span><span class="q-count">⏱ ca 30 sek</span></div>
-        <div class="q-track"><div class="q-fill" style="width:33%"></div></div>
+        <div class="q-track"><div class="q-fill" id="f1" style="width:33%"></div></div>
         <div class="q-video" onclick="playQ(this)">
           <div class="qv-play"></div>
           <div class="qv-hint">Sara ställer frågan</div>
@@ -293,7 +331,7 @@
       </div>
       <div class="oob-content">
         <div class="q-progress-wrap"><span class="q-count">Fråga 2 av 3</span></div>
-        <div class="q-track"><div class="q-fill" style="width:66%"></div></div>
+        <div class="q-track"><div class="q-fill" id="f2" style="width:66%"></div></div>
         <div class="q-video" onclick="playQ(this)">
           <div class="qv-play"></div>
           <div class="qv-hint">Jonas ställer frågan</div>
@@ -316,7 +354,7 @@
       </div>
       <div class="oob-content">
         <div class="q-progress-wrap"><span class="q-count">Fråga 3 av 3</span></div>
-        <div class="q-track"><div class="q-fill" style="width:100%"></div></div>
+        <div class="q-track"><div class="q-fill" id="f3" style="width:100%"></div></div>
         <div class="q-video" onclick="playQ(this)">
           <div class="qv-play"></div>
           <div class="qv-hint">Amina ställer frågan</div>
@@ -363,7 +401,12 @@
 
   var sb = document.getElementById('statusbar');
   function go(id){
-    document.querySelectorAll('.scr').forEach(function(s){ s.classList.remove('on'); });
+    var cur = document.querySelector('.scr.on');
+    if (cur) {
+      cur.classList.remove('on');
+      cur.classList.add('leaving');
+      setTimeout(function(){ cur.classList.remove('leaving'); }, 400);
+    }
     var el = document.getElementById(id);
     el.classList.add('on');
     el.scrollTop = 0;
