@@ -18,8 +18,12 @@
       background: rgba(13,8,4,0.85); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,140,66,0.12);
     }
-    .oob-nav-brand { display: flex; align-items: center; gap: 14px; }
-    .oob-nav-brand img { height: 36px; display: block; }
+    .oob-nav-brand { display: flex; align-items: center; gap: 12px; }
+    .oob-nav-brand svg { display: block; flex: 0 0 auto; }
+    .oob-nav-weq {
+      font-size: 21px; font-weight: 800; letter-spacing: -0.5px;
+      color: var(--white); line-height: 1;
+    }
     .oob-nav-x { font-family: 'Space Mono', monospace; color: var(--muted); font-size: 14px; }
     .oob-nav-brand .oob-logo { height: 26px; }
     .oob-nav a.oob-cta {
@@ -373,7 +377,23 @@
 
 <nav class="oob-nav">
   <div class="oob-nav-brand">
-    <img src="../assets/weq-logo.png" alt="WEQ">
+    <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="wMarkOob" x1="14" y1="14" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#7A2400"/>
+          <stop offset="0.5" stop-color="#E8520A"/>
+          <stop offset="1" stop-color="#FF8C42"/>
+        </linearGradient>
+        <mask id="wMaskOob">
+          <rect width="100" height="100" fill="black"/>
+          <rect x="18" y="18" width="46" height="46" fill="white"/>
+          <rect x="36" y="36" width="46" height="46" fill="white"/>
+          <path d="M41 37 L63 50 L41 63 Z" fill="black"/>
+        </mask>
+      </defs>
+      <rect width="100" height="100" fill="url(#wMarkOob)" mask="url(#wMaskOob)"/>
+    </svg>
+    <span class="oob-nav-weq">WEQ</span>
     <span class="oob-nav-x">×</span>
     <img class="oob-logo" src="../assets/oob-logo-white.svg" alt="ÖoB">
   </div>
@@ -452,9 +472,9 @@
           <div class="weq-ind weq-ind-dark"></div>
         </div>
 
-        <!-- SLUTBILD -->
+        <!-- SLUTBILD: ÖoB:s riktiga personliga landningssida -->
         <div class="weq-scr weq-hidden" id="weqEnd">
-          <img src="../assets/weq-slutbild.png" alt="Personlig video från ÖoB" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top">
+          <img src="../assets/oob/oob-slutbild.jpg" alt="ÖoB:s personliga landningssida — Tryck på play" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
 
         <div class="weq-phone-notch"></div>
