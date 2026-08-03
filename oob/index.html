@@ -994,10 +994,12 @@
 
     function run(){
       reset();
+      // Nollställ UTAN svart mellanrum: sida 1 sätts på plats direkt, sen återställs transitions
       pages.forEach(function(p){ p.style.transition='none'; p.classList.remove('on','out'); });
+      pages[0].classList.add('on');
       void pages[0].offsetWidth;
       pages.forEach(function(p){ p.style.transition=''; });
-      show(0); fillProg('svProg1', 2.4);
+      fillProg('svProg1', 2.4);
       at(3200, function(){ document.getElementById('svO1').classList.add('sel'); });
       at(4000, function(){ document.getElementById('svNext1').classList.add('pulse'); });
       at(5800, function(){ show(1); fillProg('svProg2', 2.4); });
