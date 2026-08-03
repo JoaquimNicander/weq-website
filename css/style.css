@@ -809,6 +809,23 @@ footer {
   letter-spacing: 2px;
 }
 
+.footer-admin {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-admin a {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.6;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-admin a:hover { opacity: 1; }
+
 /* ── MEDIA SECTION ── */
 .media-grid {
   display: grid;
