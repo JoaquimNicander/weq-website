@@ -115,7 +115,25 @@
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 30px 70px rgba(0,0,0,0.35);
     }
-    .oob-film video { width: 100%; height: 100%; object-fit: cover; }
+    .oob-film video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+
+    /* Galleri: digitalt möter fysiskt */
+    .oob-gallery {
+      margin-top: 48px; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;
+    }
+    .oob-gallery figure { margin: 0; }
+    .oob-gallery img {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover;
+      border-radius: 16px; border: 1px solid var(--border);
+      box-shadow: 0 20px 44px rgba(0,0,0,0.3); display: block;
+    }
+    .oob-gallery figcaption {
+      margin-top: 10px; font-family: 'Space Mono', monospace;
+      font-size: 12px; color: var(--muted2); line-height: 1.45;
+    }
+    .oob-section.cream .oob-gallery img { border-color: rgba(26,13,6,0.08); box-shadow: 0 20px 44px rgba(26,13,6,0.1); }
+    .oob-section.cream .oob-gallery figcaption { color: rgba(26,13,6,0.6); }
     .oob-film .film-label {
       font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted);
       text-align: center; padding: 20px;
@@ -186,6 +204,7 @@
     /* Moduler */
     .oob-mods { margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
     .oob-mod { border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px; background: rgba(30,14,6,0.5); }
+    .oob-mod img { width: 52px; height: 52px; object-fit: contain; display: block; margin-bottom: 16px; }
     .oob-mod h4 { font-size: 17px; font-weight: 700; color: var(--o1); margin-bottom: 10px; }
     .oob-mod p { font-size: 14px; line-height: 1.55; color: var(--muted2); }
 
@@ -466,7 +485,7 @@
   <div class="oob-inner">
     <span class="oob-eyebrow reveal">02 — Vad vi redan gjort ihop</span>
     <h2 class="oob-title reveal">ÖoB har redan sett<br>det fungera.</h2>
-    <p class="oob-lead reveal">”Vi saknar dig” till kunder som varit inaktiva i sex månader. ”Grattis på födelsedagen.” ”Du är vår bästa kund.” Varje film med mottagarens namn, köphistorik och ett erbjudande byggt för just dem — rakt i fickan via SMS.</p>
+    <p class="oob-lead reveal">”Vi saknar dig” till kunder som varit inaktiva i sex månader. ”Grattis på födelsedagen.” Filmerna spelades in i era egna varuhus, med er egen personal framför kameran — och renderades sedan i tusentals versioner, en för varje mottagare. Här är fyra av dem.</p>
 
     <div class="oob-stats">
       <div class="oob-stat reveal"><span class="oob-stat-val" data-target="82" data-suffix="%">82%</span><span class="oob-stat-lbl">Öppningsfrekvens på SMS-utskick</span></div>
@@ -475,53 +494,98 @@
     </div>
 
     <div class="oob-film-rows">
-      <!-- När filmerna är klara: ersätt platshållar-diven i varje .oob-film med
-           <video controls preload="metadata"><source src="../assets/oob-film-1.mp4" type="video/mp4"></video> -->
 
       <div class="oob-film-row reveal">
         <div class="oob-film-txt">
           <span class="film-num">FILM 01</span>
-          <h3>”Vi saknar dig”</h3>
-          <p>Kunder som inte handlat på över sex månader fick en personlig video — med sitt namn och ett erbjudande byggt på sin egen köphistorik. Sovande kunder som annars aldrig öppnar ett nyhetsbrev klickade sig tillbaka till butiken.</p>
-          <span class="film-stat">→ 32% klickfrekvens på videon</span>
+          <h3>Personalen som<br>frågar på riktigt</h3>
+          <p>Inte en speaker-röst, inte en skådespelare — er egen personal, i er egen butik. ”…är det något vi har missat?” Frågan kommer från någon kunden känner igen, och det är därför den fungerar.</p>
+          <span class="film-stat">→ Butiken blir avsändare, inte marknadsavdelningen</span>
         </div>
         <div class="oob-film">
-          <div class="film-label"><div class="ph-play"></div>Filmen läggs in här — kommer strax</div>
+          <video controls preload="none" playsinline poster="../assets/oob/oob-film-1-poster.jpg">
+            <source src="../assets/oob/oob-film-1.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
 
       <div class="oob-film-row reveal">
         <div class="oob-film-txt">
           <span class="film-num">FILM 02</span>
-          <h3>”Grattis på födelsedagen”</h3>
-          <p>På födelsedagen landade en personlig gratulation i fickan — med namn och en present från ÖoB. Ett meddelande som känns, inte marknadsföring. Det är den här typen av ögonblick som bygger lojalitet på riktigt.</p>
-          <span class="film-stat">→ Personlig hälsning · automatiskt till varje kund</span>
+          <h3>”Asså inte du…<br>Men DU där!”</h3>
+          <p>Ögonblicket när kunden fattar att videon faktiskt pratar med just honom. Det är hela skillnaden mot ett vanligt utskick: från något man scrollar förbi till något man tittar klart på — och visar för någon annan.</p>
+          <span class="film-stat">→ Personlig video, inte massutskick</span>
         </div>
         <div class="oob-film">
-          <div class="film-label"><div class="ph-play"></div>Filmen läggs in här — kommer strax</div>
+          <video controls preload="none" playsinline poster="../assets/oob/oob-film-2-poster.jpg">
+            <source src="../assets/oob/oob-film-2.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
 
       <div class="oob-film-row reveal">
         <div class="oob-film-txt">
           <span class="film-num">FILM 03</span>
-          <h3>”Du är vår bästa kund”</h3>
-          <p>De mest lojala kunderna fick ett tack — personligt, med belöning kopplad till vad de faktiskt handlat. Att bli sedd som stamkund är skillnaden mellan att stanna och att glida iväg till konkurrenten.</p>
-          <span class="film-stat">→ Belöning baserad på riktig köpdata</span>
+          <h3>”Men hej,<br>där är du ju!”</h3>
+          <p>”Vi saknar dig”-kampanjen till kunder som inte handlat på över sex månader. Igenkänningen gör jobbet: en personlig hälsning från butiken väcker liv i kunder som slutat öppna nyhetsbreven för länge sedan.</p>
+          <span class="film-stat">→ 32% klickfrekvens (CTR) på videon</span>
         </div>
         <div class="oob-film">
-          <div class="film-label"><div class="ph-play"></div>Filmen läggs in här — kommer strax</div>
+          <video controls preload="none" playsinline poster="../assets/oob/oob-film-3-poster.jpg">
+            <source src="../assets/oob/oob-film-3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="oob-film-row reveal">
+        <div class="oob-film-txt">
+          <span class="film-num">FILM 04</span>
+          <h3>Ambassadören<br>i varuhuset</h3>
+          <p>Medarbetare som ansikte utåt — samma person, samma tonläge, men budskapet anpassat efter vem som tar emot det. Det skalar utan att tappa känslan av ett samtal mellan två människor.</p>
+          <span class="film-stat">→ En inspelning · tusentals personliga versioner</span>
+        </div>
+        <div class="oob-film">
+          <video controls preload="none" playsinline poster="../assets/oob/oob-film-4-poster.jpg">
+            <source src="../assets/oob/oob-film-4.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PROBLEMET & SKIFTET ── -->
+<!-- ── DIGITALT MÖTER FYSISKT ── -->
 <section class="oob-section">
   <div class="section-bg-grid"></div>
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">03 — Varför det fungerar</span>
+    <span class="oob-eyebrow reveal">03 — Hela vägen ut i butiken</span>
+    <h2 class="oob-title reveal">Videon slutade inte<br>i telefonen.</h2>
+    <p class="oob-lead reveal">Det starkaste med ÖoB-kampanjen var att den tog steget ut i verkligheten. Kunden fick sitt personliga meddelande i mobilen — och möttes sedan av sitt eget namn i varuhuset. Digitalt och fysiskt som en och samma upplevelse, undertecknad av personalen på plats.</p>
+    <div class="oob-gallery">
+      <figure class="reveal">
+        <img src="../assets/oob/oob-lasskarm.jpg" alt="Notis på låsskärmen: GLÖM INTE! Anton fyller år" loading="lazy">
+        <figcaption>Påminnelsen dyker upp på låsskärmen</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="../assets/oob/oob-landing.jpg" alt="ÖoB:s personliga landningssida med Tryck på play" loading="lazy">
+        <figcaption>Personlig sida — ”Personalen på ÖoB i Ängelholm”</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="../assets/oob/oob-affisch.jpg" alt="Affisch i varuhuset: GRATTIS Anton" loading="lazy">
+        <figcaption>Namnet på väggen i varuhuset</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="../assets/oob/oob-ballong.jpg" alt="Ballong i taket: GRATTIS LENNART" loading="lazy">
+        <figcaption>…och i taket när kunden kom in</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEMET & SKIFTET ── -->
+<section class="oob-section cream">
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">04 — Varför det fungerar</span>
     <h2 class="oob-title reveal">Det mesta i CRM-flödet<br>ignoreras.</h2>
     <div class="oob-x-list">
       <div class="oob-x-item reveal"><span class="x">✕</span> Samma budskap till alla</div>
@@ -533,9 +597,10 @@
 </section>
 
 <!-- ── TRE STEG ── -->
-<section class="oob-section cream">
+<section class="oob-section">
+  <div class="section-bg-grid"></div>
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">04 — Så funkar det</span>
+    <span class="oob-eyebrow reveal">05 — Så funkar det</span>
     <h2 class="oob-title reveal">Från er data till<br>kundens skärm. Tre steg.</h2>
     <div class="oob-steps">
       <div class="oob-step reveal">
@@ -558,10 +623,9 @@
 </section>
 
 <!-- ── SIFFRORNA ── -->
-<section class="oob-section">
-  <div class="section-bg-grid"></div>
+<section class="oob-section cream">
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">05 — Siffrorna</span>
+    <span class="oob-eyebrow reveal">06 — Siffrorna</span>
     <h2 class="oob-title reveal">Personaliserad video nästan<br>dubblar klickfrekvensen.</h2>
     <div class="oob-bars">
       <div class="oob-bar-row reveal">
@@ -578,16 +642,17 @@
 </section>
 
 <!-- ── MODULER ── -->
-<section class="oob-section cream">
+<section class="oob-section">
+  <div class="section-bg-grid"></div>
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">06 — Systemet</span>
+    <span class="oob-eyebrow reveal">07 — Systemet</span>
     <h2 class="oob-title reveal">Fem moduler.<br>En personlig relation.</h2>
     <div class="oob-mods">
-      <div class="oob-mod reveal"><h4>Loyalty</h4><p>Belöna era bästa kunder med video kopplad till beteende och poäng.</p></div>
-      <div class="oob-mod reveal"><h4>LeadBoost</h4><p>Konvertera leads snabbare med skräddarsydda, automatiserade videopitchar.</p></div>
-      <div class="oob-mod reveal"><h4>Welcome</h4><p>Ge nya kunder ett första intryck de kommer ihåg.</p></div>
-      <div class="oob-mod reveal"><h4>Upsell</h4><p>Visa rätt produkt för rätt kund — baserat på riktig data.</p></div>
-      <div class="oob-mod reveal"><h4>Feedback</h4><p>Be om input med personlig video som folk faktiskt svarar på.</p></div>
+      <div class="oob-mod reveal"><img src="../assets/oob/loyalty-white.png" alt="" loading="lazy"><h4>Loyalty</h4><p>Belöna era bästa kunder med video kopplad till beteende och poäng.</p></div>
+      <div class="oob-mod reveal"><img src="../assets/oob/leadboost-white.png" alt="" loading="lazy"><h4>LeadBoost</h4><p>Konvertera leads snabbare med skräddarsydda, automatiserade videopitchar.</p></div>
+      <div class="oob-mod reveal"><img src="../assets/oob/welcome-white.png" alt="" loading="lazy"><h4>Welcome</h4><p>Ge nya kunder ett första intryck de kommer ihåg.</p></div>
+      <div class="oob-mod reveal"><img src="../assets/oob/upsell-white.png" alt="" loading="lazy"><h4>Upsell</h4><p>Visa rätt produkt för rätt kund — baserat på riktig data.</p></div>
+      <div class="oob-mod reveal"><img src="../assets/oob/feedback-white.png" alt="" loading="lazy"><h4>Feedback</h4><p>Be om input med personlig video som folk faktiskt svarar på.</p></div>
     </div>
   </div>
 </section>
@@ -596,7 +661,7 @@
 <section class="oob-final" id="kontakt">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <span class="oob-eyebrow reveal">07 — Nästa steg</span>
+  <span class="oob-eyebrow reveal">08 — Nästa steg</span>
   <h2 class="oob-title reveal">Ska vi göra det<br>personligt igen?</h2>
   <p class="oob-lead reveal">Ni har redan datan, kunderna och resultaten från förra gången. Jag visar gärna vad nästa kampanj kan göra — 30 minuter räcker.</p>
   <div class="oob-final-btns reveal">
