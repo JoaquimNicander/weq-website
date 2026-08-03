@@ -9,7 +9,7 @@
   <meta property="og:description" content="En personlig genomgång av vad WEQ och ÖoB kan göra tillsammans — igen.">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    :root { --oob-green: #00A650; }
+    :root { --oob-green: #00A650; --oob-green2: #3A6462; }
 
     .oob-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -240,6 +240,135 @@
     }
     .oob-section.cream .oob-mod h4 { color: var(--o2); }
     .oob-section.cream .oob-mod p { color: rgba(26,13,6,0.68); }
+
+    /* ── Marknadsundersökning: vinklad telefon ── */
+    .oob-section.brand {
+      background: linear-gradient(168deg, #FF8030 0%, #E8520A 28%, #B83A00 60%, #5A1800 100%);
+      overflow: hidden;
+    }
+    .oob-section.brand .oob-inner { position: relative; z-index: 1; }
+    .oob-section.brand .oob-eyebrow { color: rgba(255,248,243,0.92); }
+    .oob-section.brand .oob-title { color: var(--white); }
+    .oob-section.brand .oob-lead { color: rgba(255,248,243,0.88); }
+
+    .sv-split {
+      margin-top: 52px; display: grid;
+      grid-template-columns: 340px 1fr; gap: clamp(32px, 6vw, 80px);
+      align-items: center;
+    }
+    .sv-stage { perspective: 1500px; display: flex; justify-content: center; }
+    .sv-points { display: flex; flex-direction: column; gap: 26px; }
+    .sv-point h4 {
+      font-size: 19px; font-weight: 700; color: var(--white);
+      margin-bottom: 8px; display: flex; align-items: center; gap: 10px;
+    }
+    .sv-point h4 span {
+      font-family: 'Space Mono', monospace; font-size: 12px;
+      background: rgba(0,0,0,0.22); border-radius: 100px;
+      padding: 4px 11px; font-weight: 400;
+    }
+    .sv-point p { font-size: 15.5px; line-height: 1.6; color: rgba(255,248,243,0.85); }
+
+    .sv-phone {
+      position: relative; width: 300px; height: 620px; flex: 0 0 auto;
+      background: #0a0a0b; border-radius: 52px; padding: 12px;
+      box-shadow: inset 0 0 0 2px #2a2a2c, 0 40px 90px rgba(60,15,0,0.5);
+      transform-style: preserve-3d;
+      animation: sv-float 6s ease-in-out infinite;
+    }
+    @keyframes sv-float {
+      0%,100% { transform: rotateY(18deg) rotateX(6deg) translateY(0); }
+      50%     { transform: rotateY(15deg) rotateX(5deg) translateY(-14px); }
+    }
+    .sv-phone::before {
+      content:''; position:absolute; top:22px; left:50%; transform:translateX(-50%);
+      width:100px; height:22px; background:#000; border-radius:14px; z-index:20;
+    }
+    .sv-side { position:absolute; background:#1c1c1e; border-radius:2px; }
+    .sv-side.a { right:-3px; top:130px; width:3px; height:56px; }
+    .sv-side.b { right:-3px; top:200px; width:3px; height:56px; }
+    .sv-side.c { left:-3px; top:160px; width:3px; height:80px; }
+
+    .sv-screen { position:relative; width:100%; height:100%; background:#000; border-radius:42px; overflow:hidden; }
+    .sv-status {
+      position:absolute; top:0; left:0; right:0; height:46px; z-index:15;
+      display:flex; align-items:flex-end; justify-content:space-between;
+      padding:0 26px 6px; color:#fff; font-size:12px; font-weight:600;
+    }
+    .sv-page {
+      position:absolute; inset:0; padding-top:46px; transform:translateX(100%); opacity:0;
+      transition:transform .55s cubic-bezier(.4,0,.2,1), opacity .35s ease; will-change:transform;
+    }
+    .sv-page.on { transform:translateX(0); opacity:1; }
+    .sv-page.out { transform:translateX(-100%); opacity:0; }
+
+    .sv-surv { background:#fff; height:100%; }
+    .sv-cube { display:block; height:22px; width:auto; }
+    .sv-film {
+      position:relative; width:100%; aspect-ratio:16/11;
+      background:#111 center/cover no-repeat;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .sv-film::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,.18); }
+    .sv-brandtag {
+      position:absolute; z-index:3; top:10px; left:10px; background:#fff;
+      border-radius:9px; padding:5px 8px; box-shadow:0 2px 8px rgba(0,0,0,.25);
+    }
+    .sv-play {
+      position:relative; z-index:2; width:56px; height:56px; border-radius:50%;
+      background:rgba(255,255,255,.94); display:flex; align-items:center; justify-content:center;
+      box-shadow:0 4px 16px rgba(0,0,0,.3);
+    }
+    .sv-play svg { width:22px; height:22px; margin-left:3px; }
+    .sv-prog { position:absolute; bottom:0; left:0; height:4px; background:var(--oob-green2); width:0; z-index:3; }
+    .sv-qbody { padding:15px 18px; }
+    .sv-qmeta { font-size:12px; color:#8a857c; margin-bottom:6px; }
+    .sv-qtext { font-size:15.5px; font-weight:600; color:#1a1a1a; margin-bottom:13px; line-height:1.35; }
+    .sv-opt {
+      border:1px solid #e2e5e4; border-radius:12px; padding:11px 14px; margin-bottom:8px;
+      font-size:14px; color:#333; transition:.3s;
+    }
+    .sv-opt.sel { border-color:var(--oob-green2); background:#e7f0ef; color:#254b48; font-weight:600; }
+    .sv-stars { display:flex; gap:8px; justify-content:center; margin:4px 0 16px; }
+    .sv-star { width:32px; height:32px; color:#dfe4e3; transition:color .3s, transform .3s; }
+    .sv-star.fill { color:var(--oob-green2); transform:scale(1.12); }
+    .sv-cta {
+      margin:2px 18px 0; width:calc(100% - 36px); background:var(--oob-green2); color:#fff;
+      border-radius:12px; padding:12px; font-size:15px; font-weight:600; text-align:center;
+    }
+    .sv-cta.pulse { animation:sv-pulse 1s ease-in-out infinite; }
+    @keyframes sv-pulse {
+      0%,100% { box-shadow:0 0 0 0 rgba(58,100,98,.5); }
+      50%     { box-shadow:0 0 0 10px rgba(58,100,98,0); }
+    }
+    .sv-done {
+      background:#fff; height:100%; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; padding:30px; text-align:center;
+    }
+    .sv-done .sv-cube { height:56px; margin-bottom:20px; }
+    .sv-check {
+      width:76px; height:76px; border-radius:50%; background:var(--oob-green2);
+      display:flex; align-items:center; justify-content:center;
+      transform:scale(0); transition:transform .5s cubic-bezier(.2,1.4,.4,1);
+    }
+    .sv-page.done.on .sv-check { transform:scale(1); }
+    .sv-check svg { width:34px; height:34px; }
+    .sv-done h3 { font-size:20px; color:#1a1a1a; margin:18px 0 8px; font-weight:800; }
+    .sv-done p { font-size:14px; color:#7a7873; max-width:220px; line-height:1.5; }
+    .sv-done .sv-tag {
+      margin-top:16px; font-family:'Space Mono',monospace; font-size:11px;
+      font-weight:700; letter-spacing:.08em; color:var(--oob-green2);
+    }
+    .sv-home {
+      position:absolute; bottom:9px; left:50%; transform:translateX(-50%);
+      width:120px; height:5px; border-radius:3px; background:#fff;
+      mix-blend-mode:difference; z-index:18;
+    }
+
+    @media (max-width: 900px) {
+      .sv-split { grid-template-columns: 1fr; gap: 48px; }
+      .sv-stage { order: 2; }
+    }
 
     /* CTA — orange final, som heron */
     .oob-final {
@@ -602,10 +731,117 @@
   </div>
 </section>
 
+<!-- ── MARKNADSUNDERSÖKNING I SAMMA UTSKICK ── -->
+<section class="oob-section brand">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="oob-inner">
+    <span class="oob-eyebrow reveal">04 — Marknadsundersökning på köpet</span>
+    <h2 class="oob-title reveal">Samma utskick.<br>Dubbel nytta.</h2>
+    <p class="oob-lead reveal">SMS:et är redan betalt och videon redan sedd. Då kan ni lika gärna passa på att fråga — direkt i samma flöde, medan kunden har er i handen. Personalen ställer frågan i film, kunden svarar med tummen. Tre frågor, tjugo sekunder.</p>
+
+    <div class="sv-split">
+      <div class="sv-stage reveal">
+        <div class="sv-phone">
+          <span class="sv-side a"></span><span class="sv-side b"></span><span class="sv-side c"></span>
+          <div class="sv-screen">
+            <div class="sv-status"><span id="svTime">09:41</span><span>▮▮▮ 100%</span></div>
+
+            <div class="sv-page" id="svP1">
+              <div class="sv-surv">
+                <div class="sv-film" style="background-image:url('../assets/oob/oob-survey-film.jpg')">
+                  <div class="sv-brandtag"><img class="sv-cube" src="../assets/oob/oob-logo-cube.png" alt="ÖoB"></div>
+                  <div class="sv-play"><svg viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg></div>
+                  <div class="sv-prog" id="svProg1"></div>
+                </div>
+                <div class="sv-qbody">
+                  <div class="sv-qmeta">Fråga 1 av 3</div>
+                  <div class="sv-qtext">Vad är viktigast för dig när du väljer butik?</div>
+                  <div class="sv-opt" id="svO1">Låga priser</div>
+                  <div class="sv-opt">Brett sortiment</div>
+                  <div class="sv-opt">Bra erbjudanden</div>
+                </div>
+                <div class="sv-cta" id="svNext1">Nästa →</div>
+              </div>
+            </div>
+
+            <div class="sv-page" id="svP2">
+              <div class="sv-surv">
+                <div class="sv-film" style="background-image:url('../assets/oob/oob-survey-film.jpg')">
+                  <div class="sv-brandtag"><img class="sv-cube" src="../assets/oob/oob-logo-cube.png" alt="ÖoB"></div>
+                  <div class="sv-play"><svg viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg></div>
+                  <div class="sv-prog" id="svProg2"></div>
+                </div>
+                <div class="sv-qbody">
+                  <div class="sv-qmeta">Fråga 2 av 3</div>
+                  <div class="sv-qtext">Vad skulle få dig att handla mer hos oss?</div>
+                  <div class="sv-opt" id="svO2">Personliga erbjudanden</div>
+                  <div class="sv-opt">Fler kampanjer</div>
+                  <div class="sv-opt">Nyheter i sortimentet</div>
+                </div>
+                <div class="sv-cta" id="svNext2">Nästa →</div>
+              </div>
+            </div>
+
+            <div class="sv-page" id="svP3">
+              <div class="sv-surv">
+                <div class="sv-film" style="background-image:url('../assets/oob/oob-survey-film.jpg')">
+                  <div class="sv-brandtag"><img class="sv-cube" src="../assets/oob/oob-logo-cube.png" alt="ÖoB"></div>
+                  <div class="sv-play"><svg viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg></div>
+                  <div class="sv-prog" id="svProg3"></div>
+                </div>
+                <div class="sv-qbody">
+                  <div class="sv-qmeta">Fråga 3 av 3</div>
+                  <div class="sv-qtext">Hur nöjd är du med ÖoB totalt sett?</div>
+                  <div class="sv-stars" id="svStars">
+                    <svg class="sv-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.6-5.7 5 1.7 7.4L12 18l-6.5 3.9 1.7-7.4-5.7-5 7.5-.6z"/></svg>
+                    <svg class="sv-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.6-5.7 5 1.7 7.4L12 18l-6.5 3.9 1.7-7.4-5.7-5 7.5-.6z"/></svg>
+                    <svg class="sv-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.6-5.7 5 1.7 7.4L12 18l-6.5 3.9 1.7-7.4-5.7-5 7.5-.6z"/></svg>
+                    <svg class="sv-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.6-5.7 5 1.7 7.4L12 18l-6.5 3.9 1.7-7.4-5.7-5 7.5-.6z"/></svg>
+                    <svg class="sv-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.6-5.7 5 1.7 7.4L12 18l-6.5 3.9 1.7-7.4-5.7-5 7.5-.6z"/></svg>
+                  </div>
+                  <div class="sv-cta" id="svSend3">Skicka svar</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sv-page done" id="svP4">
+              <div class="sv-done">
+                <img class="sv-cube" src="../assets/oob/oob-logo-cube.png" alt="ÖoB">
+                <div class="sv-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+                <h3>Tack Charlotte!</h3>
+                <p>Dina svar hjälper oss att ge dig mer av det du gillar.</p>
+                <div class="sv-tag">PRISET ÄR SKILLNADEN</div>
+              </div>
+            </div>
+
+            <div class="sv-home"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sv-points">
+        <div class="sv-point reveal">
+          <h4><span>01</span> Ingen extra kostnad per kund</h4>
+          <p>Utskicket är redan gjort och betalt. Undersökningen åker med i samma flöde — ni betalar inte för att fråga, ni får det på köpet.</p>
+        </div>
+        <div class="sv-point reveal">
+          <h4><span>02</span> Svarsfrekvens som slår enkäter</h4>
+          <p>En vanlig kundenkät får några få procent i svar. Här kommer frågan från en medarbetare kunden känner igen, mitt i en video de redan valt att titta på.</p>
+        </div>
+        <div class="sv-point reveal">
+          <h4><span>03</span> Svaren hamnar på kundkortet</h4>
+          <p>Varje svar är kopplat till rätt person från början — inga matchningslistor. Ni får veta vad kunderna <em>tycker</em>, inte bara vad de handlar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── PROBLEMET & SKIFTET ── -->
 <section class="oob-section cream">
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">04 — Varför det fungerar</span>
+    <span class="oob-eyebrow reveal">05 — Varför det fungerar</span>
     <h2 class="oob-title reveal">Det mesta i CRM-flödet<br>ignoreras.</h2>
     <div class="oob-x-list">
       <div class="oob-x-item reveal"><span class="x">✕</span> Samma budskap till alla</div>
@@ -620,7 +856,7 @@
 <section class="oob-section">
   <div class="section-bg-grid"></div>
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">05 — Så funkar det</span>
+    <span class="oob-eyebrow reveal">06 — Så funkar det</span>
     <h2 class="oob-title reveal">Från er data till<br>kundens skärm. Tre steg.</h2>
     <div class="oob-steps">
       <div class="oob-step reveal">
@@ -645,7 +881,7 @@
 <!-- ── SIFFRORNA ── -->
 <section class="oob-section cream">
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">06 — Siffrorna</span>
+    <span class="oob-eyebrow reveal">07 — Siffrorna</span>
     <h2 class="oob-title reveal">Personaliserad video nästan<br>dubblar klickfrekvensen.</h2>
     <div class="oob-bars">
       <div class="oob-bar-row reveal">
@@ -665,7 +901,7 @@
 <section class="oob-section">
   <div class="section-bg-grid"></div>
   <div class="oob-inner">
-    <span class="oob-eyebrow reveal">07 — Systemet</span>
+    <span class="oob-eyebrow reveal">08 — Systemet</span>
     <h2 class="oob-title reveal">Fem moduler.<br>En personlig relation.</h2>
     <div class="oob-mods">
       <div class="oob-mod reveal"><img src="../assets/oob/loyalty-white.png" alt="" loading="lazy"><h4>Loyalty</h4><p>Belöna era bästa kunder med video kopplad till beteende och poäng.</p></div>
@@ -681,7 +917,7 @@
 <section class="oob-final" id="kontakt">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <span class="oob-eyebrow reveal">08 — Nästa steg</span>
+  <span class="oob-eyebrow reveal">09 — Nästa steg</span>
   <h2 class="oob-title reveal">Ska vi göra det<br>personligt igen?</h2>
   <p class="oob-lead reveal">Ni har redan datan, kunderna och resultaten från förra gången. Jag visar gärna vad nästa kampanj kan göra — 30 minuter räcker.</p>
   <div class="oob-final-btns reveal">
@@ -728,6 +964,70 @@
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.oob-bar-fill').forEach(el => bars.observe(el));
+
+  // ── Marknadsundersökningens telefon ──
+  (function(){
+    var pages = ['svP1','svP2','svP3','svP4'].map(function(id){ return document.getElementById(id); });
+    if (pages.some(function(p){ return !p; })) return;
+    var done = pages[3], timers = [], started = false;
+
+    function show(i){
+      pages.forEach(function(p,k){
+        p.classList.toggle('on', k === i);
+        p.classList.toggle('out', k < i);
+      });
+    }
+    function fillProg(id, dur){
+      var p = document.getElementById(id); if (!p) return;
+      p.style.transition = 'none'; p.style.width = '0';
+      requestAnimationFrame(function(){
+        p.style.transition = 'width ' + dur + 's linear'; p.style.width = '100%';
+      });
+    }
+    function reset(){
+      ['svO1','svO2'].forEach(function(id){ var e=document.getElementById(id); if(e) e.classList.remove('sel'); });
+      ['svNext1','svNext2','svSend3'].forEach(function(id){ var e=document.getElementById(id); if(e) e.classList.remove('pulse'); });
+      document.querySelectorAll('#svStars .sv-star').forEach(function(s){ s.classList.remove('fill'); });
+      done.classList.remove('on');
+    }
+    function at(ms, fn){ timers.push(setTimeout(fn, ms)); }
+
+    function run(){
+      reset();
+      pages.forEach(function(p){ p.style.transition='none'; p.classList.remove('on','out'); });
+      void pages[0].offsetWidth;
+      pages.forEach(function(p){ p.style.transition=''; });
+      show(0); fillProg('svProg1', 2.4);
+      at(3200, function(){ document.getElementById('svO1').classList.add('sel'); });
+      at(4000, function(){ document.getElementById('svNext1').classList.add('pulse'); });
+      at(5800, function(){ show(1); fillProg('svProg2', 2.4); });
+      at(9000, function(){ document.getElementById('svO2').classList.add('sel'); });
+      at(9800, function(){ document.getElementById('svNext2').classList.add('pulse'); });
+      at(11600, function(){ show(2); fillProg('svProg3', 2.2); });
+      document.querySelectorAll('#svStars .sv-star').forEach(function(s,k){
+        at(13100 + k*240, function(){ s.classList.add('fill'); });
+      });
+      at(14800, function(){ document.getElementById('svSend3').classList.add('pulse'); });
+      at(16600, function(){ show(3); requestAnimationFrame(function(){ done.classList.add('on'); }); });
+      at(21200, function(){ timers.forEach(clearTimeout); timers.length = 0; run(); });
+    }
+
+    // Klocka i statusfältet
+    function svClock(){
+      var n = new Date(), e = document.getElementById('svTime');
+      if (e) e.textContent = String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+    }
+    svClock(); setInterval(svClock, 1000);
+
+    // Starta först när telefonen syns
+    var stage = document.querySelector('.sv-stage');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !started) { started = true; run(); io.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    if (stage) io.observe(stage);
+  })();
 
   // ── Telefonen ──
   (function(){
