@@ -476,7 +476,6 @@
     @keyframes weq-linkpulse { 0%,100% { background: transparent; } 40% { background: rgba(10,124,255,0.18); } }
     .weq-msg-input { padding: 10px 14px 18px; border-top: 0.5px solid #e3e3e8; }
     .weq-msg-input > div { height: 34px; border: 1px solid #d7d7dc; border-radius: 18px; }
-    #weqEnd { z-index: 6; background: #000; }
     .weq-phone-notch { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 110px; height: 16px; background: #000; border-radius: 0 0 11px 11px; z-index: 7; }
 
     @media (max-width: 1040px) {
@@ -599,11 +598,6 @@
           </div>
           <div class="weq-msg-input"><div></div></div>
           <div class="weq-ind weq-ind-dark"></div>
-        </div>
-
-        <!-- SLUTBILD: ÖoB:s riktiga personliga landningssida -->
-        <div class="weq-scr weq-hidden" id="weqEnd">
-          <img src="../assets/oob/oob-slutbild.jpg" alt="ÖoB:s personliga landningssida — Tryck på play" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
 
         <div class="weq-phone-notch"></div>
@@ -1073,14 +1067,13 @@
       grid.appendChild(w);
     }); }
 
-    // Tidslinje: låsskärm → hemskärm → notis → SMS → slutbild
+    // Tidslinje: låsskärm → hemskärm → notis → SMS
     var lock = document.getElementById('weqLock'), home = document.getElementById('weqHome'),
         badge = document.getElementById('weqBadge'), banner = document.getElementById('weqBanner'),
-        msg = document.getElementById('weqMsg'), link = document.getElementById('weqLink'),
-        end = document.getElementById('weqEnd');
+        msg = document.getElementById('weqMsg'), link = document.getElementById('weqLink');
     function run(){
       lock.classList.remove('weq-hidden');
-      home.classList.add('weq-hidden'); msg.classList.add('weq-hidden'); end.classList.add('weq-hidden');
+      home.classList.add('weq-hidden'); msg.classList.add('weq-hidden');
       if (badge) badge.classList.remove('weq-pop');
       if (banner) banner.classList.remove('weq-show');
       if (link) link.classList.remove('weq-pulse');
@@ -1088,8 +1081,7 @@
       setTimeout(function(){ if (badge) badge.classList.add('weq-pop'); if (banner) banner.classList.add('weq-show'); }, 3700);
       setTimeout(function(){ home.classList.add('weq-hidden'); msg.classList.remove('weq-hidden'); }, 5800);
       setTimeout(function(){ if (link) link.classList.add('weq-pulse'); }, 7800);
-      setTimeout(function(){ msg.classList.add('weq-hidden'); end.classList.remove('weq-hidden'); }, 8700);
-      setTimeout(run, 13500);
+      setTimeout(run, 11500);
     }
     run();
 
