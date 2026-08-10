@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>JEPPI — Designkoncept</title>
+<meta property="og:title" content="JEPPI — Designkoncept">
+<meta property="og:description" content="Fem originaldesigner för musikvideon. Jakobstad, augusti 2026.">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  :root {
+    --paper:   #F3EDE1;
+    --ink:     #23201B;
+    --ink2:    rgba(35,32,27,0.62);
+    --line:    rgba(35,32,27,0.13);
+    --c1: #B98A4B;  /* vintage rubber hose */
+    --c2: #2E8C8C;  /* modern flat */
+    --c3: #7E9A6B;  /* akvarell */
+    --c4: #C97A5A;  /* mjuk 3D */
+    --c5: #C9A227;  /* retro UPA */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper); color: var(--ink);
+    font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+
+  .jp-wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* Papperstextur */
+  body::before {
+    content:''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .5;
+    background-image:
+      radial-gradient(rgba(35,32,27,0.035) 1px, transparent 1px),
+      radial-gradient(rgba(35,32,27,0.025) 1px, transparent 1px);
+    background-size: 22px 22px, 37px 37px;
+    background-position: 0 0, 11px 13px;
+  }
+  .jp-wrap, header, footer { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  .jp-hero { padding: 90px 0 60px; text-align: center; }
+  .jp-kicker {
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--ink2); margin-bottom: 26px;
+  }
+  .jp-title {
+    font-size: clamp(72px, 16vw, 190px); font-weight: 800; letter-spacing: -6px;
+    line-height: .86; margin-bottom: 22px;
+  }
+  .jp-title span { display: inline-block; animation: jp-bob 3.4s ease-in-out infinite; }
+  .jp-title span:nth-child(2){ animation-delay:.12s } .jp-title span:nth-child(3){ animation-delay:.24s }
+  .jp-title span:nth-child(4){ animation-delay:.36s } .jp-title span:nth-child(5){ animation-delay:.48s }
+  @keyframes jp-bob { 0%,100%{ transform:translateY(0) rotate(0) } 50%{ transform:translateY(-12px) rotate(-1.5deg) } }
+  .jp-sub { font-size: clamp(17px,2vw,21px); color: var(--ink2); max-width: 640px; margin: 0 auto 44px; }
+
+  /* Figurkarusell i hero */
+  .jp-lineup {
+    display: flex; justify-content: center; align-items: flex-end; gap: clamp(4px,2vw,26px);
+    margin-bottom: 20px; flex-wrap: nowrap;
+  }
+  .jp-lineup a { flex: 0 1 auto; text-decoration: none; }
+  .jp-lineup img {
+    height: clamp(90px, 15vw, 190px); width: auto; display: block;
+    mix-blend-mode: multiply; transition: transform .35s cubic-bezier(.2,1.3,.4,1);
+    animation: jp-idle 4.6s ease-in-out infinite;
+  }
+  .jp-lineup a:nth-child(2) img { animation-delay:.5s } .jp-lineup a:nth-child(3) img { animation-delay:1s }
+  .jp-lineup a:nth-child(4) img { animation-delay:1.5s } .jp-lineup a:nth-child(5) img { animation-delay:2s }
+  .jp-lineup img:hover { transform: translateY(-14px) scale(1.06); }
+  @keyframes jp-idle { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-9px) } }
+
+  .jp-note {
+    font-family: 'Space Mono', monospace; font-size: 12.5px; color: var(--ink2);
+    border-top: 1px solid var(--line); padding-top: 22px; margin-top: 26px;
+  }
+
+  /* ── KONCEPT ── */
+  .jp-concept { padding: 78px 0; border-top: 1px solid var(--line); }
+  .jp-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px,6vw,76px); align-items: center; }
+  .jp-concept:nth-child(even) .jp-media { order: -1; }
+
+  .jp-num {
+    font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 2px;
+    color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
+  }
+  .jp-num::after { content:''; flex:1; height:1px; background: var(--accent); opacity:.35; }
+  .jp-h2 {
+    font-size: clamp(30px,4.2vw,46px); font-weight: 800; letter-spacing: -1.4px;
+    line-height: 1.08; margin-bottom: 18px;
+  }
+  .jp-meta { display: flex; flex-direction: column; gap: 7px; margin-bottom: 22px; }
+  .jp-meta div {
+    font-family: 'Space Mono', monospace; font-size: 11.5px; letter-spacing: .6px;
+    text-transform: uppercase; color: var(--ink2); line-height: 1.5;
+  }
+  .jp-meta b { color: var(--accent); font-weight: 700; }
+  .jp-body { font-size: 16.5px; margin-bottom: 20px; }
+  .jp-video-note {
+    background: rgba(255,255,255,.55); border-left: 3px solid var(--accent);
+    padding: 14px 18px; font-size: 15.5px; margin-bottom: 18px;
+  }
+  .jp-video-note b { display:block; font-family:'Space Mono',monospace; font-size:11px;
+    letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
+  .jp-flag {
+    display: flex; gap: 11px; font-size: 14.5px; color: var(--ink2);
+    border-top: 1px dashed var(--line); padding-top: 16px;
+  }
+  .jp-flag span { color: var(--accent); font-weight: 700; flex: 0 0 auto; }
+
+  /* Media: rörlig figur */
+  .jp-media { position: relative; }
+  .jp-stage {
+    position: relative; border-radius: 20px; overflow: hidden;
+    background: #fff; border: 1px solid var(--line);
+    box-shadow: 0 26px 60px rgba(35,32,27,.12);
+    aspect-ratio: 3/4;
+  }
+  .jp-stage video, .jp-stage img.jp-still {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .jp-stage img.jp-still { z-index: 1; transition: opacity .6s ease; }
+  .jp-stage.playing img.jp-still { opacity: 0; }
+  .jp-badge {
+    position: absolute; z-index: 3; left: 14px; bottom: 14px;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(6px);
+    border-radius: 100px; padding: 7px 14px;
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--ink); display: flex; align-items: center; gap: 8px;
+  }
+  .jp-badge i {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    display: inline-block; animation: jp-blink 1.6s ease-in-out infinite;
+  }
+  @keyframes jp-blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+  /* ── FOOTER ── */
+  footer.jp-foot { border-top: 1px solid var(--line); padding: 54px 0 70px; text-align: center; }
+  .jp-foot p { color: var(--ink2); font-size: 15.5px; max-width: 620px; margin: 0 auto 8px; }
+  .jp-foot .jp-sig { font-family:'Space Mono',monospace; font-size:12px; letter-spacing:1.5px;
+    text-transform:uppercase; color: var(--ink2); margin-top: 26px; }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .jp-wrap { padding: 0 20px; }
+    .jp-grid { grid-template-columns: 1fr; gap: 30px; }
+    .jp-concept:nth-child(even) .jp-media { order: 0; }
+    .jp-hero { padding: 60px 0 40px; }
+    .jp-lineup { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .jp-lineup img { height: 92px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="jp-hero">
+  <div class="jp-wrap">
+    <div class="jp-kicker">Musikvideo · Jakobstad · Augusti 2026</div>
+    <h1 class="jp-title"><span>J</span><span>E</span><span>P</span><span>P</span><span>I</span></h1>
+    <p class="jp-sub">Fem originaldesigner för figuren. Varje riktning tar sin utgångspunkt i ett landmärke från Jakobstad — och i en egen animationsstil.</p>
+
+    <div class="jp-lineup">
+      <a href="#k1"><img src="../assets/jeppi/jeppi-01.jpg" alt="Rådhustornet"></a>
+      <a href="#k2"><img src="../assets/jeppi/jeppi-02.jpg" alt="Jacobstads Wapen"></a>
+      <a href="#k3"><img src="../assets/jeppi/jeppi-03.jpg" alt="Kyrktornet"></a>
+      <a href="#k4"><img src="../assets/jeppi/jeppi-04.jpg" alt="Pojken med tornet"></a>
+      <a href="#k5"><img src="../assets/jeppi/jeppi-05.jpg" alt="Sjömannen"></a>
+    </div>
+    <div class="jp-note">Alla fem designer är original — förfinas till character sheet + designskyddsunderlag i nästa steg.</div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 -->
+<section class="jp-concept reveal" id="k1" style="--accent: var(--c1)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">01</div>
+      <h2 class="jp-h2">Rådhustornet<br>— Vintage Rubber Hose</h2>
+      <div class="jp-meta">
+        <div><b>Landmärke:</b> Rådhustornet (klocktorn med spira)</div>
+        <div><b>Stil:</b> Klassisk 30-tals handtecknad animation, filmkorn, sepiapalett</div>
+      </div>
+      <p class="jp-body">Den mest klassiska tolkningen av briefen — närmast den tecknade guldålderns känsla. Urtavlan blir Jeppis ansikte: visarna fungerar som ögonbryn och ger honom ett uttryck som kan animeras med enkla medel. Tornhuvudet gör siluetten omedelbart igenkännbar även i svartvitt eller på långt håll, vilket är en styrka både i musikvideon och i framtida merchandise.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Vandrar genom en sliten cartoon-stad där miljön långsamt förfaller runt honom — vintage-looken förstärker känslan av en värld som tickar mot slutet. Klockan i ansiktet kan användas dramaturgiskt: visarna närmar sig tolv i takt med låten.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>De vita fyrfingrade handskarna ligger för nära Disney-klassikerna och bör bytas mot bara händer eller vantar innan designskyddsansökan.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-01.jpg" alt="Jeppi som rådhustorn">
+        <video muted loop playsinline preload="none" data-src="https://xfzgkjapfauqdzvussbz.supabase.co/storage/v1/object/public/jeppi/jeppi-klipp-01.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp 01 · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="jp-concept reveal" id="k2" style="--accent: var(--c2)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">02</div>
+      <h2 class="jp-h2">Jacobstads Wapen<br>— Modern Flat 2D</h2>
+      <div class="jp-meta">
+        <div><b>Landmärke:</b> Galeonen Jacobstads Wapen</div>
+        <div><b>Stil:</b> Modern flat vector-cartoon (samtida TV-serie), klara färger</div>
+      </div>
+      <p class="jp-body">Den djärvaste och mest särpräglade siluetten av de fem — ett skeppshuvud med segel som hår går inte att förväxla med någon existerande figur, vilket ger det starkaste utgångsläget för designskydd. Kopplingen till stadens sjöfartshistoria ger figuren en berättelse, och lövscarfen knyter an till miljötemat. Stilen är enkel och billig att animera konsekvent.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Seglen kan reagera på berättelsen — fyllas av vind i hoppfulla partier och hänga slaka när texten mörknar. Skeppet som bärare av människor blir en naturlig metafor för arken/räddningen i undergångsberättelsen.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Flaggan i masten bör bytas till finsk flagga eller en neutral vimpel (Jakobstad ligger i Finland).</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-02.jpg" alt="Jeppi som galeon">
+        <video muted loop playsinline preload="none" data-src="https://xfzgkjapfauqdzvussbz.supabase.co/storage/v1/object/public/jeppi/jeppi-klipp-02.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp 02 · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="jp-concept reveal" id="k3" style="--accent: var(--c3)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">03</div>
+      <h2 class="jp-h2">Kyrktornet<br>— Storybook Akvarell</h2>
+      <div class="jp-meta">
+        <div><b>Landmärke:</b> Kyrkans klocktorn med lökkupol</div>
+        <div><b>Stil:</b> Handmålad sagoboks-akvarell, mjuka blyertskonturer, dämpad naturpalett</div>
+      </div>
+      <p class="jp-body">Den varmaste och mest emotionella riktningen. Valvfönstren blir vänliga lysande ögon och porten en mun — och mossan och de små växterna som gror på taket gör miljötemat till en del av själva figuren: naturen växer bokstavligen på honom. Akvarelltextur och stickad halsduk ger en ömhet som kontrasterar starkt mot en värld som går under.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>När staden förfaller kan Jeppi vara den enda platsen där något fortfarande växer — grönskan på hans tak blir berättelsens hoppfulla motpol och kan spira i takt med låtens slut.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Bäst lämpad om låten är melankolisk snarare än energisk; stilen är dyrare att hålla konsekvent i längre animerade sekvenser.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-03.jpg" alt="Jeppi som kyrktorn">
+        <video muted loop playsinline preload="none" data-src="https://xfzgkjapfauqdzvussbz.supabase.co/storage/v1/object/public/jeppi/jeppi-klipp-03.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp 03 · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="jp-concept reveal" id="k4" style="--accent: var(--c4)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">04</div>
+      <h2 class="jp-h2">Pojken med tornet<br>— Mjuk 3D</h2>
+      <div class="jp-meta">
+        <div><b>Landmärke:</b> Rådhustornet som mössa/hatt</div>
+        <div><b>Stil:</b> Modern 3D-långfilmslook, mjukt ljus, gosig karaktärsdesign</div>
+      </div>
+      <p class="jp-body">Här är Jeppi en vanlig liten figur — ett stort runt huvud, varma ögon, grön hoodie med lövemblem — och landmärket har flyttat upp och blivit hans hatt. Det gör honom mänskligare och lättare att känna med, samtidigt som Jakobstads-kopplingen finns kvar i varje bildruta.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Den mänskliga formen gör det lätt att spela på empati — ett barn som vandrar genom en värld de vuxna förstört är ett starkt bildspråk för miljötexterna.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Ansiktet bör få egnare drag (t.ex. fräknar, annan ögonform) för att distansera sig från befintliga 3D-barnfigurer i samma genre.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-04.jpg" alt="Jeppi som pojke med torn-hatt">
+        <video muted loop playsinline preload="none" data-src="https://xfzgkjapfauqdzvussbz.supabase.co/storage/v1/object/public/jeppi/jeppi-klipp-04.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp 04 · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="jp-concept reveal" id="k5" style="--accent: var(--c5)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">05</div>
+      <h2 class="jp-h2">Sjömannen<br>— Retro UPA 50/60-tal</h2>
+      <div class="jp-meta">
+        <div><b>Landmärke:</b> Jacobstads Wapen som emblem på sjömansmössan</div>
+        <div><b>Stil:</b> Mid-century limited animation (UPA), grafiska plana former, retropalett</div>
+      </div>
+      <p class="jp-body">Den vuxnaste och mest grafiska riktningen — en vanlig karl med sjömansmössa där landmärket lever vidare som guldemblem. Randig tröja, senapsgula byxor och en avslappnad hållning ger en figur som känns som en klassisk europeisk tidningsserie. Stilen är extremt produktionsvänlig: få linjer, plana färger, tydliga poser.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Limited animation-estetiken tål stiliserade undergångsbilder väldigt bra — fabriksskorstenar, oljehav och kalhyggen blir grafiska former snarare än realism, vilket kan göra det tunga innehållet mer sebart utan att tappa udden.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Tilltalar en äldre publik än 01–04; fungerar utmärkt om artisten själv är vuxen och vill undvika barnsligt uttryck.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-05.jpg" alt="Jeppi som sjöman">
+        <video muted loop playsinline preload="none" data-src="https://xfzgkjapfauqdzvussbz.supabase.co/storage/v1/object/public/jeppi/jeppi-klipp-05.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp 05 · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="jp-foot">
+  <div class="jp-wrap">
+    <p>Alla fem designer är original — förfinas till character sheet och designskyddsunderlag i nästa steg.</p>
+    <div class="jp-sig">Jeppi · Designkoncept · Jakobstad · Augusti 2026</div>
+  </div>
+</footer>
+
+<script>
+  // Reveal
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Klippen laddas och spelas när de syns — figurerna rör sig av sig själva
+  var vio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target, stage = v.closest('.jp-stage');
+      if (e.isIntersecting) {
+        if (!v.src && v.dataset.src) { v.src = v.dataset.src; }
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){});
+        v.addEventListener('playing', function(){ stage.classList.add('playing'); }, { once: true });
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: .35 });
+  document.querySelectorAll('.jp-stage video').forEach(function(v){ vio.observe(v); });
+</script>
+
+</body>
+</html>
