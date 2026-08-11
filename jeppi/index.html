@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>JEPPI — Designkoncept</title>
 <meta property="og:title" content="JEPPI — Designkoncept">
-<meta property="og:description" content="Fem originaldesigner för musikvideon. Jakobstad, augusti 2026.">
+<meta property="og:description" content="Åtta originaldesigner för musikvideon Jeppis Bluesen. Jakobstad, augusti 2026.">
 <link rel="stylesheet" href="../css/style.css">
 <style>
   :root {
@@ -19,6 +19,9 @@
     --c3: #7E9A6B;  /* akvarell */
     --c4: #C97A5A;  /* mjuk 3D */
     --c5: #C9A227;  /* retro UPA */
+    --k1: #4F8C7E;  /* klockan – trogen förlagan */
+    --k2: #6E7F45;  /* klockan – mossgröna blusen */
+    --k3: #96704A;  /* klockan – retro skandinavisk */
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -63,12 +66,35 @@
     animation: jp-sigin 1.1s cubic-bezier(.22,1,.36,1) both .35s;
   }
   @keyframes jp-sigin { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  .jp-sub { font-size: clamp(17px,2vw,21px); color: var(--ink2); max-width: 640px; margin: 0 auto 44px; }
+  .jp-sub { font-size: clamp(17px,2vw,21px); color: var(--ink2); max-width: 640px; margin: 0 auto 40px; }
+
+  /* Konceptrutan: Jeppis Bluesen */
+  .jp-idea {
+    max-width: 720px; margin: 0 auto; text-align: left;
+    background: rgba(255,255,255,.6); border: 1px solid var(--line);
+    border-radius: 16px; padding: 24px 28px;
+  }
+  .jp-idea b {
+    display: block; font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--k1); margin-bottom: 9px;
+  }
+  .jp-idea p { font-size: 16px; color: var(--ink); }
+
+  /* Rubrik för en grupp koncept */
+  .jp-groupbar { padding: 46px 0 0; }
+  .jp-groupbar .jp-wrap { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .jp-groupbar h2 {
+    font-size: clamp(22px,3vw,30px); font-weight: 800; letter-spacing: -.8px;
+  }
+  .jp-groupbar span {
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--ink2);
+  }
 
   /* ── KONCEPT ── */
   .jp-concept { padding: 78px 0; border-top: 1px solid var(--line); }
   .jp-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px,6vw,76px); align-items: center; }
-  .jp-concept:nth-child(even) .jp-media { order: -1; }
+  .jp-concept.flip .jp-media { order: -1; }
 
   .jp-num {
     font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 2px;
@@ -137,7 +163,7 @@
   @media (max-width: 860px) {
     .jp-wrap { padding: 0 20px; }
     .jp-grid { grid-template-columns: 1fr; gap: 30px; }
-    .jp-concept:nth-child(even) .jp-media { order: 0; }
+    .jp-concept.flip .jp-media { order: 0; }
     .jp-hero { padding: 60px 0 40px; }
   }
 </style>
@@ -146,23 +172,114 @@
 
 <header class="jp-hero">
   <div class="jp-wrap">
-    <div class="jp-kicker">Musikvideo · Jakobstad · Augusti 2026</div>
+    <div class="jp-kicker">Jeppis Bluesen · Musikvideo · Jakobstad · Augusti 2026</div>
     <div class="jp-titleblock">
       <h1 class="jp-title"><span>J</span><span>E</span><span>P</span><span>P</span><span>I</span></h1>
       <img class="jp-sig-mark" src="../assets/jeppi/signatur.png" alt="Prompt & AI direction by Joaquim Nicander">
     </div>
-    <p class="jp-sub">Fem originaldesigner för figuren. Varje riktning tar sin utgångspunkt i ett landmärke från Jakobstad — och i en egen animationsstil.</p>
+    <p class="jp-sub">Åtta originaldesigner för figuren. Varje riktning tar sin utgångspunkt i ett landmärke från Jakobstad — och i en egen animationsstil.</p>
+
+    <div class="jp-idea">
+      <b>Konceptet: Jeppis Bluesen</b>
+      <p>Jeppi tar på sig sin blus och flanerar genom Jakobstad — Jeppis, som ungdomarna säger — och blusen samlar intryck från promenaden. Låtens text kopplas till händelserna som ligger till grund för bluesen.</p>
+    </div>
 
   </div>
 </header>
 
 <main>
 
+<div class="jp-groupbar reveal">
+  <div class="jp-wrap">
+    <h2>Klockan</h2>
+    <span>01–03 · Kupolklockan som huvud, urtavlan på sidan</span>
+  </div>
+</div>
+
 <!-- 01 -->
-<section class="jp-concept reveal" id="k1" style="--accent: var(--c1)">
+<section class="jp-concept reveal" id="kl1" style="--accent: var(--k1)">
   <div class="jp-wrap jp-grid">
     <div>
       <div class="jp-num">01</div>
+      <h2 class="jp-h2">Klockan<br>— Trogen förlagan</h2>
+      <div class="jp-meta">
+        <div><b>Huvud:</b> Kupolklockan i ärggrön koppar, urtavlan monterad på sidan</div>
+        <div><b>Stil:</b> Flat 2D-cartoon med tjocka konturer · Klädsel: lövmönstrad blus</div>
+      </div>
+      <p class="jp-body">Den här varianten ligger närmast skissförlagan: ansiktet ritat direkt på kopparklotet, den tjocka urtavlan med romerska siffror monterad på sidan av huvudet precis som på det riktiga tornet, och spiran på toppen. Kremgul blus med Jugendstil-lövmönster, grön scarf och teal-shorts. Sidoklockan är designens kännetecken — den syns i varje vinkel och gör siluetten omöjlig att förväxla.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Blusen är berättelsens motor: när Jeppi flanerar genom Jeppis samlar tyget intryck från promenaden — motiv från staden och miljön fastnar som mönster i lövtrycket och blusen förändras vers för vers. Lövmönstret han börjar med är alltså bara utgångsläget.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Blusen har redan ett tryckbart mönster, vilket gör den till den mest naturliga bäraren av intrycken från promenaden — starkaste kandidaten för Jeppis Bluesen-konceptet.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-klocka-15.jpg" alt="Jeppi — klockan, trogen förlagan">
+        <video muted loop playsinline preload="none" data-src="../assets/jeppi/jeppi-klocka-15.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="jp-concept reveal flip" id="kl2" style="--accent: var(--k2)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">02</div>
+      <h2 class="jp-h2">Klockan<br>— Mossgröna blusen</h2>
+      <div class="jp-meta">
+        <div><b>Huvud:</b> Kupolklockan i ärggrön koppar, urtavlan monterad på sidan</div>
+        <div><b>Stil:</b> Flat 2D med mjukare linjer · Klädsel: mossgrön blus med uppkavlade ärmar</div>
+      </div>
+      <p class="jp-body">Samma huvud och proportioner som 01, men med en mossgrön knäppt blus med uppkavlade ärmar, lövbroderi på bröstfickan och bruna shorts — en varmare, mer vardaglig gestalt med mjukare linjer som gör honom vänlig och lättanimerad i enkla cykler.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Den enfärgade blusen är en tom duk: intrycken från promenaden genom Jeppis kan växa fram som broderier på det mossgröna tyget, ett motiv i taget, tills blusen till sist berättar hela låtens historia.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>I den här genereringen fick klotet en kopparring även på högra sidan (som hörselkåpor) — säg till om den ska bort så att bara den vänstra urtavlan blir kvar.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-klocka-16.jpg" alt="Jeppi — klockan, mossgröna blusen">
+        <video muted loop playsinline preload="none" data-src="../assets/jeppi/jeppi-klocka-16.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="jp-concept reveal" id="kl3" style="--accent: var(--k3)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">03</div>
+      <h2 class="jp-h2">Klockan<br>— Retro skandinavisk</h2>
+      <div class="jp-meta">
+        <div><b>Huvud:</b> Kupolklockan i ärggrön koppar, urtavlan monterad på sidan</div>
+        <div><b>Stil:</b> Vintage-bläck med papperstextur och patina · Klädsel: linneblus i arbetarsnitt</div>
+      </div>
+      <p class="jp-body">Den vuxnaste av de tre — en lös kragfri linneblus i arbetarsnitt med knäppning och uppkavlade ärmar, uppvikta kopparbruna byxor och liten grön scarf. Papperstexturen och patinan på kopparklotet ger en tidlös, hantverksmässig känsla som passar en stad med sjöfartshistoria.</p>
+      <div class="jp-video-note"><b>I musikvideon</b>Linneblusens ljusa tyg är den perfekta duken för intrycken: motiv från promenaden kan tona fram som blektryck eller lappar som sys fast, likt en arbetsskjorta som bär spåren av ett helt liv. Melankolin i stilen ligger närmast blues-tonen i låttiteln.</div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Bäst lämpad om Jeppis Bluesen är långsam och vemodig; för en energisk låt är 01 eller 02 sannolikt rätt spår.</em></div>
+    </div>
+    <div class="jp-media">
+      <div class="jp-stage">
+        <img class="jp-still" src="../assets/jeppi/jeppi-klocka-17.jpg" alt="Jeppi — klockan, retro skandinavisk">
+        <video muted loop playsinline preload="none" data-src="../assets/jeppi/jeppi-klocka-17.mp4"></video>
+        <div class="jp-badge"><i></i>Klipp · 5 sek</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="jp-groupbar reveal">
+  <div class="jp-wrap">
+    <h2>Tidigare riktningar</h2>
+    <span>04–08 · Landmärken och stilar från första omgången</span>
+  </div>
+</div>
+
+<!-- 01 -->
+<section class="jp-concept reveal flip" id="k1" style="--accent: var(--c1)">
+  <div class="jp-wrap jp-grid">
+    <div>
+      <div class="jp-num">04</div>
       <h2 class="jp-h2">Rådhustornet<br>— Vintage Rubber Hose</h2>
       <div class="jp-meta">
         <div><b>Landmärke:</b> Rådhustornet (klocktorn med spira)</div>
@@ -186,13 +303,13 @@
 <section class="jp-concept reveal" id="k2" style="--accent: var(--c2)">
   <div class="jp-wrap jp-grid">
     <div>
-      <div class="jp-num">02</div>
+      <div class="jp-num">05</div>
       <h2 class="jp-h2">Jacobstads Wapen<br>— Modern Flat 2D</h2>
       <div class="jp-meta">
         <div><b>Landmärke:</b> Galeonen Jacobstads Wapen</div>
         <div><b>Stil:</b> Modern flat vector-cartoon (samtida TV-serie), klara färger</div>
       </div>
-      <p class="jp-body">Den djärvaste och mest särpräglade siluetten av de fem — ett skeppshuvud med segel som hår går inte att förväxla med någon existerande figur, vilket ger det starkaste utgångsläget för designskydd. Kopplingen till stadens sjöfartshistoria ger figuren en berättelse, och lövscarfen knyter an till miljötemat. Stilen är enkel och billig att animera konsekvent.</p>
+      <p class="jp-body">Den djärvaste och mest särpräglade siluetten av de fem landmärkesvarianterna — ett skeppshuvud med segel som hår går inte att förväxla med någon existerande figur, vilket ger det starkaste utgångsläget för designskydd. Kopplingen till stadens sjöfartshistoria ger figuren en berättelse, och lövscarfen knyter an till miljötemat. Stilen är enkel och billig att animera konsekvent.</p>
       <div class="jp-video-note"><b>I musikvideon</b>Seglen kan reagera på berättelsen — fyllas av vind i hoppfulla partier och hänga slaka när texten mörknar. Skeppet som bärare av människor blir en naturlig metafor för arken/räddningen i undergångsberättelsen.</div>
       <div class="jp-flag"><span>Att ta ställning till:</span><em>Flaggan i masten bör bytas till finsk flagga eller en neutral vimpel (Jakobstad ligger i Finland).</em></div>
     </div>
@@ -207,10 +324,10 @@
 </section>
 
 <!-- 03 -->
-<section class="jp-concept reveal" id="k3" style="--accent: var(--c3)">
+<section class="jp-concept reveal flip" id="k3" style="--accent: var(--c3)">
   <div class="jp-wrap jp-grid">
     <div>
-      <div class="jp-num">03</div>
+      <div class="jp-num">06</div>
       <h2 class="jp-h2">Kyrktornet<br>— Storybook Akvarell</h2>
       <div class="jp-meta">
         <div><b>Landmärke:</b> Kyrkans klocktorn med lökkupol</div>
@@ -234,7 +351,7 @@
 <section class="jp-concept reveal" id="k4" style="--accent: var(--c4)">
   <div class="jp-wrap jp-grid">
     <div>
-      <div class="jp-num">04</div>
+      <div class="jp-num">07</div>
       <h2 class="jp-h2">Pojken med tornet<br>— Mjuk 3D</h2>
       <div class="jp-meta">
         <div><b>Landmärke:</b> Rådhustornet som mössa/hatt</div>
@@ -255,10 +372,10 @@
 </section>
 
 <!-- 05 -->
-<section class="jp-concept reveal" id="k5" style="--accent: var(--c5)">
+<section class="jp-concept reveal flip" id="k5" style="--accent: var(--c5)">
   <div class="jp-wrap jp-grid">
     <div>
-      <div class="jp-num">05</div>
+      <div class="jp-num">08</div>
       <h2 class="jp-h2">Sjömannen<br>— Retro UPA 50/60-tal</h2>
       <div class="jp-meta">
         <div><b>Landmärke:</b> Jacobstads Wapen som emblem på sjömansmössan</div>
@@ -266,7 +383,7 @@
       </div>
       <p class="jp-body">Den vuxnaste och mest grafiska riktningen — en vanlig karl med sjömansmössa där landmärket lever vidare som guldemblem. Randig tröja, senapsgula byxor och en avslappnad hållning ger en figur som känns som en klassisk europeisk tidningsserie. Stilen är extremt produktionsvänlig: få linjer, plana färger, tydliga poser.</p>
       <div class="jp-video-note"><b>I musikvideon</b>Limited animation-estetiken tål stiliserade undergångsbilder väldigt bra — fabriksskorstenar, oljehav och kalhyggen blir grafiska former snarare än realism, vilket kan göra det tunga innehållet mer sebart utan att tappa udden.</div>
-      <div class="jp-flag"><span>Att ta ställning till:</span><em>Tilltalar en äldre publik än 01–04; fungerar utmärkt om artisten själv är vuxen och vill undvika barnsligt uttryck.</em></div>
+      <div class="jp-flag"><span>Att ta ställning till:</span><em>Tilltalar en äldre publik än 04–07; fungerar utmärkt om artisten själv är vuxen och vill undvika barnsligt uttryck.</em></div>
     </div>
     <div class="jp-media">
       <div class="jp-stage">
@@ -282,7 +399,7 @@
 
 <footer class="jp-foot">
   <div class="jp-wrap">
-    <p>Alla fem designer är original — förfinas till character sheet och designskyddsunderlag i nästa steg.</p>
+    <p>Alla designer är original — förfinas till character sheet och designskyddsunderlag i nästa steg.</p>
     <div class="jp-sig">Jeppi · Designkoncept · Jakobstad · Augusti 2026</div>
   </div>
 </footer>
