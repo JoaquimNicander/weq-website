@@ -342,12 +342,13 @@
 
     /* CTA — orange final, som heron */
     .oob-final {
-      text-align: center; padding: 120px 40px;
+      text-align: center; padding: 96px 40px 104px;
       position: relative; overflow: hidden;
       background: linear-gradient(168deg, #FF8030 0%, #E8520A 28%, #B83A00 60%, #5A1800 100%);
     }
     .oob-final > * { position: relative; z-index: 1; }
-    .oob-final > .hero-grid, .oob-final > .hero-glow { z-index: 0; }
+    /* dekorationerna måste förbli absoluta – annars tar glowen 700px i höjd */
+    .oob-final > .hero-grid, .oob-final > .hero-glow { position: absolute; z-index: 0; }
     .oob-final .oob-eyebrow { color: rgba(255,248,243,0.9); }
     .oob-final .oob-lead { color: rgba(255,248,243,0.88); }
     .oob-final .oob-title { margin-left: auto; margin-right: auto; }
